@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
+
 
 export default function Post() {
+  const hiddenFileInput = useRef(null);
+
+  // when the Button component is clicked
+  const fileUploadBrowse = (event) => {
+    hiddenFileInput.current.click();
+  };
+
+  // to handle the user-selected file
+
+  const handleFileChange = (event) => {
+    const fileUploaded = event.target.files[0];
+    document.getElementById("file-upload-info").value=fileUploaded.name; 
+  };
   return (
     <>
       <div className="content-wrapper">
@@ -227,9 +241,12 @@ export default function Post() {
                             type="file"
                             name="img[]"
                             className="file-upload-default"
+                            onChange={handleFileChange}
+                            ref={hiddenFileInput}
                           />
                           <div className="input-group col-xs-12">
                             <input
+                              id="file-upload-info"
                               type="text"
                               className="form-control file-upload-info"
                               disabled
@@ -240,6 +257,7 @@ export default function Post() {
                                 className="file-upload-browse btn btn-primary "
                                 type="button"
                                 style={{ padding: "10px" }}
+                                onClick={fileUploadBrowse}
                               >
                                 Upload
                               </button>

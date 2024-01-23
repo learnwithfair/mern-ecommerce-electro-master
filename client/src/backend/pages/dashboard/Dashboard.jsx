@@ -11,7 +11,7 @@ export default function Dashboard() {
     <>
       <DynamicTitle title={"Dashboard"} />
       <div className="container-scroller">
-        <Banner />
+        {/* <Banner /> */}
         <SideBar />
         {/* <!-- partial --> */}
         <div className="container-fluid page-body-wrapper">

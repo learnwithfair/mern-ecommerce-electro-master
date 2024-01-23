@@ -2,6 +2,10 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import ReloadJS from "./reload-js/ReloadJS";
 
+import "../assets/vendors/js/vendor.bundle.base.js"
+import "../assets/js/select2.js"
+
+
 export default function DynamicTitle(props = "Home") {
   // const DataTable = () => {
   //   $(document).ready(function () {
@@ -11,8 +15,9 @@ export default function DynamicTitle(props = "Home") {
 
   const reloadJSr = (
     <>
-      <ReloadJS src="../../src/backend/assets/js/file-upload.js" />
       <ReloadJS src="../../src/backend/assets/js/select2.js" />
+      <ReloadJS src="../../src/backend/assets/js/chart.js" />
+      <ReloadJS src="../../src/backend/assets/js/dashboard.js" />
     </>
   );
 
@@ -20,7 +25,7 @@ export default function DynamicTitle(props = "Home") {
 
   return (
     <>
-    {reloadJSr}
+      {reloadJSr}
       <Helmet>
         <title>E-commerce || {props.title}</title>
         <link
@@ -87,14 +92,14 @@ export default function DynamicTitle(props = "Home") {
           href="../../src/backend/assets/css/custom.css"
         />
         {/* Footer JS  */}
-        <script src="../../src/backend/assets/vendors/js/vendor.bundle.base.js"></script>
+        {/* <script src="../../src/backend/assets/vendors/js/vendor.bundle.base.js"></script> */}
         <script src="../../src/backend/assets/vendors/chart.js/Chart.min.js"></script>
         <script src="../../src/backend/assets/vendors/progressbar.js/progressbar.min.js"></script>
         <script src="../../src/backend/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
         <script src="../../src/backend/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <script src="../../src/backend/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
         <script src="../../src/backend/assets/js/jquery.cookie.js"></script>
-        <script src="../../src/backend/assets/js/off-canvas.js"></script>
+        {/* <script src="../../src/backend/assets/js/off-canvas.js"></script> */}
         <script src="../../src/backend/assets/js/hoverable-collapse.js"></script>
         <script src="../../src/backend/assets/js/misc.js"></script>
         <script src="../../src/backend/assets/js/settings.js"></script>
@@ -105,9 +110,9 @@ export default function DynamicTitle(props = "Home") {
         {/* <!-- For Multiple Select --> */}
         <script src="../../src/backend/assets/vendors/select2/select2.min.js"></script>
         {/* <script src="../../src/backend/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script> */}
-        <script src="../../src/backend/assets/js/file-upload.js"></script>
+        {/* <script src="../../src/backend/assets/js/file-upload.js"></script> */}
         {/* <script src="../../src/backend/assets/js/typeahead.js"></script> */}
-        <script src="../../src/backend/assets/js/select2.js"></script>
+        {/* <script src="../../src/backend/assets/js/select2.js"></script> */}
         {/* <!-- For Multiple Select --> */}
 
         {/* <!-- Start  js for Bootsrap --> */}
