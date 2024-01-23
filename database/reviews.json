@@ -1,0 +1,74 @@
+[
+  {
+    "_id": {
+      "$oid": "101"
+    },
+    "productId": "101",
+    "name": "RAHATUL RABBI",
+    "email": "rahatul@gmail.com",
+    "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "rating": 5,
+    "isActive": false,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "102"
+    },
+    "productId": "101",
+    "name": "Johan",
+    "email": "johan@gmail.com",
+    "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "rating": 5,
+    "isActive": false,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "103"
+    },
+    "productId": "101",
+    "name": "Anisul Islam",
+    "email": "anisul@gmail.com",
+    "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "rating": 4,
+    "isActive": false,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "104"
+    },
+    "productId": "101",
+    "name": "Anisul Islam",
+    "email": "anisul@gmail.com",
+    "review": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "rating": 3,
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  }
+]

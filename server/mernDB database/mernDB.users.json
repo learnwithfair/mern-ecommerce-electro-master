@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "6554517b2c32942e3c1bdc78"
+  },
+  "name": "MD RAHATUL RABBI",
+  "email": "learnwithfair@gmail.com",
+  "password": "$2a$10$ZtFwaZZ9WtxiyHWDANDtUuAyaXpjkzsHw7DRFPvAkb2Mq.HzIM.fK",
+  "image": "default-image",
+  "address": "Lalmonirhat, Bangladesh",
+  "phone": "01790224950",
+  "isAdmin": true,
+  "isBanned": false,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-11-15T05:05:00.362Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-15T05:07:31.575Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6554517c2c32942e3c1bdc7a"
+  },
+  "name": "Anisul Islam",
+  "email": "anisul@gmail.com",
+  "password": "$2a$10$xEl/BdBHo.b2thbocTNyou/Hyi2XZhEfEBq/77u18rkBmeKrgpHnO",
+  "image": "default-image",
+  "address": "sylhet, Bangladesh",
+  "phone": "01790224950",
+  "isAdmin": false,
+  "isBanned": false,
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-11-15T05:05:00.363Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-15T05:05:00.363Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "655453662c32942e3c1bdca2"
+  },
+  "name": "Rahat Kabir",
+  "email": "raju@gmail.com",
+  "password": "$2a$10$Ep37hflSpCJpRkkFRgJ5TufYqhLVH4Jj0toXTWn/1y27icdzs8Ck6",
+  "image": "default-image",
+  "address": "Pabna",
+  "phone": "01790000000",
+  "isAdmin": false,
+  "isBanned": false,
+  "createdAt": {
+    "$date": "2023-11-15T05:13:10.642Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-15T05:13:10.642Z"
+  },
+  "__v": 0
+}]

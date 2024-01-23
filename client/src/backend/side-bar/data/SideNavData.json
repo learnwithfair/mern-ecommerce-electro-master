@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Dashboard",
+    "icon": "mdi mdi-speedometer",
+    "link": "/api/admin/dashboard",
+    "sublink": []
+  },
+  {
+    "name": "Products",
+    "icon": "mdi mdi-laptop",
+    "link": "product",
+    "sublink": [
+      {
+        "title": "Manage",
+        "link": "/api/admin/manage-products"
+      },
+      {
+        "title": "Post",
+        "link": "/api/admin/post-products"
+      }
+    ]
+  },
+  {
+    "name": "Basic UI Elements",
+    "icon": "mdi mdi-laptop",
+    "link": "ui-basic",
+    "sublink": [
+      {
+        "title": "Buttons",
+        "link": "pages/ui-features/buttons.html"
+      },
+      {
+        "title": "Dropdowns",
+        "link": "pages/ui-features/dropdowns.html"
+      },
+      {
+        "title": "Typography",
+        "link": "pages/ui-features/typography.html"
+      }
+    ]
+  },
+
+  {
+    "name": "Form Elements",
+    "icon": "mdi mdi-playlist-play",
+    "link": "pages/forms/basic_elements.html",
+    "sublink": []
+  },
+  {
+    "name": "User Pages",
+    "icon": "mdi mdi-security",
+    "link": "auth",
+    "sublink": [
+      {
+        "title": "Blank Page",
+        "link": "pages/samples/blank-page.html"
+      },
+      {
+        "title": "404",
+        "link": "pages/samples/error-404.html"
+      },
+      {
+        "title": "500",
+        "link": "pages/samples/error-500.html"
+      },
+      {
+        "title": "Login",
+        "link": "pages/samples/login.html"
+      },
+      {
+        "title": "Register",
+        "link": "pages/samples/register.html"
+      }
+    ]
+  },
+  {
+    "name": "Tables",
+    "icon": "mdi mdi-table-large",
+    "link": "pages/tables/basic-table.html",
+    "sublink": []
+  },
+  {
+    "name": "Charts",
+    "icon": "mdi mdi-chart-bar",
+    "link": "pages/charts/chartjs.html",
+    "sublink": []
+  },
+  {
+    "name": "Icons",
+    "icon": "mdi mdi-contacts",
+    "link": "pages/icons/mdi.html",
+    "sublink": []
+  },
+
+  {
+    "name": "Documentation",
+    "icon": "mdi mdi-file-document-box",
+    "link": "http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html",
+    "sublink": []
+  }
+]

@@ -1,0 +1,184 @@
+[
+  {
+    "_id": {
+      "$oid": "101"
+    },
+    "catId": "101",
+    "brandId": "101",
+    "productName": "EliteBook HP-840",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 700,
+    "productPublish": "NEW",
+    "productDiscount": 30,
+    "productRating": 4,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product01.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "102"
+    },
+    "catId": "102",
+    "brandId": "102",
+    "productName": "EliteBook HP-841",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 800,
+    "productPublish": "",
+    "productDiscount": 25,
+    "productRating": 4,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product02.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "103"
+    },
+    "catId": "101",
+    "brandId": "102",
+    "productName": "EliteBook HP-842",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 900,
+    "productPublish": "NEW",
+    "productDiscount": 40,
+    "productRating": 5,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product03.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "104"
+    },
+    "catId": "104",
+    "brandId": "104",
+    "productName": "EliteBook HP-844",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 500,
+    "productPublish": "NEW",
+    "productDiscount": 0,
+    "productRating": 5,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product04.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "105"
+    },
+    "catId": "105",
+    "brandId": "103",
+    "productName": "EliteBook HP-845",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 700,
+    "productPublish": "",
+    "productDiscount": 30,
+    "productRating": 5,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product01.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "106"
+    },
+    "catId": "103",
+    "brandId": "104",
+    "productName": "EliteBook HP-846",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 1200,
+    "productPublish": "",
+    "productDiscount": 60,
+    "productRating": 4,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product01.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "107"
+    },
+    "catId": "105",
+    "brandId": "105",
+    "productName": "EliteBook HP-847",
+    "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "productPrice": 850,
+    "productPublish": "NEW",
+    "productDiscount": 20,
+    "productRating": 5,
+    "productSize": "X,XL,XXL",
+    "productColor": "Red,Black",
+    "productImage": "src/frontend/assets/img/product07.png",
+    "sellCount": 0,
+    "isActive": true,
+    "isAvailable": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  }
+]

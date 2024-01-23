@@ -1,0 +1,15 @@
+[
+  ["Account settings", "mdi mdi-settings text-primary", "#"],
+  ["Admin", "mdi mdi-account-convert text-warning", "#"],
+  ["Change Password", "mdi mdi-onepassword text-info", "#"],
+  ["Chefs Add", "mdi mdi-account-convert text-warning", "#"],
+  ["Chefs Manage", "mdi mdi-apple-keyboard-command text-primary", "#"],
+  ["Dashboard", "mdi mdi-speedometer text-info", "#"],
+  ["Home", "mdi mdi-home text-primary", "#"],
+  ["Hero Area", "mdi mdi-menu text-success", "#"],
+  ["Items", "fa-brands fa-product-hunt text-info", "#"],
+  ["Logo", "mdi mdi-chemical-weapon text-warning", "#"],
+  ["Messages", "mdi mdi-email text-info", "#"],
+  ["Profile", "mdi mdi-account-circle text-info", "#"],
+  ["Products", "fa-brands fa-product-hunt text-secondary", "#"]
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Hot Deals",
+    "link": "/hot-deals"
+  },
+  {
+    "name": "Laptops",
+    "link": "/all-category?category=laptops"
+  },
+  {
+    "name": "Smart-phones",
+    "link": "/all-category?category=smart-phones"
+  },
+  {
+    "name": "Cameras",
+    "link": "/all-category?category=cameras"
+  },
+  {
+    "name": "Products",
+    "link": "/products"
+  }
+]

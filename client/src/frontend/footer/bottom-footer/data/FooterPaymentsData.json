@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "fa fa-cc-visa",
+    "link": "#"
+  },
+  {
+    "icon": "fa fa-credit-card",
+    "link": "#"
+  },
+  {
+    "icon": "fa fa-cc-paypal",
+    "link": "#"
+  },
+  {
+    "icon": "fa fa-cc-mastercard",
+    "link": "#"
+  },
+  {
+    "icon": "fa fa-cc-discover",
+    "link": "#"
+  },
+  {
+    "icon": "fa fa-cc-amex",
+    "link": "#"
+  }
+]

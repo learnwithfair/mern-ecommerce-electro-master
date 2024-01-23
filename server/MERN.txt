@@ -1,0 +1,169 @@
+================================== Environment Setup ==================================
+1. Instal Node.js
+2. To verify installation into command form by node -v
+3. For initialization npm write the query in the commad window as- npm init -y
+4. Setup the opening file into the package.json and chenge the file with main:'server.js'
+5. To create server using express package then write query into the command window as npm install express.
+		Write code in the server file for initialization
+			const express = require("express");
+			const app = express();
+			app.listen(3000, () => {
+ 			 	console.log("Server is running at http://localhost:3000");
+			});
+
+7. Install the nodemon package for automatically running the server as- npm i --save-dev nodemon (For Developing purpose)
+8. setup the package.json file in the scripts key write 
+					"scripts": {
+    							"start": "node ./resources/backend/server.js",
+   							"dev": "nodemon ./resources/backend/server.js",
+    							"test": "echo \"Error: no test specified\" && exit 1"
+ 						 },
+9. use the morgan package for automatically restart. Hence install the morgan package as npm install --save-dev morgan (Development purpose)
+		Write code in the server file for initialization
+			const morgan = require("morgan");
+			app.use(morgan("dev")); --> Middlewire.
+10. Install Postman software for API testing by the url end point.
+11. Install Mongobd + MongobdCompass and Mongoshell (For Database)
+
+================================== HTTP request & response ==================================
+1. Status code: 
+	1xx informational response – the request was received, continuing process
+	2xx successful – the request was successfully received, understood, and accepted
+	3xx redirection – further action needs to be taken in order to complete the request
+	4xx client error – the request contains bad syntax or cannot be fulfilled
+	5xx server error – the server failed to fulfil an apparently valid request
+	For details: visit-> https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+	For example: (200,400,500) 
+
+================================== Middlewire ==================================
+Types of middlewire
+	i.	Application-level middleware (Ex- app.use(morgan("dev"));)
+	ii.	Router-level middleware
+	iii.Error-handling middleware
+	iv.	Built-in middleware	     (Ex- Data set in req.body)-->[app.use(express.json()); app.use(express.urlencoded({ extended: true }));]
+	v.	Third-party middleware	     [npm install body-parser then initialize const bodyParser = require("body-parser");]
+For details Visit--> https://expressjs.com/en/guide/using-middleware.html
+
+================================== HTTP Error ==================================
+For Instal package 					-> npm i http-errors
+For initialization 					-> const createError = require("http-errors");
+For create error call the function  -> next(create(status code, message));
+
+================================== For secure API ==================================
+ For Install package 				-> npm i xss-clean
+ For initialize 					-> const xssClean = require("xss-clean");
+ For use 							-> app.use(xssClean());
+
+ For Install package 				-> npm i express-rate-limit
+ For initialize 					-> const rateLimit = require("express-rate-limit");
+ For use 							->  [// try 5 times within 15 minites
+										const limiter = rateLimit({
+										windowMs: 15 * 60 * 1000, // 15 minutes
+										limit: 5, // Maximum 5 times
+										messae: "Too many  request from this api. Please4 try after sometime",
+										});]
+
+
+================================== Ignore secure file ==================================
+
+Save file as .Ignore then paste the code from the github visit ->https://github.com/github/gitignore/blob/main/Node.gitignore
+
+================================== Access env file ==================================
+ For Install package 				-> npm i dotenv
+ For initialize 					-> require("dotenv").config();
+ For use 							-> const port = process.env.Environment-Variable Name;
+
+================================== Required Extension VS code ==================================
+1.  Auto close Tag
+2.  Auto Import 
+3.  Auto Rename Tag
+4.  ENV
+5.  ES7 + React-Native
+6.  gitignore
+7.  Highlight Matching Tag
+8.  HTML CSS support
+9.  JavaScript (ES6) code snippets
+10. Meterial Icon Theme
+11. Prettier-Code formatter
+12. Sass
+13. Simple React snippets
+14. Tailwind CSS IntelliSense
+
+
+================================== Connect MongoDB Database ==================================
+** Mongodb Tutorial visit-> https://www.mongodb.com/docs/manual/crud/
+** Mongodb Tutorial visit-> https://www.mongodb.com/docs/manual/reference/operator/query/
+1. Install Mondodb + Mongodb Compass and Mongodb Shell download from the google.
+2. Set up Environment Variable in drive:c/program file
+3. Create a directory in the base path of c drive named data. Inside the data directory create another folder db.
+4. Write the command in the CMD window as mongod. And write the another command in the another CMD window as mongosh.
+5. Then Check the version as mongod --version and mongosh --version.
+6. Install mongoose package as npm i mongoose
+7. Create a atlas account. In the atlas account create a cluster that have a user(as atlas admin) and network access with any access IP address.
+8. Connect the database using url from the atlas cluster or local mongodb compass using the mongoose package as mongoose.connect('mongodb://localhost:27017/databaseName');
+
+================================== Database validation ==================================
+1. Create Mongoose schema validation search mongoose schema validation
+2. For bcrypt password write command as npm i bcryptjs
+
+================================== Create JWT Token ==================================
+1. Install ->npm i jsonwebtoken
+2. Write code->  const token = jwt.sign(payload, secretKey, { expiresIn });
+
+================================== Send Email ==================================
+For Email send 
+1. Install ->npm install nodemailer
+2. Copy the code form the website visit ->https://nodemailer.com/
+3. Create a password visit->https://accounts.google.com/v3/signin/challenge/pwd?TL=AIBe4_K0HKlpAjTN8DNCvUMji97gG0YW4zvOQJczsbB8a3LZJFMb_Tr2nWWFbM6X&cid=2&continue=https://myaccount.google.com/apppasswords&flowName=GlifWebSignIn&ifkv=AVQVeyxiWNmWVln18Y5fq4lGDbG-KXqWBH54vFw_eYWcGrf8hedqZSLKJ06fI_9d3LSOrOZLRcSG1g&rart=ANgoxcci_PfzPd2-KTGaG2VoDKqbeGZzp2H-tHUs9K1eRZlhXrsxjdMjSU_q50uszP-yZ86lWA48yoWO6ncnSohV0ECUaUTn5G6-B95Ieqs1hqTFW98_1Xo&rpbg=1&sarp=1&scc=1&service=accountsettings&hl=en_US
+Ex-Account : [
+		SMTP userName: rahatul.demo@gmail.com
+		SMTP Password: lsooqknusakkgwyj
+]
+4. Setup userName (email) and password into .env file.
+
+================================== For Image/ File Upload ==================================
+1. Install package-> npm i multer
+
+================================== For Form Validation ==================================
+1. Install package-> npm i express-validator
+2. 
+
+================================== For Set Cookie ==================================
+1. Install package-> npm i cookie-parser
+2. initialization-> const cookieParser = require("cookie-parser"); ( in the app file as a )
+3. Write code => 
+    res.cookie("key", data,
+      {
+        maxAge: 15 * 60 * 1000, // 15 minites
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+4. Remove cookie ->  res.clearCookie("login-token");
+5. set value in the request body as -> req.body.userId = User._id;
+
+
+================================== For Grouping Middlewire ==================================
+(It works into all route that was declared as-> /admin/users URL )
+
+express.application.prefix = express.Router.prefix = function (
+  path,
+  middleware,
+  configure
+) {
+  configure(userRouter);
+  this.use(path, middleware, userRouter);
+  return userRouter;
+};
+
+userRouter.prefix("/admin/users", [isLoggedIn, isAdmin], async (user) => {
+  user.route("/show-all").get(userController.showAll); 
+  user.route("/delete/:id").get(formValidation,userController.deleteUser);   
+});
+
+
+
+================================== Required Package ==================================
+
+For slug install package as ->[npm i slugify] Result as Smart Phone = Smart-phone
+

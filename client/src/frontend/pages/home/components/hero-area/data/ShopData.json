@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Laptop",
+    "link": "#",
+    "image": "src/frontend/assets/img/shop/shop01.png"
+  },
+  {
+    "name": "Accessories",
+    "link": "#",
+    "image": "src/frontend/assets/img/shop/shop03.png"
+  },
+  {
+    "name": "Cameras",
+    "link": "#",
+    "image": "src/frontend/assets/img/shop/shop02.png"
+  }
+]

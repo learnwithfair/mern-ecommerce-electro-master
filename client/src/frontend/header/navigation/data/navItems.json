@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Home",
+    "link": "/"
+  },
+  {
+    "name": "Hot Deals",
+    "link": "/hot-deals"
+  },
+  {
+    "name": "Categories",
+    "link": "/categories"
+  },
+  {
+    "name": "Laptops",
+    "link": "/laptops"
+  },
+  {
+    "name": "Smartphones",
+    "link": "/smartphones"
+  },
+  {
+    "name": "Cameras",
+    "link": "/cameras"
+  },
+  {
+    "name": "Products",
+    "link": "/products"
+  }
+]

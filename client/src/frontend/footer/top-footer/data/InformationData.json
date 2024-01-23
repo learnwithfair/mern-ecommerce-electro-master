@@ -1,0 +1,22 @@
+[
+  {
+    "name": "About Us",
+    "link": "/about-us"
+  },
+  {
+    "name": "Contact Us",
+    "link": "/contact-us"
+  },
+  {
+    "name": "Privacy Policy",
+    "link": "#"
+  },
+  {
+    "name": "Orders and Returns",
+    "link": "#"
+  },
+  {
+    "name": "Terms & Conditions",
+    "link": "#"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "_id": {
+      "$oid": "101"
+    },
+    "productId": "101",
+    "productImage": "src/frontend/assets/img/product02.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "102"
+    },
+    "productId": "101",
+    "productImage": "src/frontend/assets/img/product03.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "103"
+    },
+    "productId": "101",
+    "productImage": "src/frontend/assets/img/product04.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "104"
+    },
+    "productId": "102",
+    "productImage": "src/frontend/assets/img/product05.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "105"
+    },
+    "productId": "101",
+    "productImage": "src/frontend/assets/img/product06.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "106"
+    },
+    "productId": "101",
+    "productImage": "src/frontend/assets/img/product07.png",
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  }
+]

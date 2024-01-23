@@ -1,0 +1,26 @@
+
+================================== Connect MongoDB Database ==================================
+1. Install Mondodb + Mongodb Compass and Mongodb Shell download from the google.
+2. Set up Environment Variable in drive:c/program file
+3. Create a directory in the base path of c drive named data. Inside the data directory create another folder db.
+4. Write the command in the CMD window as mongod. And write the another command in the another CMD window as mongosh.
+5. Then Check the version as mongod --version and mongosh --version.
+6. Install mongoose package as npm i mongoose
+7. Create a atlas account. In the atlas account create a cluster that have a user(as atlas admin) and network access with any access IP address.
+8. Connect the database using url from the atlas cluster or local mongodb compass using the mongoose package as mongoose.connect('mongodb://localhost:27017/databaseName');
+
+================================== MondoDB Quary Operation ==================================
+** Mongodb Tutorial visit-> https://www.mongodb.com/docs/manual/crud/
+** Mongodb Tutorial visit-> https://www.mongodb.com/docs/manual/reference/operator/query/
+1. User.find({}) --> select * form users;
+2. User.find({id:101}) --> select * form users where id=101;
+3. User.find({$and:[{id:101},{isAdmin:true}]}) --> select * form users where id=101&&idAdmin=true;
+4. User.find({$or:[{id:101},{isAdmin:true}]}) --> select * form users where id=101||idAdmin=true;
+5. User.find({$nor:[{id:101},{isAdmin:true}]}) --> select * form users where id!=101&&idAdmin!=true;
+6. User.find({ id: { $ne: 101 } }) --> select * form users where id!=101;
+7. User.find({ id: { $ne: 101 } }) --> select * form users where id!=101;
+8. User.find({price: { $eq: 200 }}, { name: 1, price: 1, _id: 0 }); --> select name,price from users where price=200;
+
+
+
+================================== MondoDB Quary Operation ==================================

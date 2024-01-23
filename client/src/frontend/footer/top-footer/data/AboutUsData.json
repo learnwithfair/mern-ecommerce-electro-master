@@ -1,0 +1,17 @@
+[
+  {
+    "name": "1734 Stonecoal Road",
+    "icon": "fa fa-map-marker",
+    "link": "#"
+  },
+  {
+    "name": "+021-95-51-84",
+    "icon": "fa fa-phone",
+    "link": "tel:+021955184"
+  },
+  {
+    "name": "email@email.com",
+    "icon": "fa fa-envelope-o",
+    "link": "mailto:+email@email.com"
+  }
+]

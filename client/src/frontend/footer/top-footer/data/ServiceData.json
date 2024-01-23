@@ -1,0 +1,22 @@
+[
+  {
+    "name": "My Account",
+    "link": "#"
+  },
+  {
+    "name": "View Cart",
+    "link": "#"
+  },
+  {
+    "name": "Wishlist",
+    "link": "#"
+  },
+  {
+    "name": "Track My Order",
+    "link": "#"
+  },
+  {
+    "name": "Help",
+    "link": "#"
+  }
+]

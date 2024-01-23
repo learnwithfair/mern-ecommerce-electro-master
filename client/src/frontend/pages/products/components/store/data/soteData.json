@@ -1,0 +1,29 @@
+[
+  [
+    {
+      "value": "0",
+      "name": "All"
+    },
+    {
+      "value": "1",
+      "name": "Low Price"
+    },
+    {
+      "value": "2",
+      "name": "Medium Price"
+    },
+    {
+      "value": "3",
+      "name": "High Price"
+    },
+    {
+      "value": "4",
+      "name": "Top Selling"
+    },
+    {
+      "value": "5",
+      "name": "Popular"
+    }
+  ],
+  ["6", "10", "20", "50", "100"]
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "digit": "02",
+    "extension": "Days"
+  },
+  {
+    "digit": "10",
+    "extension": "Hours"
+  },
+  {
+    "digit": "34",
+    "extension": "Mins"
+  },
+  {
+    "digit": "60",
+    "extension": "Secs"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "_id": {
+      "$oid": "101"
+    },
+    "catName": "Laptops",
+    "catSlug": "laptops",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "102"
+    },
+    "catName": "Smart Phone",
+    "catSlug": "smart-phone",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "103"
+    },
+    "catName": "Cameras",
+    "catSlug": "cameras",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "104"
+    },
+    "catName": "Accessories",
+    "catSlug": "accessories",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "105"
+    },
+    "catName": "Desktop",
+    "catSlug": "desktop",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "106"
+    },
+    "catName": "Button Phone",
+    "catSlug": "button-phone",
+    "isActive": true,
+    "createdAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "updatedAt": {
+      "$date": "2023-11-12T14:55:44.572Z"
+    },
+    "__v": 0
+  }
+]

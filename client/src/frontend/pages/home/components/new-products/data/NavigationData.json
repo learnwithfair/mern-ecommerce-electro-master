@@ -1,0 +1,22 @@
+[
+  {
+    "menuName": "All",
+    "menuLink": "#tab1"
+  },
+  {
+    "menuName": "Laptops",
+    "menuLink": "#tab1"
+  },
+  {
+    "menuName": "Smartphones",
+    "menuLink": "#tab2"
+  },
+  {
+    "menuName": "Cameras",
+    "menuLink": "#tab3"
+  },
+  {
+    "menuName": "Accessories",
+    "menuLink": "#tab4"
+  }
+]
