@@ -3,10 +3,10 @@ import Search from "./search/Search";
 import $ from "jquery";
 
 export default function Header() {
-  var body = $("body");
   const [isMinimize, setIsMinize] = useState(false);
   const [isOfCanvas, setIsOfCanvas] = useState(false);
   const minimize = () => {
+    var body = $("body");
     setIsMinize(!isMinimize);
     if (
       body.hasClass("sidebar-toggle-display") ||
@@ -39,9 +39,8 @@ export default function Header() {
           >
             <span
               className={
-                isMinimize
-                  ? "menu-icon-resize mdi mdi-close"
-                  : "menu-icon-resize mdi mdi-menu"
+                "menu-icon-resize " +
+                (isMinimize ? "text-white mdi mdi-close" : "mdi mdi-menu")
               }
             ></span>
           </button>
@@ -303,11 +302,14 @@ export default function Header() {
             data-toggle="offcanvas"
             onClick={offCanvas}
           >
-            <span className={
-                isOfCanvas
-                  ? "menu-icon-resize mdi mdi-close"
-                  : "menu-icon-resize mdi mdi-format-line-spacing"
-              }></span>
+            <span
+              className={
+                "menu-icon-resize  " +
+                (isOfCanvas
+                  ? "text-white mdi mdi-close"
+                  : "mdi mdi-format-line-spacing")
+              }
+            ></span>
           </button>
         </div>
       </nav>

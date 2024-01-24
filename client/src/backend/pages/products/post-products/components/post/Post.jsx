@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 
 export default function Post() {
@@ -19,14 +20,16 @@ export default function Post() {
     <>
       <div className="content-wrapper">
         <div className="page-header">
-          <h3 className="page-title"> Form elements </h3>
+          <h3 className="page-title"> Products</h3>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="#">Forms</a>
+                <NavLink exact="true" to="/api/admin/manage-products">
+                  Products
+                </NavLink>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Form elements
+                Post
               </li>
             </ol>
           </nav>
@@ -35,59 +38,45 @@ export default function Post() {
           <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-                <h4 className="card-title">Horizontal Two column</h4>
-                <form className="form-sample">
-                  <p className="card-description"> Personal info </p>
+                <h4 className="card-title">Post Product</h4>
+                <form
+                  action=""
+                  method="POST"
+                  id="post-product"
+                  className="form-sample"
+                  enctype="multipart/form-data"
+                >
+                  <p className="card-description"> Product info </p>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          First Name
-                        </label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Last Name
-                        </label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Gender
-                        </label>
-                        <div className="col-sm-9">
-                          <select className="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Date of Birth
-                        </label>
+                        <label className="col-sm-3 col-form-label">Name</label>
                         <div className="col-sm-9">
                           <input
+                            type="text"
+                            name="product-name"
+                            id="product-name"
                             className="form-control"
-                            placeholder="dd/mm/yyyy"
+                            placeholder="Enter Product Name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">Price</label>
+                        <div className="col-sm-9">
+                          <input
+                            type="number"
+                            min={0}
+                            className="form-control"
+                            placeholder="Enter Product Price"
                           />
                         </div>
                       </div>
                     </div>
                   </div>
+
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group row">
@@ -95,49 +84,94 @@ export default function Post() {
                           Category
                         </label>
                         <div className="col-sm-9">
-                          <select className="form-control">
-                            <option>Category1</option>
-                            <option>Category2</option>
-                            <option>Category3</option>
-                            <option>Category4</option>
+                          <select
+                            id="product-category"
+                            name="product-category"
+                            className="form-control"
+                          >
+                            <option>Select Category</option>
+                            <option>Laptop</option>
+                            <option>Android</option>
+                            <option>Russia</option>
+                            <option>Britain</option>
                           </select>
                         </div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">Brand</label>
+                        <div className="col-sm-9">
+                          <select
+                            id="product-brand"
+                            name="product-brand"
+                            className="form-control"
+                          >
+                            <option>Select Brand</option>
+                            <option>HP</option>
+                            <option>Samsung</option>
+                            <option>Russia</option>
+                            <option>Britain</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group row">
                         <label className="col-sm-3 col-form-label">
-                          Membership
+                          Description
                         </label>
-                        <div className="col-sm-4">
-                          <div className="form-check">
-                            <label className="form-check-label">
-                              <input
-                                type="radio"
-                                className="form-check-input"
-                                name="membershipRadios"
-                                id="membershipRadios1"
-                                value=""
-                                defaultChecked
-                              />{" "}
-                              Free{" "}
-                            </label>
+                        <div className="col-sm-9">
+                          <textarea
+                            name="product-description"
+                            id="product-description"
+                            rows="4"
+                            placeholder="Write Product Description Here.."
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 mt-md-3">
+                      <div className="form-group row">
+                        <label className="col-3 col-form-label">Active</label>
+                        <div
+                          className="col-9"
+                          style={{ marginTop: "-8px" }}
+                        >
+                          <div className="row ms-1">
+                            <div className="col-6 form-check">
+                              <label className="form-check-label">
+                                <input
+                                  type="radio"
+                                  className="form-check-input"
+                                  name="membershipRadios"
+                                  id="membershipRadios1"
+                                  value=""
+                                />
+                                Yes
+                              </label>
+                            </div>
+                            <div className="col-6 form-check">
+                              <label className="form-check-label">
+                                <input
+                                  type="radio"
+                                  className="form-check-input"
+                                  name="membershipRadios"
+                                  id="membershipRadios2"
+                                  value="option2"
+                                  defaultChecked
+                                />
+                                No
+                              </label>
+                            </div>
                           </div>
                         </div>
-                        <div className="col-sm-5">
-                          <div className="form-check">
-                            <label className="form-check-label">
-                              <input
-                                type="radio"
-                                className="form-check-input"
-                                name="membershipRadios"
-                                id="membershipRadios2"
-                                value="option2"
-                              />{" "}
-                              Professional{" "}
-                            </label>
-                          </div>
-                        </div>
+                        {/* <div className="col-sm-4" style={{ marginTop: "-8px" }}>
+                          
+                        </div> */}
                       </div>
                     </div>
                   </div>

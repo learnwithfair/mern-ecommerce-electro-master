@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import SideNavData from "./data/SideNavData.json";
-import { Link, NavLink } from "react-router-dom";
-import DynamicTitle from "../components/DynamicTitle";
+import { NavLink } from "react-router-dom";
+// import $ from "jquery";
 
 export default function SideBar() {
   const [activeParentLink, setActiveParentLink] = useState("");
@@ -28,9 +27,7 @@ export default function SideBar() {
     });
   }, []);
 
-  const hundleActiveItem = (e) => {
-    // e.target
-  };
+ 
   return (
     <>
       {/* <!-- partial:partials/_sidebar.html --> */}
@@ -122,7 +119,7 @@ export default function SideBar() {
                     ? "nav-item menu-items active"
                     : "nav-item menu-items"
                 }
-                onClick={hundleActiveItem}
+               
               >
                 <NavLink className="nav-link" exact="true" to={item.link}>
                   <span className="menu-icon">

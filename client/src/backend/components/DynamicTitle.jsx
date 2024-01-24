@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import ReloadJS from "./reload-js/ReloadJS";
 
-import "../assets/vendors/js/vendor.bundle.base.js"
-import "../assets/js/select2.js"
+// import "../assets/vendors/js/vendor.bundle.base.js"
+// import "../assets/js/select2.js"
+
 
 
 export default function DynamicTitle(props = "Home") {
@@ -15,6 +16,7 @@ export default function DynamicTitle(props = "Home") {
 
   const reloadJSr = (
     <>
+      <ReloadJS src="../../src/backend/assets/js/misc.js" />
       <ReloadJS src="../../src/backend/assets/js/select2.js" />
       <ReloadJS src="../../src/backend/assets/js/chart.js" />
       <ReloadJS src="../../src/backend/assets/js/dashboard.js" />
@@ -28,6 +30,7 @@ export default function DynamicTitle(props = "Home") {
       {reloadJSr}
       <Helmet>
         <title>E-commerce || {props.title}</title>
+
         <link
           rel="shortcut icon"
           href="../../src/backend/assets/images/favicon.png"
@@ -92,7 +95,7 @@ export default function DynamicTitle(props = "Home") {
           href="../../src/backend/assets/css/custom.css"
         />
         {/* Footer JS  */}
-        {/* <script src="../../src/backend/assets/vendors/js/vendor.bundle.base.js"></script> */}
+        <script src="../../src/backend/assets/vendors/js/vendor.bundle.base.js"></script>
         <script src="../../src/backend/assets/vendors/chart.js/Chart.min.js"></script>
         <script src="../../src/backend/assets/vendors/progressbar.js/progressbar.min.js"></script>
         <script src="../../src/backend/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
@@ -112,7 +115,7 @@ export default function DynamicTitle(props = "Home") {
         {/* <script src="../../src/backend/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script> */}
         {/* <script src="../../src/backend/assets/js/file-upload.js"></script> */}
         {/* <script src="../../src/backend/assets/js/typeahead.js"></script> */}
-        {/* <script src="../../src/backend/assets/js/select2.js"></script> */}
+        <script src="../../src/backend/assets/js/select2.js"></script>
         {/* <!-- For Multiple Select --> */}
 
         {/* <!-- Start  js for Bootsrap --> */}

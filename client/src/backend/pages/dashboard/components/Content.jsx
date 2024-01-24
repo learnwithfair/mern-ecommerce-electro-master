@@ -4,7 +4,7 @@ export default function Content() {
   return (
     <>
       <div className="content-wrapper">
-        <div className="row">
+        {/* <div className="row">
           <div className="col-12 grid-margin stretch-card">
             <div className="card corona-gradient-card">
               <div className="card-body py-0 px-0 px-sm-3">
@@ -37,7 +37,7 @@ export default function Content() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="row">
           <div className="col-xl-3 col-sm-6 grid-margin stretch-card">
             <div className="card">
