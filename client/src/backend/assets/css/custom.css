@@ -1,3 +1,22 @@
+/* For Scrolbar Start  */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #191c24;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+/* For Scrolbar End  */
+
 /* For Input search focus */
 input#itemSearch:focus {
   border: 1px solid #ffffff;
@@ -54,6 +73,12 @@ textarea {
   border-radius: 2px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+textarea::placeholder {
+  color: #6c7293;
+}
+textarea:focus {
+  outline: 1px solid #396a40;
+}
 
 /* For Text-area End */
 .file-upload-browse {
@@ -93,6 +118,48 @@ textarea {
   border: 1px solid #ffffff;
 }
 
-.menu-icon-resize{
+.menu-icon-resize {
   font-size: 24px;
 }
+
+
+/* Preview Product Images  */
+.image-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  max-height: 195px;
+  overflow-y: auto;
+  margin-top: 3px;
+ outline: 1px solid #396a40;
+ padding: 10px;
+ border-radius: 20px;
+}
+
+
+.image-container .image{
+  width: 100px;
+  margin: 0px 5px;
+  height: 90px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.image-container .image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  
+}
+.image-container .image span{
+  position: absolute;
+  top: -3px;
+  right: 9px;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+  font-weight: bolder;
+}
+/* Preview Product Images  */

@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import DropFileInput from "../../../../../components/drop-file-input/DropFileInput";
 
 export default function Post() {
+  const [isAccessMoreImage, setIsAccessMore] = useState(false);
+  const [images, setImages] = useState([]);
   const hiddenFileInput = useRef(null);
 
   // when the Button component is clicked
@@ -11,10 +13,30 @@ export default function Post() {
   };
 
   // to handle the user-selected file
-
   const handleFileChange = (event) => {
     const fileUploaded = event.target.files[0];
-    document.getElementById("file-upload-info").value=fileUploaded.name; 
+    document.getElementById("file-upload-info").value = fileUploaded.name;
+  };
+
+// Show more upload image section
+  const accessMoreImage = () => {
+    setIsAccessMore(!isAccessMoreImage);
+  };
+  // For set Preview Image  
+  const onFileChange = (files) => {
+    for (let i = 0; i < files.length; i++) {
+      if (files[i].type.split("/")[0] !== "image") continue;
+      if (!images.some((e) => e.name === files[i].name)) {
+        setImages((prevImage) => [
+          ...prevImage,
+          { name: files[i].name, url: URL.createObjectURL(files[i]) },
+        ]);
+      }
+    }
+  };
+  // Delete Preview Image
+  const deletePrevImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
   return (
     <>
@@ -52,16 +74,31 @@ export default function Post() {
                       <div className="form-group row">
                         <label className="col-sm-3 col-form-label">Name</label>
                         <div className="col-sm-9">
-                          <input
-                            type="text"
-                            name="product-name"
-                            id="product-name"
-                            className="form-control"
-                            placeholder="Enter Product Name"
-                          />
+                          <textarea
+                            name="productName"
+                            rows="3"
+                            placeholder="Write Product Name Here.."
+                          ></textarea>
                         </div>
                       </div>
                     </div>
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">
+                          Description
+                        </label>
+                        <div className="col-sm-9">
+                          <textarea
+                            name="productDescription"
+                            rows="3"
+                            placeholder="Write Product Description Here.."
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
                     <div className="col-md-6">
                       <div className="form-group row">
                         <label className="col-sm-3 col-form-label">Price</label>
@@ -69,9 +106,37 @@ export default function Post() {
                           <input
                             type="number"
                             min={0}
+                            name="productPrice"
                             className="form-control"
                             placeholder="Enter Product Price"
                           />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">
+                          Discount
+                        </label>
+                        <div className="col-sm-9">
+                          <div className="input-group">
+                            <input
+                              type="number"
+                              min={0}
+                              name="productDiscount"
+                              className="form-control"
+                              placeholder="Enter Product Discount"
+                            />
+                            <div className="input-group-append">
+                              <span
+                                className="input-group-text"
+                                style={{ padding: "11px" }}
+                              >
+                                %
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -85,8 +150,8 @@ export default function Post() {
                         </label>
                         <div className="col-sm-9">
                           <select
-                            id="product-category"
-                            name="product-category"
+                            id="catId"
+                            name="catId"
                             className="form-control"
                           >
                             <option>Select Category</option>
@@ -103,8 +168,8 @@ export default function Post() {
                         <label className="col-sm-3 col-form-label">Brand</label>
                         <div className="col-sm-9">
                           <select
-                            id="product-brand"
-                            name="product-brand"
+                            id="brandId"
+                            name="brandId"
                             className="form-control"
                           >
                             <option>Select Brand</option>
@@ -117,32 +182,122 @@ export default function Post() {
                       </div>
                     </div>
                   </div>
-
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">Size</label>
+                        <div className="col-sm-9">
+                          <select
+                            className="js-example-basic-multiple"
+                            multiple="multiple"
+                            name="productSize"
+                            style={{ width: "100%" }}
+                          >
+                            <option value="AL">XXL</option>
+                            <option value="WY">XL</option>
+                            <option value="AM">L</option>
+                            <option value="CA">M</option>
+                            <option value="RU">Russia</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">Color</label>
+                        <div className="col-sm-9">
+                          <select
+                            className="js-example-basic-multiple"
+                            multiple="multiple"
+                            name="productColor"
+                            style={{ width: "100%" }}
+                          >
+                            <option value="AL">Red</option>
+                            <option value="WY">Black</option>
+                            <option value="AM">America</option>
+                            <option value="CA">Canada</option>
+                            <option value="RU">Russia</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group row">
                         <label className="col-sm-3 col-form-label">
-                          Description
+                          Rating
                         </label>
                         <div className="col-sm-9">
-                          <textarea
-                            name="product-description"
-                            id="product-description"
-                            rows="4"
-                            placeholder="Write Product Description Here.."
-                          ></textarea>
+                          <input
+                            type="number"
+                            min={0}
+                            name="productRating"
+                            className="form-control"
+                            placeholder="Enter Product Price"
+                          />
                         </div>
                       </div>
                     </div>
+                    <div className="col-md-6">
+                      <div className="form-group row">
+                        <label className="col-sm-3 col-form-label">
+                          File upload
+                        </label>
+
+                        <div className="col-sm-9">
+                          <input
+                            type="file"
+                            name="productImage[]"
+                            className="file-upload-default"
+                            onChange={handleFileChange}
+                            ref={hiddenFileInput}
+                            accept=".png, .jpg, .jpeg"
+                          />
+                          <div className="input-group col-xs-12">
+                            <input
+                              id="file-upload-info"
+                              type="text"
+                              className="form-control file-upload-info"
+                              disabled
+                              placeholder="Upload Image"
+                            />
+                            <span className="input-group-append">
+                              <button
+                                className="file-upload-browse btn btn-success "
+                                type="button"
+                                style={{ padding: "10px" }}
+                                onClick={fileUploadBrowse}
+                              >
+                                Upload
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="form-check form-check-success">
+                      <label className="form-check-label">
+                        Add More Image?
+                        <input
+                          type="checkbox"
+                          className="form-check-input cursor-pointer"
+                          onClick={accessMoreImage}
+                        />
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* <div className="row">
+              
                     <div className="col-md-6 mt-md-3">
                       <div className="form-group row">
                         <label className="col-3 col-form-label">Active</label>
-                        <div
-                          className="col-9"
-                          style={{ marginTop: "-8px" }}
-                        >
+                        <div className="col-9" style={{ marginTop: "-8px" }}>
                           <div className="row ms-1">
-                            <div className="col-6 form-check">
+                            <div className="col-6 form-check form-check-success">
                               <label className="form-check-label">
                                 <input
                                   type="radio"
@@ -154,7 +309,7 @@ export default function Post() {
                                 Yes
                               </label>
                             </div>
-                            <div className="col-6 form-check">
+                            <div className="col-6 form-check form-check-warning">
                               <label className="form-check-label">
                                 <input
                                   type="radio"
@@ -169,138 +324,47 @@ export default function Post() {
                             </div>
                           </div>
                         </div>
-                        {/* <div className="col-sm-4" style={{ marginTop: "-8px" }}>
-                          
-                        </div> */}
+                       
                       </div>
                     </div>
-                  </div>
-                  <p className="card-description"> Address </p>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Address 1
-                        </label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">State</label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Address 2
-                        </label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Postcode
-                        </label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">City</label>
-                        <div className="col-sm-9">
-                          <input type="text" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Country
-                        </label>
-                        <div className="col-sm-9">
-                          <select className="form-control">
-                            <option>America</option>
-                            <option>Italy</option>
-                            <option>Russia</option>
-                            <option>Britain</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          Multiple slt-2
-                        </label>
-                        <div className="col-sm-9">
-                          <select
-                            className="js-example-basic-multiple"
-                            multiple="multiple"
-                            style={{ width: "100%" }}
-                          >
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AM">America</option>
-                            <option value="CA">Canada</option>
-                            <option value="RU">Russia</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group row">
-                        <label className="col-sm-3 col-form-label">
-                          File upload
-                        </label>
-
-                        <div className="col-sm-9">
-                          <input
-                            type="file"
-                            name="img[]"
-                            className="file-upload-default"
-                            onChange={handleFileChange}
-                            ref={hiddenFileInput}
-                          />
-                          <div className="input-group col-xs-12">
-                            <input
-                              id="file-upload-info"
-                              type="text"
-                              className="form-control file-upload-info"
-                              disabled
-                              placeholder="Upload Image"
+                  </div> */}
+                  {isAccessMoreImage && (
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="form-group row">
+                          <label className="col-sm-3 col-form-label mt-sm-5">
+                            Upload Image
+                          </label>
+                          <div className="col-sm-9">
+                            <DropFileInput
+                              onFileChange={(files) => onFileChange(files)}
                             />
-                            <span className="input-group-append">
-                              <button
-                                className="file-upload-browse btn btn-primary "
-                                type="button"
-                                style={{ padding: "10px" }}
-                                onClick={fileUploadBrowse}
-                              >
-                                Upload
-                              </button>
-                            </span>
                           </div>
                         </div>
                       </div>
+                      {images.length > 0 && (
+                        <div className="col-md-6">
+                          <div className="row">
+                            <div className="image-container">
+                              {images.map((item, index) => (
+                                <div key={index} className="image">
+                                  <img
+                                    key={index}
+                                    src={item.url}
+                                    alt={item.name}
+                                  />
+                                  <span onClick={() => deletePrevImage(index)}>
+                                    <i className="mdi mdi-close"></i>
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
+                  )}
+
                   <hr />
                   <div className="row mt-5">
                     <div className="col d-flex justify-content-center ">

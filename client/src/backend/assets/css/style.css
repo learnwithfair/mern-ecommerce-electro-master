@@ -27385,6 +27385,7 @@ select.typeahead:focus,
 select.tt-query:focus,
 select.tt-hint:focus {
   outline: 1px solid #2c2e33;
+  
 }
 
 select.form-control.border-primary,
