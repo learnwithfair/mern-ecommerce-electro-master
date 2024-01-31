@@ -9,6 +9,9 @@ const smtpUsername = process.env.SMTP_USERNAME; //  For Email Send
 const smtpPassword = process.env.SMTP_PASSWORD; //  For Email Send
 const clientURL = process.env.CLIENT_URL; //  http://localhost:3000
 
+const storeId = process.env.STORE_ID; // Payment
+const storePassword = process.env.STORE_PASSWORD; 
+
 module.exports = {
   port,
   mongodbURL,
@@ -18,4 +21,6 @@ module.exports = {
   smtpUsername,
   smtpPassword,
   clientURL,
+  storeId,
+  storePassword,
 };

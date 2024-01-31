@@ -117,7 +117,7 @@ For Email send
 3. Create a password visit->https://accounts.google.com/v3/signin/challenge/pwd?TL=AIBe4_K0HKlpAjTN8DNCvUMji97gG0YW4zvOQJczsbB8a3LZJFMb_Tr2nWWFbM6X&cid=2&continue=https://myaccount.google.com/apppasswords&flowName=GlifWebSignIn&ifkv=AVQVeyxiWNmWVln18Y5fq4lGDbG-KXqWBH54vFw_eYWcGrf8hedqZSLKJ06fI_9d3LSOrOZLRcSG1g&rart=ANgoxcci_PfzPd2-KTGaG2VoDKqbeGZzp2H-tHUs9K1eRZlhXrsxjdMjSU_q50uszP-yZ86lWA48yoWO6ncnSohV0ECUaUTn5G6-B95Ieqs1hqTFW98_1Xo&rpbg=1&sarp=1&scc=1&service=accountsettings&hl=en_US
 Ex-Account : [
 		SMTP userName: rahatul.demo@gmail.com
-		SMTP Password: lsooqknusakkgwyj
+		SMTP Password: 
 ]
 4. Setup userName (email) and password into .env file.
 

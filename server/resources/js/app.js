@@ -12,6 +12,7 @@ const { authRouter } = require("../../routes/authRoute");
 const { setRefreshToken } = require("../../app/helpers/cookiesHelper");
 const { categoryRouter } = require("../../routes/categoryRoute");
 const { productRouter } = require("../../routes/productRoute");
+const { paymentRouter } = require("../../routes/paymentRoute");
 
 const app = express();
 /*
@@ -31,11 +32,13 @@ app.use(setRefreshToken); // For set Refresh Token [Automatically call this midd
 |                            Routes List (Backend)
 |--------------------------------------------------------------------------
  */
-app.use("/api", userRouter);
+// app.use("/api", userRouter);
 app.use("/", seedRouter);
-app.use("/api/auth", authRouter);
-app.use("/api", categoryRouter);
-app.use("/api", productRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api", categoryRouter);
+// app.use("/api", productRouter);
+app.use("/payment", paymentRouter);
+
 
 /*
 |--------------------------------------------------------------------------
