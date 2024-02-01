@@ -15,6 +15,13 @@ export default function Product(props) {
     productImage,
   } = props;
 
+  // const addToCart = (e) => {
+  //   e.preventDefault();
+  //   let count = parseInt(localStorage.getItem("cartCount"));
+  //   localStorage.setItem("cartCount", count + 1);
+  //   console.log(count);
+  //   // document.getElementById("cartCount").innerHTML = count + 1;
+  // };
   return (
     <>
       {/* <!-- product --> */}

@@ -29,6 +29,9 @@ export default function Home() {
     setCategory(Category);
     setIsLoading(false);
   }, []);
+
+
+
   return isLoading ? (
     loading
   ) : (

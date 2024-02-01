@@ -20,6 +20,7 @@ export default function NewProducts(props) {
       productImage={product.productImage}
     />
   ));
+
   return (
     <>
       {/* <!-- SECTION --> */}

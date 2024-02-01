@@ -56,6 +56,8 @@ export default function SingleProduct() {
     setIsloading(false);
   }, []);
 
+ 
+
   return isLoading ? (
     loading
   ) : (
