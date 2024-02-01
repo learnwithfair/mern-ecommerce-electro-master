@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import socialLinkData from "../../../../../../footer/sub-footer/social-link/data/SocialLinkData.json";
 import RatingStars from "../../../../../../components/rating-stars/RatingStars";
+import useFetch from "../../../../../../use-fetch/useFetch";
 
 export default function ProductDetails() {
   const { product, category, brand, review } = useContext(UseContext);
@@ -17,6 +18,13 @@ export default function ProductDetails() {
     } else {
       productRatingData[i] = <i key={i} className="fa fa-star-o"></i>;
     }
+  }
+  const addToCart = ()=>{
+     const { data, isLoading, error } = useFetch(
+       "https://jsonplaceholder.typicode.com/todos/","get"
+     );
+     console.log(data);
+     console.log(error);
   }
   return (
     <>
@@ -83,7 +91,7 @@ export default function ProductDetails() {
                   <span className="qty-down">-</span>
                 </div>
               </div>
-              <button className="add-to-cart-btn">
+              <button className="add-to-cart-btn" onClick={addToCart}>
                 <i className="fa fa-shopping-cart"></i> add to cart
               </button>
             </div>

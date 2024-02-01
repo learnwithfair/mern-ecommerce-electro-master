@@ -1,11 +1,12 @@
 [
   {
     "_id": {
-      "$oid": "101"
+      "$oid": "0"
     },
     "catId": "101",
     "brandId": "101",
     "productName": "EliteBook HP-840",
+    "productSlug":"elitebook-hp-840",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 700,
     "productPublish": "NEW",
@@ -27,11 +28,12 @@
   },
   {
     "_id": {
-      "$oid": "102"
+      "$oid": "1"
     },
     "catId": "102",
     "brandId": "102",
     "productName": "EliteBook HP-841",
+    "productSlug": "elitebook-hp-841",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 800,
     "productPublish": "",
@@ -53,11 +55,12 @@
   },
   {
     "_id": {
-      "$oid": "103"
+      "$oid": "2"
     },
     "catId": "101",
     "brandId": "102",
     "productName": "EliteBook HP-842",
+    "productSlug": "elitebook-hp-842",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 900,
     "productPublish": "NEW",
@@ -79,11 +82,12 @@
   },
   {
     "_id": {
-      "$oid": "104"
+      "$oid": "3"
     },
     "catId": "104",
     "brandId": "104",
     "productName": "EliteBook HP-844",
+    "productSlug": "elitebook-hp-844",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 500,
     "productPublish": "NEW",
@@ -105,11 +109,12 @@
   },
   {
     "_id": {
-      "$oid": "105"
+      "$oid": "4"
     },
     "catId": "105",
     "brandId": "103",
     "productName": "EliteBook HP-845",
+    "productSlug":"elitebook-hp-845",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 700,
     "productPublish": "",
@@ -131,11 +136,12 @@
   },
   {
     "_id": {
-      "$oid": "106"
+      "$oid": "5"
     },
     "catId": "103",
     "brandId": "104",
     "productName": "EliteBook HP-846",
+    "productSlug": "elitebook-hp-846",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 1200,
     "productPublish": "",
@@ -157,11 +163,12 @@
   },
   {
     "_id": {
-      "$oid": "107"
+      "$oid": "6"
     },
     "catId": "105",
     "brandId": "105",
     "productName": "EliteBook HP-847",
+    "productSlug": "elitebook-hp-847",
     "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "productPrice": 850,
     "productPublish": "NEW",

@@ -9,6 +9,7 @@ export default function TopSellingSidebar() {
     <ProductWidget
       key={index}
       productId={product._id.$oid}
+      productSlug={product.productSlug}
       productName={product.productName}
       productCategory={
         category.find((cat) => product.catId === cat._id.$oid).catName
@@ -22,7 +23,16 @@ export default function TopSellingSidebar() {
   useEffect(() => {
     setMarqueeTag(
       productWidgets.length > 6 ? (
-        <marquee direction="up" height="650px">
+        <marquee
+          onMouseOver={(e) => {
+            e.target.stop();
+          }}
+          onMouseOut={(e) => {
+            e.target.start();
+          }}
+          direction="up"
+          height="650px"
+        >
           {productWidgets}
         </marquee>
       ) : (

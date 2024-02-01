@@ -3,7 +3,7 @@
     "_id": {
       "$oid": "101"
     },
-    "productId": "101",
+    "productId": "0",
     "productImage": "src/frontend/assets/img/product02.png",
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -17,7 +17,7 @@
     "_id": {
       "$oid": "102"
     },
-    "productId": "101",
+    "productId": "0",
     "productImage": "src/frontend/assets/img/product03.png",
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -45,7 +45,7 @@
     "_id": {
       "$oid": "104"
     },
-    "productId": "102",
+    "productId": "1",
     "productImage": "src/frontend/assets/img/product05.png",
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -59,7 +59,7 @@
     "_id": {
       "$oid": "105"
     },
-    "productId": "101",
+    "productId": "1",
     "productImage": "src/frontend/assets/img/product06.png",
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -73,7 +73,7 @@
     "_id": {
       "$oid": "106"
     },
-    "productId": "101",
+    "productId": "2",
     "productImage": "src/frontend/assets/img/product07.png",
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"

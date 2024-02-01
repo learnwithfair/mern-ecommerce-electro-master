@@ -25,4 +25,14 @@ const setRefreshToken = async (req, res, next) => {
   next();
 };
 
-module.exports = { setLoginToken, setRefreshToken };
+const setAddToCart = async (res, addToCartData, next) => {
+  res.cookie("addToCart", addToCartData, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    //  maxAge: 5 * 60 * 1000, // 5 minites (For 7 days = 7 * 24 * 60 * 60 * 1000)ms
+  });
+  next();
+};
+
+module.exports = { setLoginToken, setRefreshToken, setAddToCart };

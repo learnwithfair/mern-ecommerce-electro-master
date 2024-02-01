@@ -8,6 +8,7 @@ export default function RelatedProduct(props) {
     <Product
       key={index}
       productId={product._id.$oid}
+      productSlug={product.productSlug}
       productName={product.productName}
       productPrice={product.productPrice}
       productCategory={
@@ -16,7 +17,7 @@ export default function RelatedProduct(props) {
       productPublish={product.productPublish}
       productDiscount={product.productDiscount}
       productRating={product.productRating}
-      productImage={product.productImage}
+      productImage={"../" + product.productImage}
     />
   ));
   return (

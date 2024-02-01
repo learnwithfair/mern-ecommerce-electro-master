@@ -38,6 +38,7 @@ export default function () {
         <Product
           key={index}
           productId={product._id.$oid}
+          productSlug={product.productSlug}
           productName={product.productName}
           productPrice={product.productPrice}
           productCategory={

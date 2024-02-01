@@ -5,6 +5,7 @@ import RatingStars from "../rating-stars/RatingStars";
 export default function Product(props) {
   const {
     productId,
+    productSlug,
     productName,
     productPrice,
     productCategory,
@@ -32,7 +33,7 @@ export default function Product(props) {
         <div className="product-body">
           <p className="product-category">{productCategory}</p>
           <h3 className="product-name">
-            <NavLink exact="true" to={"/single-product?id=" + productId}>
+            <NavLink exact="true" to={"/single-product/" + productSlug}>
               {productName}
             </NavLink>
           </h3>

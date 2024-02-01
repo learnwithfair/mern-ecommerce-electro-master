@@ -63,7 +63,6 @@ const userLogout = async (req, res, next) => {
   try {
     // Remove cookies
     res.clearCookie("loginToken");
-
     return serviceProvider.successResponse(res, {
       statusCode: 200,
       message: "User Logged out successfully.",

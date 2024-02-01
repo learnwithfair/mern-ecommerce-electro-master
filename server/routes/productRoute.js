@@ -18,19 +18,24 @@ const productRouter = express.Router();
  */
 
 // For Route localhost:3000/api/admin/products/ -> [ Create, Show all ]
-productRouter.prefix(
-  "/admin/products",
-  [isLoggedIn, isAdmin],
-  async (product) => {
-    product
-      .route("/product/create")
-      .post(
-        upload.productImage,
-        productValidate.formValidation,
-        productController.create
-      ); // Create product
-    product.route("/product/show-all").get(productController.showAll); // Show all product
-  }
-);
+// productRouter.prefix(
+//   "/admin/products",
+//   [isLoggedIn, isAdmin],
+//   async (product) => {
+//     product
+//       .route("/product/create")
+//       .post(
+//         upload.productImage,
+//         productValidate.formValidation,
+//         productController.create
+//       ); // Create product
+//     product.route("/product/show-all").get(productController.showAll); // Show all product
+//   }
+// );
+productRouter
+  .route("/product/add-to-cart")
+  .post(
+    productController.addToCart
+  );
 
 module.exports = { productRouter };

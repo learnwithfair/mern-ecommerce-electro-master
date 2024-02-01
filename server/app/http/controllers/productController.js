@@ -4,6 +4,7 @@ const slugify = require("slugify");
 const serviceProvider = require("../../providers/responseServiceProvider");
 const Product = require("../../models/productModel");
 const { deleteImage } = require("../../helpers/imageHelper");
+const { setAddToCart } = require("../../helpers/cookiesHelper");
 
 // Create Products
 const create = async (req, res, next) => {
@@ -71,7 +72,24 @@ const showAll = async (req, res, next) => {
   }
 };
 
+//addToCart Products
+const addToCart = async (req, res, next) => {
+  try {
+    const data = req.body;
+    setAddToCart(data);  
+   
+    return serviceProvider.successResponse(res, {
+      statusCode: 200,
+      message: "Add To Cart List : ",
+      payload: { data },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   create,
   showAll,
+  addToCart,
 };

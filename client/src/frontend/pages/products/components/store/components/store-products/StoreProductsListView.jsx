@@ -10,6 +10,7 @@ export default function StoreProductsListView() {
       <ProductWidget
         key={index}
         productId={product._id.$oid}
+        productSlug={product.productSlug}
         productName={product.productName}
         productCategory={
           category.find((cat) => product.catId === cat._id.$oid).catName

@@ -35,6 +35,7 @@ export default function DynamicTitle(props = "Home") {
         rel="stylesheet"
         href="./src/frontend/assets/css/style.css"
       />
+    
       {/* Footer JS  */}
       <script src="./src/frontend/assets/js/main.js"></script>
     </Helmet>

@@ -5,7 +5,7 @@ export default function ProductPreview() {
   const { productImages } = useContext(UseContext);
   const productPreview = productImages.map((item, i) => (
     <div key={i} className="product-preview">
-      <img src={item.productImage} alt=""></img>
+      <img src={"../"+item.productImage} alt=""></img>
     </div>
   ));
 

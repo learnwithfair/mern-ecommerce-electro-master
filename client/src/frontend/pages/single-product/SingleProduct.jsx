@@ -16,6 +16,9 @@ import ProductImages from "../../../../../database/products_images.json";
 import "../../../assets/css/style.css";
 import ProductDisplay from "./components/product-display/ProductDisplay";
 import RelatedProduct from "./components/related-product/RelatedProduct";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 const loading = <h1 className="loading">Loading</h1>;
 
 export default function SingleProduct() {
@@ -28,8 +31,19 @@ export default function SingleProduct() {
   const [categories, setCategories] = useState(null);
   const [isLoading, setIsloading] = useState(true);
 
+  const params = useParams();
+  //  console.log();
   useEffect(() => {
-    const prdct = ProductsData[0];
+    // let params = () => useParams();
+    // console.log(params.productSlug);
+    // const urlParams = new URLSearchParams(window.location.search).get('id');
+    // console.log(urlParams);
+    // console.log(window.location.pathname);
+    // const prdct = ProductsData[0];
+
+    const prdct = ProductsData.filter(
+      (item, i) => item.productSlug === params.productSlug
+    )[0];
     setProduct(prdct);
     setProductImages(
       ProductImages.filter((item) => prdct._id.$oid === item.productId)
@@ -47,6 +61,19 @@ export default function SingleProduct() {
   ) : (
     <>
       <DynamicTitle title={product.productName} />
+      <Helmet>
+        <link
+          type="text/css"
+          rel="stylesheet"
+          href="../src/frontend/assets/css/bootstrap.min.css"
+        />
+        <link
+          type="text/css"
+          rel="stylesheet"
+          href="../src/frontend/assets/css/style.css"
+        />
+        <script src="../src/frontend/assets/js/main.js"></script>
+      </Helmet>
       {/* Header Section */}
       <Header />
       {/* <!-- BREADCRUMB --> */}

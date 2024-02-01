@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function ProductWidget(props) {
   const {
     productId,
+    productSlug,
     productName,
     productCategory,
     productPrice,
@@ -26,7 +27,7 @@ export default function ProductWidget(props) {
         <div className="product-body">
           <p className="product-category">{productCategory}</p>
           <h3 className="product-name">
-            <NavLink exact="true" to={"/single-product?id=" + productId}>
+            <NavLink exact="true" to={"/single-product/" + productSlug}>
               {productName}
             </NavLink>
           </h3>
