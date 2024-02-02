@@ -5,6 +5,7 @@ export default function ProductWidgetForPayment(props) {
   const {
     productId,
     productName,
+    productSlug,
     productQuantity,
     productPrice,
     productImage,
@@ -17,12 +18,12 @@ export default function ProductWidgetForPayment(props) {
         </div>
         <div className="product-body">
           <h3 className="product-name">
-            <NavLink exact="true" to={"/single-product?id= " + productId}>
+            <NavLink exact="true" to={"/single-product/" + productSlug}>
               {productName}
             </NavLink>
           </h3>
           <h4 className="product-price">
-            <span className="qty">{productQuantity}x </span>${productPrice}
+            <span className="qty">{productQuantity}x </span>${productPrice}.00
           </h4>
         </div>
         <button className="delete">

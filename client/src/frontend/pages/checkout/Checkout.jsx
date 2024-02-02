@@ -5,7 +5,31 @@ import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
 import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 
+import productDatas from "../../../../../database/products.json";
+
 export default function Checkout() {
+  // Filtering Item which are included into cartlist
+  const cartList = JSON.parse(localStorage.getItem("cartList"));
+  const productData = productDatas.filter((product, i) => {
+    for (let i = 0; i < cartList.length; i++) {
+      if (product._id.$oid == parseInt(cartList[i].productId)) {
+        product["productQuantity"] = parseInt(cartList[i].productQuantity);
+        return true;
+      }
+    }
+  });
+
+  // Calculatting Total Amount for CartList Item
+  let totalAmount = 0;
+  productData.map((product, i) => {
+    totalAmount +=
+      product.productQuantity *
+      (product.productDiscount > 0
+        ? product.productPrice -
+          product.productPrice * (product.productDiscount / 100)
+        : product.productPrice);
+  });
+
   return (
     <>
       <DynamicTitle title="Hot-Deals" />
@@ -230,14 +254,23 @@ export default function Checkout() {
                     </div>
                   </div>
                   <div className="order-products">
-                    <div className="order-col">
-                      <div>1x Product Name Goes Here</div>
-                      <div>$980.00</div>
-                    </div>
-                    <div className="order-col">
-                      <div>2x Product Name Goes Here</div>
-                      <div>$980.00</div>
-                    </div>
+                    {productData.map((product, i) => (
+                      <div key={i} className="order-col">
+                        <div>
+                          {product.productQuantity}x {product.productName}
+                        </div>
+                        <div>
+                          $
+                          {product.productQuantity *
+                            (product.productDiscount > 0
+                              ? product.productPrice -
+                                product.productPrice *
+                                  (product.productDiscount / 100)
+                              : product.productPrice)}
+                          .00
+                        </div>
+                      </div>
+                    ))}
                   </div>
                   <div className="order-col">
                     <div>Shiping</div>
@@ -250,8 +283,12 @@ export default function Checkout() {
                       <strong>TOTAL</strong>
                     </div>
                     <div>
-                      <strong className="order-total">$2940.00</strong>
-                      <input type="hidden" value={"2940"} name="total_amount" />
+                      <strong className="order-total">${totalAmount}.00</strong>
+                      <input
+                        type="hidden"
+                        value={totalAmount}
+                        name="total_amount"
+                      />
                     </div>
                   </div>
                 </div>
@@ -307,9 +344,19 @@ export default function Checkout() {
                   </label>
                 </div>
                 {/* <a className="primary-btn order-submit">Place order</a> */}
-                <button type="submit" className="primary-btn order-submit">
-                  Place order
-                </button>
+                {totalAmount > 0 ? (
+                  <button type="submit" className="primary-btn order-submit">
+                    Place order
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled
+                    className="primary-btn order-submit"
+                  >
+                    Place order
+                  </button>
+                )}
               </div>
               {/* <!-- /Order Details --> */}
             </form>

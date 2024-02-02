@@ -13,37 +13,35 @@ export default function Cart() {
       return x + 1;
     } else return x + 1;
   }, 0);
-  // Set Bydefault local Storage
+  // Set default local Storage by first on load
 
   if (!localStorage.getItem("cartList")) {
     localStorage.setItem("cartList", JSON.stringify([]));
   }
-  if (!localStorage.getItem("totalAmount")) {
-    localStorage.setItem("totalAmount", 0);
-  }
-  // Set Bydefault local Storage
+  // if (!localStorage.getItem("totalAmount")) {
+  //   localStorage.setItem("totalAmount", 0);
+  // }
+  // Set default local Storage by first on load
 
+  // Filtering Item which are included into cartlist
   const cartList = JSON.parse(localStorage.getItem("cartList"));
-  const productData = productDatas.filter(
-    (product, i) => {
-      for (let i = 0; i < cartList.length; i++) {
-        console.log(cartList[i].productId);
-        if (product._id.$oid == parseInt(cartList[i].productId)) {
-          return true;
-        }
+  const productData = productDatas.filter((product, i) => {
+    for (let i = 0; i < cartList.length; i++) {
+      if (product._id.$oid == parseInt(cartList[i].productId)) {
+        product["productQuantity"] = parseInt(cartList[i].productQuantity);
+
+        return true;
       }
     }
-    // cartList.filter((cart, i) => parseInt(cart.productId) === product._id.$oid)
-  );
-  // console.log(cartList[2].productId);
-  //   console.log(raju);
-  const productQuantity = 1;
+  });
+
   const productWidgetforPayment = productData.map((product, index) => (
     <ProductWidgetForPayment
       key={index}
       productId={product.productId}
       productName={product.productName}
-      productQuantity={productQuantity}
+      productSlug={product.productSlug}
+      productQuantity={product.productQuantity}
       productPrice={
         product.productDiscount > 0
           ? product.productPrice -
@@ -54,24 +52,20 @@ export default function Cart() {
     />
   ));
 
-  // const gneraterProductPrice = (productPrice, productDiscount) => {
-  //   return productDiscount > 0
-  //     ? productPrice - productPrice * (productDiscount / 100)
-  //     : productPrice;
-  // };
+  // Calculatting Total Amount for CartList Item
   let totalAmount = 0;
   productData.map((product, i) => {
-    // totalAmount += productQuantity * product.productPrice;
     totalAmount +=
-      productQuantity * product.productDiscount > 0
+      product.productQuantity *
+      (product.productDiscount > 0
         ? product.productPrice -
           product.productPrice * (product.productDiscount / 100)
-        : product.productPrice;
+        : product.productPrice);
   });
 
   useEffect(() => {
     setCartCount(productData.length);
-    localStorage.setItem("totalAmount", totalAmount);
+    // localStorage.setItem("totalAmount", totalAmount);
     // setCartCount(localStorage.getItem("cartCount"));
     forceUpdate();
   }, [reducerValue]);
@@ -98,7 +92,7 @@ export default function Cart() {
           <div className="cart-list">{productWidgetforPayment}</div>
           <div className="cart-summary">
             <small>{productData.length} Item(s) selected</small>
-            <h5>SUBTOTAL: ${totalAmount}</h5>
+            <h5>SUBTOTAL: ${totalAmount}.00</h5>
           </div>
           <div className="cart-btns">
             <a href="#">View Cart</a>
