@@ -19,14 +19,20 @@ export default function ProductDetails() {
       productRatingData[i] = <i key={i} className="fa fa-star-o"></i>;
     }
   }
+  const addCartListItem = {
+    productId: product._id.$oid,
+    productPrice: product.productPrice,
+  };
 
   const addToCart = (e) => {
-    e.preventDefault(); 
-    let count = parseInt(localStorage.getItem("cartCount"));
-    localStorage.setItem("cartCount", count + 1);
+    e.preventDefault();
+    // let count = parseInt(localStorage.getItem("cartCount"));
+    // localStorage.setItem("cartCount", count + 1);
 
+    const cartList = JSON.parse(localStorage.getItem("cartList"));   
+    cartList.push(addCartListItem);
+    localStorage.setItem("cartList", JSON.stringify(cartList));
     // document.getElementById("cartCount").innerHTML = count + 1;
-
   };
   return (
     <>

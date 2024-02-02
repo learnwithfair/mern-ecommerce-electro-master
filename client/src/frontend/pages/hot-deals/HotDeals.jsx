@@ -10,8 +10,9 @@ import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
 import Products from "../../../../../database/products.json";
 import Category from "../../../../../database/category.json";
 
-import "../../../assets/css/style.css";
-const loading = <h1 className="loading">Loading</h1>;
+// import "../../../assets/css/style.css";
+import Preloader from "../../../preloader/Preloader";
+
 
 export default class HotDeals extends Component {
   constructor() {
@@ -32,7 +33,7 @@ export default class HotDeals extends Component {
   render() {
     const { products, category } = this.state;
     return this.state.isLoading ? (
-      loading
+      <Preloader/>
     ) : (
       <>
         <DynamicTitle title="Hot-Deals" />

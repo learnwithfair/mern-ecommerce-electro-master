@@ -14,8 +14,9 @@ import { UseContext } from "../../use-context/UseContext";
 import Products from "../../../../../database/products.json";
 import Category from "../../../../../database/category.json";
 
-import "../../../assets/css/style.css";
-const loading = <h1 className="loading">Loading</h1>;
+// import "../../../assets/css/style.css";
+import Preloader from "../../../preloader/Preloader";
+
 
 export default function Home() {
   const [products, setProducts] = useState(null);
@@ -33,7 +34,7 @@ export default function Home() {
 
 
   return isLoading ? (
-    loading
+    <Preloader/>
   ) : (
     <>
       <DynamicTitle title="Home" />

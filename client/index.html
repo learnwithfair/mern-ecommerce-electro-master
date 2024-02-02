@@ -11,6 +11,8 @@
     />
     <meta name="author" content="MD RAHATUL RABBI" />
     <title>E-commerce</title>
+      <!-- Preloader CSS  -->
+    <link rel="stylesheet" href="./src/preloader/assets/css/preloader.css" />
     <style>
       body {
         margin: 0px;
@@ -21,8 +23,20 @@
      
     </style>
   </head>
-  <body>
+  <body onload="preloaderFunction()">
+      
+
+    <!-- Preloader Section Start -->
+    <div class="preloader-busy" align="middle" id="preloader-busy">
+        <div class="preloader-center">
+            <img src="./src/preloader/assets/icon/preloader.gif" alt="" />
+        </div>
+    </div>
+    <!-- Preloader Section  End-->
+   
     <div id="root"></div>
     <script type="module" src="./src/main.jsx"></script>
+     <!-- Preloader JS  -->
+    <script src="./src/preloader/assets/js/prealoader.js"></script>
   </body>
 </html>

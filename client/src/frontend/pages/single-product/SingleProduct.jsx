@@ -13,13 +13,14 @@ import Brands from "../../../../../database/brands.json";
 import Reviews from "../../../../../database/reviews.json";
 import ProductImages from "../../../../../database/products_images.json";
 
-import "../../../assets/css/style.css";
+// import "../../../assets/css/style.css";
 import ProductDisplay from "./components/product-display/ProductDisplay";
 import RelatedProduct from "./components/related-product/RelatedProduct";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Preloader from "../../../preloader/Preloader";
 
-const loading = <h1 className="loading">Loading</h1>;
+
 
 export default function SingleProduct() {
   const [product, setProduct] = useState(null);
@@ -59,7 +60,7 @@ export default function SingleProduct() {
  
 
   return isLoading ? (
-    loading
+    <Preloader />
   ) : (
     <>
       <DynamicTitle title={product.productName} />

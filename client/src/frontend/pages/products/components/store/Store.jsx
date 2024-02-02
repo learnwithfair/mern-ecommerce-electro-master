@@ -12,11 +12,21 @@ export default function Store() {
   const sortData = Data[0],
     showData = Data[1];
 
+  if (!localStorage.getItem("listView")) {
+    localStorage.setItem("listView", false);
+  }
+  useEffect(() => {
+    localStorage.getItem("listView") == "true"
+      ? setIsListView(true)
+      : setIsListView(false);
+  }, []);
   const hundleGridView = () => {
     setIsListView(false);
+    localStorage.setItem("listView", false);
   };
   const hundleListView = () => {
     setIsListView(true);
+    localStorage.setItem("listView", true);
   };
   const handleChange = (e) => {
     if (e.target.id === "sort-by") setSortBy(e.target.value);

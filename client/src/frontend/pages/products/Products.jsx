@@ -11,9 +11,10 @@ import { UseContext } from "../../use-context/UseContext";
 import ProductsData from "../../../../../database/products.json";
 import Category from "../../../../../database/category.json";
 import Brands from "../../../../../database/brands.json";
+import Preloader from "../../../preloader/Preloader";
 
-import "../../../assets/css/style.css";
-const loading = <h1 className="loading">Loading</h1>;
+// import "../../../assets/css/style.css";
+
 
 export default function Products() {
   const [products, setProducts] = useState(null);
@@ -29,7 +30,7 @@ export default function Products() {
   }, []);
 
   return isLoading ? (
-    loading
+    <Preloader/>
   ) : (
     <>
       <DynamicTitle title="Products" />
