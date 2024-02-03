@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser"); // For set Cookie
 const createError = require("http-errors"); // For create HTTP Error
 const xssClean = require("xss-clean"); // For  Secure api
 const bodyParser = require("body-parser"); // For Get/ Set data into body
+const cors = require("cors"); // To set access for client side URL
 
 const { userRouter } = require("../../routes/userRoute");
 const { seedRouter } = require("../../routes/web");
@@ -27,14 +28,16 @@ app.use(bodyParser.json()); // For Set, Read data into body and display JSON For
 app.use(bodyParser.urlencoded({ extended: true })); // Get HTML Form Data
 app.use(setRefreshToken); // For set Refresh Token [Automatically call this middlewire for all route]
 
+
+app.use(cors()) // To get access Client side url
 /*
 |--------------------------------------------------------------------------
 |                            Routes List (Backend)
 |--------------------------------------------------------------------------
  */
-// app.use("/api", userRouter);
+app.use("/api", userRouter);
 app.use("/", seedRouter);
-// app.use("/api/auth", authRouter);
+app.use("/api/auth", authRouter);
 // app.use("/api", categoryRouter);
 // app.use("/api", productRouter);
 app.use("/payment", paymentRouter);

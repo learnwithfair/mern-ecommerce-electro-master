@@ -1,7 +1,7 @@
 require("dotenv").config(); // For access .env File data
 const port = process.env.PORT_NUMBER; // 3000
 // const mongodbURL =  process.env.MOGODB_ATLAS_URL;  // MONGODB Atlas Database
-const mongodbURL = "mongodb://localhost:27017/mernDB"; // Local Database
+const mongodbURL = "mongodb://localhost:27017/ecommerceMernDB"; // Local Database
 const jwtActivationKey = process.env.JWT_ACTIVATION_KEY; // User Activation Key
 const jwtResetPasswordKey = process.env.JWT_RESET_PASSWORD_KEY; //  Reset Password Key
 const jwtLoginKey = process.env.JWT_LOGIN_KEY; //  Login Key For set Cookie

@@ -43,28 +43,28 @@ userRouter.get(
 |                           For Grouping Routes
 |--------------------------------------------------------------------------
  */
-express.application.prefix = express.Router.prefix = function (
-  path,
-  middleware,
-  configure
-) {
-  configure(userRouter);
-  this.use(path, middleware, userRouter);
-  return userRouter;
-};
-/*
-|--------------------------------------------------------------------------
-|                           Backend Routes
-|--------------------------------------------------------------------------
- */
+// express.application.prefix = express.Router.prefix = function (
+//   path,
+//   middleware,
+//   configure
+// ) {
+//   configure(userRouter);
+//   this.use(path, middleware, userRouter);
+//   return userRouter;
+// };
+// /*
+// |--------------------------------------------------------------------------
+// |                           Backend Routes
+// |--------------------------------------------------------------------------
+//  */
 
-// For Route localhost:3000/api/admin/users -> [ Show all, Delete, Update ]
-userRouter.prefix("/admin/users", [isLoggedIn, isAdmin], async (user) => {
-  user.route("/show-all").get(userController.showAll); // Show all users
-  user.route("/delete/:id").get(userController.deleteUser); // User Delete by ID
-  user
-    .route("/update/:id")
-    .put(userValidate.formValidation, userController.update); // User Update by ID
-});
+// // For Route localhost:3000/api/admin/users -> [ Show all, Delete, Update ]
+// userRouter.prefix("/admin/users", [isLoggedIn, isAdmin], async (user) => {
+//   user.route("/show-all").get(userController.showAll); // Show all users
+//   user.route("/delete/:id").get(userController.deleteUser); // User Delete by ID
+//   user
+//     .route("/update/:id")
+//     .put(userValidate.formValidation, userController.update); // User Update by ID
+// });
 
 module.exports = { userRouter };

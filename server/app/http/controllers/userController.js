@@ -16,6 +16,7 @@ const emailWithNodeMailer = require("../../helpers/emailHelper");
 const processRegister = async (req, res, next) => {
   try {
     const { name, email, password, phone, address } = req.body;
+    console.log(name);
     const userExists = await User.exists({ email: email });
     if (userExists) {
       throw createError(
@@ -37,7 +38,7 @@ const processRegister = async (req, res, next) => {
     };
     // send wmail with nodemailer
     try {
-      await emailWithNodeMailer(emailData);
+      // await emailWithNodeMailer(emailData);
     } catch (Emailerror) {
       next(createError(500, "Failed to send verification email"));
       return;
