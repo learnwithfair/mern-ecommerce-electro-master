@@ -11,7 +11,7 @@
     />
     <meta name="author" content="MD RAHATUL RABBI" />
     <title>E-commerce</title>
-      <!-- Preloader CSS  -->
+    <!-- Preloader CSS  -->
     <link rel="stylesheet" href="./src/preloader/assets/css/preloader.css" />
     <style>
       body {
@@ -19,24 +19,69 @@
         padding: 0px;
         box-sizing: border-box;
       }
-
-     
     </style>
   </head>
   <body onload="preloaderFunction()">
-      
-
     <!-- Preloader Section Start -->
     <div class="preloader-busy" align="middle" id="preloader-busy">
-        <div class="preloader-center">
-            <img src="./src/preloader/assets/icon/preloader.gif" alt="" />
-        </div>
+      <div class="preloader-center">
+        <img src="./src/preloader/assets/icon/preloader.gif" alt="" />
+      </div>
     </div>
     <!-- Preloader Section  End-->
-   
+
     <div id="root"></div>
     <script type="module" src="./src/main.jsx"></script>
-     <!-- Preloader JS  -->
+    <!-- Preloader JS  -->
     <script src="./src/preloader/assets/js/prealoader.js"></script>
+
+    <!-- For Alert  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        width: 340,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      // Success Message
+      function successMessage(mgs) {
+        Toast.fire({
+          icon: "success",
+          title: mgs,
+          background: "#D4EDDA",
+        });       
+      }
+
+      // Waring Message
+      function warningMessage() {
+        Toast.fire({
+          icon: "warning",
+          title: "UNSUCCESFULL!",
+          background: "#FFF3CD",
+        });
+      }
+
+      // Error Message
+      function errorMessage() {
+        Toast.fire({
+          icon: "error",
+          title: "UNSUCCESFULL!",
+          background: "#FFF3CD",
+          color: "red",
+        });
+      }
+      function text() {
+        alert("Test");
+      }
+    </script>
   </body>
 </html>

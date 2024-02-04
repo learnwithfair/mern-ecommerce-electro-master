@@ -12,6 +12,7 @@ export default function Register() {
     const name = event.target.name;
     const value = event.target.value;
     setUserInfo((userInfo) => ({ ...userInfo, [name]: value }));
+
   };
   const userRegistration = (e) => {
     e.preventDefault();
@@ -44,15 +45,14 @@ export default function Register() {
     axios({
       url: "http://localhost:3000/api/users/process-register",
       method: "post",
-      data: JSON.stringify({
-        name: "Rahat Kabir",
-        email: "ratr@gamil.com",
-        password: "@Rahatul125",
-        phone: "01790224950",
-        address: "dsjf",
-      }),
+      data: userInfo,
     })
-      .then((res) => alert("Successfully Added"))
+      .then((res) => {
+        console.log(res.data);
+        // text();
+        successMessage("Successfully Registered");
+        // setUserInfo({});
+      })
       .catch((err) => console.log(err));
     //  url: "https://jsonplaceholder.typicode.com/posts",
     // method: "post",
@@ -95,15 +95,15 @@ export default function Register() {
                         <div className="col-md-6">
                           <div className="form-group row">
                             <label className="col-sm-3 col-form-label">
-                              <strong className="text-danger">* </strong>Full
+                              <strong className="text-danger">* </strong>First
                               Name
                             </label>
                             <div className="col-sm-9">
                               <input
                                 type="text"
                                 onChange={handleOnChange}
-                                value={userInfo.name || ""}
-                                name="name"
+                                value={userInfo.firstName || ""}
+                                name="firstName"
                                 className="form-control"
                                 placeholder="Enter your First Name"
                                 required
@@ -111,7 +111,7 @@ export default function Register() {
                             </div>
                           </div>
                         </div>
-                        {/* <div className="col-md-6">
+                        <div className="col-md-6">
                           <div className="form-group row">
                             <label className="col-sm-3 col-form-label">
                               Last Name
@@ -127,7 +127,7 @@ export default function Register() {
                               />
                             </div>
                           </div>
-                        </div> */}
+                        </div>
                       </div>
                       <div className="row">
                         <div className="col-md-6">
@@ -197,7 +197,7 @@ export default function Register() {
                         <div className="col-md-6">
                           <div className="form-group row">
                             <label className="col-sm-3 col-form-label">
-                              Address
+                              <strong className="text-danger">* </strong>Address
                             </label>
                             <div className="col-sm-9">
                               <input
@@ -207,6 +207,7 @@ export default function Register() {
                                 value={userInfo.address || ""}
                                 placeholder="Write your address"
                                 className="form-control"
+                                required
                               />
                             </div>
                           </div>

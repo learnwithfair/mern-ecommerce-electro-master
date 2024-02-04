@@ -15,7 +15,8 @@ const emailWithNodeMailer = require("../../helpers/emailHelper");
 //Process Register
 const processRegister = async (req, res, next) => {
   try {
-    const { name, email, password, phone, address } = req.body;
+    const { firstName, lastName, email, password, phone, address } = req.body;
+    const name = firstName + " " + lastName;
     console.log(name);
     const userExists = await User.exists({ email: email });
     if (userExists) {
@@ -33,7 +34,7 @@ const processRegister = async (req, res, next) => {
       subject: "Account Activation Email",
       html: `
       <h2>Hello ${name} !</h2>
-      <p>Please click here to <a href="${clientURL}/api/users/verify/token=${token}" target="_blank"> <button style="color:green;">Activate your accout</button></a></p>
+      <p>Please click here to <a href="${clientURL}/api/users/verify/${token}" target="_blank"> <button style="color:green;">Activate your accout</button></a></p>
       `,
     };
     // send wmail with nodemailer
