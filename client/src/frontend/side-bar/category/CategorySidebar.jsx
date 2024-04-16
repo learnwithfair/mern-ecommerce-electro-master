@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
 export default function CategorySidebar() {
   const { products, category } = useContext(UseContext);
 
   const categoryFilter = category.map((item, i) => (
     <div className="input-checkbox" key={i}>
-      <input type="checkbox" id={item.catSlug} defaultChecked />
-      <label htmlFor={item.catSlug}>
+      <input type="checkbox" id={item.slug} defaultChecked />
+      <label htmlFor={item.slug}>
         <span></span>
-        {item.catName}
+        {item.name}
         <small>
           {"  (" +
-            products.filter((prdts) => item._id.$oid === prdts.catId).length +
+            products.filter((prdts) => item._id === prdts.catId).length +
             ")"}
         </small>
       </label>

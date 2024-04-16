@@ -5,13 +5,7 @@ import Header from "../../header/Header";
 import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
-import { UseContext } from "../../use-context/UseContext";
-
-import ProductsData from "../../../../../database/products.json";
-import Category from "../../../../../database/category.json";
-import Brands from "../../../../../database/brands.json";
-import Reviews from "../../../../../database/reviews.json";
-import ProductImages from "../../../../../database/products_images.json";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
 // import "../../../assets/css/style.css";
 import ProductDisplay from "./components/product-display/ProductDisplay";
@@ -19,47 +13,33 @@ import RelatedProduct from "./components/related-product/RelatedProduct";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Preloader from "../../../preloader/Preloader";
-
-
+import useFetchState from "../../../helper/use-fetch/useFetchState";
 
 export default function SingleProduct() {
-  const [product, setProduct] = useState(null);
-  const [productImages, setProductImages] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [brand, setBrand] = useState(null);
-  const [review, setReview] = useState(null);
-  const [products, setProducts] = useState(null);
-  const [categories, setCategories] = useState(null);
-  const [isLoading, setIsloading] = useState(true);
-
   const params = useParams();
-  //  console.log();
-  useEffect(() => {
-    // let params = () => useParams();
-    // console.log(params.productSlug);
-    // const urlParams = new URLSearchParams(window.location.search).get('id');
-    // console.log(urlParams);
-    // console.log(window.location.pathname);
-    // const prdct = ProductsData[0];
+  var product = null,
+    brand = null,
+    category = null;
 
-    const prdct = ProductsData.filter(
-      (item, i) => item.productSlug === params.productSlug
+  // Display All Product, Categories and Brands
+  const { data, isLoading, error } = useFetchState("api/products/show-all");
+
+  const products = data != null ? data.payload.products : null;
+  const categories = data != null ? data.payload.categories : null;
+  const brands = data != null ? data.payload.brands : null;
+
+  if ((products && categories && brands) != null) {
+    product = products.filter(
+      (prodct, i) => prodct.productSlug === params.productSlug
     )[0];
-    setProduct(prdct);
-    setProductImages(
-      ProductImages.filter((item) => prdct._id.$oid === item.productId)
-    );
-    setCategory(Category.find((cat) => prdct.catId === cat._id.$oid));
-    setBrand(Brands.find((brnd) => prdct.brandId === brnd._id.$oid));
-    setReview(Reviews.filter((item) => prdct._id.$oid === item.productId));
-    setProducts(ProductsData);
-    setCategories(Category);
-    setIsloading(false);
-  }, []);
 
- 
+    brand = brands.find((brnd) => product.brandId === brnd._id);
+    category = categories.find((cat) => product.catId === cat._id);
+  }
 
-  return isLoading ? (
+  return (products || categories || brands) == null ? (
+    error
+  ) : isLoading ? (
     <Preloader />
   ) : (
     <>
@@ -86,8 +66,8 @@ export default function SingleProduct() {
           { name: "All Category", link: "/products" },
           { name: "Products", link: "/products" },
           {
-            name: category.catName,
-            link: "/all-category?category=" + category.catSlug,
+            name: category.name,
+            link: "/all-category?category=" + category.slug,
           },
         ]}
         activeName={product.productName}
@@ -96,9 +76,7 @@ export default function SingleProduct() {
 
       {/* PRODUCT DISPLAY  */}
 
-      <UseContext.Provider
-        value={{ product, category, brand, review, productImages }}
-      >
+      <UseContext.Provider value={{ product, category, brand }}>
         <ProductDisplay />
       </UseContext.Provider>
 

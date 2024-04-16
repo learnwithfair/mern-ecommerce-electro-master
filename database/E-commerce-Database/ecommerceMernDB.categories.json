@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "name": "Laptops",
+  "slug": "laptops",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
+  "name": "Smart Phone",
+  "slug": "smart-phone",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+}]

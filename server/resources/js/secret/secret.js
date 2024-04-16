@@ -8,6 +8,7 @@ const jwtLoginKey = process.env.JWT_LOGIN_KEY; //  Login Key For set Cookie
 const smtpUsername = process.env.SMTP_USERNAME; //  For Email Send
 const smtpPassword = process.env.SMTP_PASSWORD; //  For Email Send
 const clientURL = process.env.CLIENT_URL; //  http://localhost:3000
+const BASE_URL = process.env.BASE_URL; //  http://localhost:5173
 
 const storeId = process.env.STORE_ID; // Payment
 const storePassword = process.env.STORE_PASSWORD; 
@@ -21,6 +22,7 @@ module.exports = {
   smtpUsername,
   smtpPassword,
   clientURL,
+  BASE_URL,
   storeId,
   storePassword,
 };

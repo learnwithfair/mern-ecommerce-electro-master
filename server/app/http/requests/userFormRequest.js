@@ -96,12 +96,12 @@ const updatePassowrdValidation = [
       "Pasword contain at least one uppercase, one lower case, one number, and one special character."
     ),
 
-  body("confirmPassword").custom((value, { req }) => {
-    if (value != req.body.newPassword) {
-      throw new Error("New and Confirm Password did not match");
-    }
-    return true;
-  }),
+  // body("confirmPassword").custom((value, { req }) => {
+  //   if (value != req.body.newPassword) {
+  //     throw new Error("New and Confirm Password did not match");
+  //   }
+  //   return true;
+  // }),
 
   runValidation,
 ];
@@ -137,10 +137,35 @@ const resetPassowrdValidation = [
 
   runValidation,
 ];
+
+const contactInfoProfileValidation = [
+  body("phone").trim().notEmpty().withMessage("Phone Number is required"),
+
+  body("address")
+    .trim()
+    .notEmpty()
+    .withMessage("Address is required")
+    .isLength({ min: 3 })
+    .withMessage("Password should be at least 3 characters long"),
+
+  runValidation,
+];
+const personalInfoProfileValidation = [
+  body("name")
+    .trim()
+    .notEmpty()
+    .withMessage("Name is required")
+    .isLength({ min: 3, max: 31 })
+    .withMessage("Name should be at least 3-31 characters long"),
+
+  runValidation,
+];
 module.exports = {
   formValidation,
   loginValidation,
   updatePassowrdValidation,
   forgotPasswordValidation,
   resetPassowrdValidation,
+  contactInfoProfileValidation,
+  personalInfoProfileValidation,
 };

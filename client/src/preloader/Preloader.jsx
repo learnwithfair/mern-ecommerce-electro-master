@@ -10,8 +10,8 @@ export default function Preloader() {
       {/* <link rel="stylesheet" href="./assets/css/preloader.css" /> */}
 
       {/* <!-- Preloader Section Start --> */}
-      <div class="preloader-busy" align="middle" id="preloader-busy">
-        <div class="preloader-center">
+      <div className="preloader-busy" align="middle" id="preloader-busy">
+        <div className="preloader-center">
           <img src={preloaderImage} alt="" />
         </div>
       </div>

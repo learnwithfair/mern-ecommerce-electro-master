@@ -17,6 +17,7 @@ export default function ManageProducts() {
           {/* <!-- partial --> */}
           <div className="main-panel">
             Hello Manage Product
+           
             {/* <!-- content-wrapper ends --> */}
             {/* <!-- partial:partials/_footer.html --> */}
             <Footer />

@@ -10,6 +10,7 @@ const setLoginToken = async (res, loginTokenData) => {
     secure: true,
     sameSite: "none",
   });
+  
 };
 
 const setRefreshToken = async (req, res, next) => {

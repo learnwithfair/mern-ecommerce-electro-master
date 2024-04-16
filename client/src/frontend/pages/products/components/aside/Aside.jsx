@@ -10,7 +10,7 @@ export default function Aside() {
       {/* <!-- ASIDE --> */}
       <div id="aside" className="col-md-3">
         {/* <!-- CATEGORY SIDEBAR --> */}
-        <CategorySidebar />
+        {/* <CategorySidebar /> */}
 
         {/* <!-- PRICE SIDEBAR --> */}
         <PriceSidebar />

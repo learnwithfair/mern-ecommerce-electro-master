@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UseContext } from "../../../../../../../../../../use-context/UseContext";
+import { UseContext } from "../../../../../../../../../../../helper/use-context/UseContext";
 
 export default function DescriptionTab() {
   const { product } = useContext(UseContext);

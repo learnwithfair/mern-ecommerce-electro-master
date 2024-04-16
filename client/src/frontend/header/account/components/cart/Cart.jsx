@@ -4,9 +4,14 @@ import { NavLink } from "react-router-dom";
 
 // import productData from "./productData.json";
 import productDatas from "../../../../../../../database/products.json";
+import useFetchState from "../../../../../helper/use-fetch/useFetchState";
 
 export default function Cart() {
   const [cartCount, setCartCount] = useState(0);
+  // Display All Product, Categories and Brands
+  const { data, isLoading, error } = useFetchState("api/product/show-all");
+
+  const products = data != null ? data.payload.products : null;
   const [reducerValue, forceUpdate] = useReducer((x) => {
     if (x > 100) {
       x = 0;
@@ -18,91 +23,100 @@ export default function Cart() {
   if (!localStorage.getItem("cartList")) {
     localStorage.setItem("cartList", JSON.stringify([]));
   }
-  // if (!localStorage.getItem("totalAmount")) {
-  //   localStorage.setItem("totalAmount", 0);
-  // }
-  // Set default local Storage by first on load
 
   // Filtering Item which are included into cartlist
   const cartList = JSON.parse(localStorage.getItem("cartList"));
-  const productData = productDatas.filter((product, i) => {
-    for (let i = 0; i < cartList.length; i++) {
-      if (product._id.$oid == parseInt(cartList[i].productId)) {
-        product["productQuantity"] = parseInt(cartList[i].productQuantity);
 
-        return true;
+  const productData =
+    products != null &&
+    products.filter((product, i) => {
+      for (let i = 0; i < cartList.length; i++) {
+        if (product._id == cartList[i].productId) {
+          product["productQuantity"] = parseInt(cartList[i].productQuantity);
+          return true;
+        }
       }
-    }
-  });
+    });
 
-  const productWidgetforPayment = productData.map((product, index) => (
-    <ProductWidgetForPayment
-      key={index}
-      productId={product.productId}
-      productName={product.productName}
-      productSlug={product.productSlug}
-      productQuantity={product.productQuantity}
-      productPrice={
-        product.productDiscount > 0
-          ? product.productPrice -
-            product.productPrice * (product.productDiscount / 100)
-          : product.productPrice
-      }
-      productImage={product.productImage}
-    />
-  ));
+  const productWidgetforPayment =
+    products != null &&
+    productData.map((product, index) => (
+      <ProductWidgetForPayment
+        key={index}
+        productId={product._id}
+        productName={product.productName}
+        productSlug={product.productSlug}
+        productQuantity={product.productQuantity}
+        productPrice={
+          product.productDiscount > 0
+            ? product.productPrice -
+              product.productPrice * (product.productDiscount / 100)
+            : product.productPrice
+        }
+        productImage={product.productImage}
+      />
+    ));
 
   // Calculatting Total Amount for CartList Item
   let totalAmount = 0;
-  productData.map((product, i) => {
-    totalAmount +=
-      product.productQuantity *
-      (product.productDiscount > 0
-        ? product.productPrice -
-          product.productPrice * (product.productDiscount / 100)
-        : product.productPrice);
-  });
+  products != null &&
+    productData.map((product, i) => {
+      totalAmount +=
+        product.productQuantity *
+        (product.productDiscount > 0
+          ? product.productPrice -
+            product.productPrice * (product.productDiscount / 100)
+          : product.productPrice);
+    });
 
-  useEffect(() => {
-    setCartCount(productData.length);
-    // localStorage.setItem("totalAmount", totalAmount);
-    // setCartCount(localStorage.getItem("cartCount"));
-    forceUpdate();
-  }, [reducerValue]);
+  // useEffect(() => {
+  //   setCartCount(productData.length);
+  //   console.log(productData.length);
+  // }, []);
+
+  // Auto Refresh
+  // useEffect(() => {
+  //   setCartCount(productData.length);
+  //   forceUpdate();
+  // }, [reducerValue]);
 
   return (
-    <>
-      <div className="dropdown">
-        <a
-          className="dropdown-toggle"
-          data-toggle="dropdown"
-          aria-expanded="true"
-          style={{ cursor: "pointer" }}
-        >
-          <i className="fa fa-shopping-cart"></i>
-          <span>Your Cart</span>
-          {/* <div className="qty">{productData.length}</div> */}
-          {cartCount != 0 && (
-            <div className="qty" id="cartCount">
-              {cartCount}
+    products != null && (
+      <>
+        <div className="dropdown">
+          <a
+            className="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-expanded="true"
+            style={{ cursor: "pointer" }}
+          >
+            <i className="fa fa-shopping-cart"></i>
+            <span>Your Cart</span>
+            {/* <div className="qty">{productData.length}</div> */}
+            {productData != null && (
+              <div className="qty" id="cartCount">
+                {productData.length}
+              </div>
+            )}
+          </a>
+          {/* stopPropagation for card close handling */}
+          <div className="cart-dropdown" onClick={(e) => e.stopPropagation()}>
+            <div className="cart-list">{productWidgetforPayment}</div>
+            <div className="cart-summary">
+              <small>{productData.length} Item(s) selected</small>
+              <h5>SUBTOTAL: ${totalAmount}.00</h5>
             </div>
-          )}
-        </a>
-        <div className="cart-dropdown">
-          <div className="cart-list">{productWidgetforPayment}</div>
-          <div className="cart-summary">
-            <small>{productData.length} Item(s) selected</small>
-            <h5>SUBTOTAL: ${totalAmount}.00</h5>
-          </div>
-          <div className="cart-btns">
-            <a href="#">View Cart</a>
 
-            <NavLink exact="true" to="/checkout">
-              Checkout<i className="fa fa-arrow-circle-right"></i>
-            </NavLink>
+            <div className="cart-btns">
+              <a href="#">View Cart</a>
+
+              <NavLink exact="true" to="/checkout">
+                Checkout<i className="fa fa-arrow-circle-right"></i>
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   );
 }

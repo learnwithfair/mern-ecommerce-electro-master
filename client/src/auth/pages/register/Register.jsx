@@ -2,68 +2,48 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import DynamicTitle from "../../../backend/components/DynamicTitle";
-import axios from "axios";
-// import useFetch from "../../../frontend/use-fetch/useFetch";
-// import { clientURL } from "../../../../../server/resources/js/secret/secret";
+import useFetch from "../../../helper/use-fetch/useFetch.jsx";
 
 export default function Register() {
+  var userFullName = "";
+  const [isLoading, setIsLoading] = useState(false);
+  const [registrationMgs, setRegistrationMgs] = useState(null);
   const [userInfo, setUserInfo] = useState({});
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setUserInfo((userInfo) => ({ ...userInfo, [name]: value }));
-
   };
-  const userRegistration = (e) => {
+  const userRegistration = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Loading On
 
-    // const { data, isLoading, error } = useFetch(
-    //   "api/users/process-register",
-    //   "post",
-    //   userInfo
-    // );
-    // setTimeout(() => {
-    //   axios
-    //     .post({
-    //       url: "http://localhost:3000/api/users/process-register",
-    //       data: JSON.stringify({
-    //         name:"R",
-    //         email:"rat@gamil.com",
-    //         password:"@Rahatul123",
-    //         phone:"01790224950",
-    //         address:"dsjf"
+    // Name = First Name + Last Name
+    const nameFiled = "name";
+    if (userInfo.lastName) {
+      userFullName = userInfo.firstName + " " + userInfo.lastName;
+    } else {
+      userFullName = userInfo.firstName;
+    }
+    setUserInfo((userInfo) => ({
+      ...userInfo,
+      [nameFiled]: userFullName,
+    }));
+    const info = JSON.parse(
+      await useFetch("api/users/process-register", userInfo)
+    );
 
-    //       }),
-    //     })
-    //     .then((res) => {
-    //       // const items = res.data;
-    //       console.log(res);
-    //     })
-    //     .catch((err) => console.error(err));
-    // }, 1000);
+    // Set State value after click submit button
+    if (info.data != null) {
+      alert(info.data.message);
+      console.log(info.data);
+      setRegistrationMgs(info.data.message);
+      // successMessage("Successfully Registered");
+    } else {
+      console.error(info.error);
+    }
 
-    axios({
-      url: "http://localhost:3000/api/users/process-register",
-      method: "post",
-      data: userInfo,
-    })
-      .then((res) => {
-        console.log(res.data);
-        // text();
-        successMessage("Successfully Registered");
-        // setUserInfo({});
-      })
-      .catch((err) => console.log(err));
-    //  url: "https://jsonplaceholder.typicode.com/posts",
-    // method: "post",
-    // data: JSON.stringify({
-    //   title: "foo",
-    //   body: "bar",
-    //   userId: 1,
-    // }),
-    // console.log(data);
-    // console.log(isLoading);
-    // console.log(error);
+    setIsLoading(false); // Loadig Off
   };
   return (
     <>
@@ -80,6 +60,10 @@ export default function Register() {
                       Registration Form
                     </h1>
                     <hr />
+                    <p className="text-success">
+                      {registrationMgs != null && registrationMgs}
+                    </p>
+
                     <form
                       action=""
                       method="post"
@@ -94,7 +78,10 @@ export default function Register() {
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="firstName"
+                              className="col-sm-3 col-form-label"
+                            >
                               <strong className="text-danger">* </strong>First
                               Name
                             </label>
@@ -102,18 +89,24 @@ export default function Register() {
                               <input
                                 type="text"
                                 onChange={handleOnChange}
-                                value={userInfo.firstName || ""}
                                 name="firstName"
+                                id="firstName"
+                                value={userInfo.firstName || ""}
                                 className="form-control"
                                 placeholder="Enter your First Name"
+                                title="Rahatul"
                                 required
+                                autoComplete="on"
                               />
                             </div>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="lastName"
+                              className="col-sm-3 col-form-label"
+                            >
                               Last Name
                             </label>
                             <div className="col-sm-9">
@@ -121,6 +114,7 @@ export default function Register() {
                                 type="text"
                                 onChange={handleOnChange}
                                 name="lastName"
+                                id="lastName"
                                 value={userInfo.lastName || ""}
                                 className="form-control"
                                 placeholder="Enter your Last Name"
@@ -132,7 +126,10 @@ export default function Register() {
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="email"
+                              className="col-sm-3 col-form-label"
+                            >
                               <strong className="text-danger">* </strong>Email
                             </label>
                             <div className="col-sm-9">
@@ -140,18 +137,23 @@ export default function Register() {
                                 type="email"
                                 onChange={handleOnChange}
                                 name="email"
+                                id="email"
                                 value={userInfo.email || ""}
                                 className="form-control"
                                 placeholder="Enter your Email"
                                 title="example@gmail.com"
                                 required
+                                autoComplete="on"
                               />
                             </div>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="password"
+                              className="col-sm-3 col-form-label"
+                            >
                               <strong className="text-danger">* </strong>
                               Password
                             </label>
@@ -159,6 +161,7 @@ export default function Register() {
                               <input
                                 type="password"
                                 onChange={handleOnChange}
+                                id="password"
                                 name="password"
                                 value={userInfo.password || ""}
                                 className="form-control"
@@ -176,7 +179,10 @@ export default function Register() {
                       <div className="row">
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="phone"
+                              className="col-sm-3 col-form-label"
+                            >
                               <strong className="text-danger">* </strong>Phone
                             </label>
                             <div className="col-sm-9">
@@ -184,11 +190,13 @@ export default function Register() {
                                 type="tel"
                                 onChange={handleOnChange}
                                 name="phone"
+                                id="phone"
                                 value={userInfo.phone || "+8801"}
                                 className="form-control"
                                 pattern="[+8801]{5}[0-9]{9}"
                                 title="+8801000000000"
                                 placeholder="Enter your Mobile Number"
+                                autoComplete="on"
                                 required
                               />
                             </div>
@@ -196,19 +204,24 @@ export default function Register() {
                         </div>
                         <div className="col-md-6">
                           <div className="form-group row">
-                            <label className="col-sm-3 col-form-label">
+                            <label
+                              htmlFor="address"
+                              className="col-sm-3 col-form-label"
+                            >
                               <strong className="text-danger">* </strong>Address
                             </label>
                             <div className="col-sm-9">
-                              <input
+                              <textarea
                                 type="text"
                                 onChange={handleOnChange}
                                 name="address"
+                                id="address"
                                 value={userInfo.address || ""}
                                 placeholder="Write your address"
                                 className="form-control"
+                                autoComplete="off"
                                 required
-                              />
+                              ></textarea>
                             </div>
                           </div>
                         </div>
@@ -228,7 +241,7 @@ export default function Register() {
                             className="btn btn-success"
                             name="submit"
                           >
-                            Submit
+                            {isLoading ? "Proces.." : "Submit"}
                           </button>
                         </div>
                       </div>

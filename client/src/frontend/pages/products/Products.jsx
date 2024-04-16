@@ -6,31 +6,24 @@ import Header from "../../header/Header";
 import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
-import ProductsData from "../../../../../database/products.json";
-import Category from "../../../../../database/category.json";
-import Brands from "../../../../../database/brands.json";
 import Preloader from "../../../preloader/Preloader";
-
-// import "../../../assets/css/style.css";
-
+import useFetchState from "../../../helper/use-fetch/useFetchState";
 
 export default function Products() {
-  const [products, setProducts] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [brands, setBrands] = useState(null);
-  const [isLoading, setIsloading] = useState(true);
+  // Display All Product, Categories and Brands
+  const { data, isLoading, error } = useFetchState("api/products/show-all");
 
-  useEffect(() => {
-    setProducts(ProductsData);
-    setCategory(Category);
-    setBrands(Brands);
-    setIsloading(false);
-  }, []);
+  const products = data != null ? data.payload.products : null;
+  const category = data != null ? data.payload.categories : null;
+  const brands = data != null ? data.payload.brands : null;
+  const paginations = data != null ? data.payload.paginations : null;
 
-  return isLoading ? (
-    <Preloader/>
+  return (products || category || brands) == null ? (
+    error
+  ) : isLoading ? (
+    <Preloader />
   ) : (
     <>
       <DynamicTitle title="Products" />
@@ -60,7 +53,7 @@ export default function Products() {
             </UseContext.Provider>
             {/* <!-- /ASIDE --> */}
             {/* <!-- STORE --> */}
-            <UseContext.Provider value={{ products, category }}>
+            <UseContext.Provider value={{ products, category, paginations }}>
               <Store />
             </UseContext.Provider>
 

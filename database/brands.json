@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "101"
+      "$oid": "6550e770f7a3fa71e2731a81"
     },
     "brandName": "SAMSUNG",
     "brandSlug": "samsung",
@@ -16,7 +16,7 @@
   },
   {
     "_id": {
-      "$oid": "102"
+      "$oid": "6550e9d80bdacfa1138e5f29"
     },
     "brandName": "SONY",
     "brandSlug": "sony",
@@ -31,7 +31,7 @@
   },
   {
     "_id": {
-      "$oid": "103"
+      "$oid": "655308ce7e46d8dcee8941e4"
     },
     "brandName": "LG",
     "brandSlug": "lg",
@@ -46,7 +46,7 @@
   },
   {
     "_id": {
-      "$oid": "104"
+      "$oid": "655308749ff0ebecb793153b"
     },
     "brandName": "HP",
     "brandSlug": "hp",
@@ -61,7 +61,7 @@
   },
   {
     "_id": {
-      "$oid": "105"
+      "$oid": "655307feb4da063b35967ef3"
     },
     "brandName": "APPLE",
     "brandSlug": "apple",
@@ -76,7 +76,7 @@
   },
   {
     "_id": {
-      "$oid": "106"
+      "$oid": "65530738ff3d1fb01a17e34d"
     },
     "brandName": "ASUS",
     "brandSlug": "asus",

@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "brandName": "SAMSUNG",
+  "brandSlug": "samsung",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
+  "brandName": "SONY",
+  "brandSlug": "sony",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655308ce7e46d8dcee8941e4"
+  },
+  "brandName": "LG",
+  "brandSlug": "lg",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655308749ff0ebecb793153b"
+  },
+  "brandName": "HP",
+  "brandSlug": "hp",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655307feb4da063b35967ef3"
+  },
+  "brandName": "APPLE",
+  "brandSlug": "apple",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65530738ff3d1fb01a17e34d"
+  },
+  "brandName": "ASUS",
+  "brandSlug": "asus",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+}]

@@ -2,6 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import RatingStars from "../rating-stars/RatingStars";
 
+
+
+
 export default function Product(props) {
   const {
     productId,
@@ -15,13 +18,19 @@ export default function Product(props) {
     productImage,
   } = props;
 
-  // const addToCart = (e) => {
-  //   e.preventDefault();
-  //   let count = parseInt(localStorage.getItem("cartCount"));
-  //   localStorage.setItem("cartCount", count + 1);
-  //   console.log(count);
-  //   // document.getElementById("cartCount").innerHTML = count + 1;
-  // };
+  const addToCart = (e) => {
+    e.preventDefault();
+    const qnt = 1;
+    const addCartListItem = {
+      productId: productId,
+      productQuantity: qnt,
+    };
+    const cartList = JSON.parse(localStorage.getItem("cartList"));
+    cartList.push(addCartListItem);
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    successMessage("SUCCESSFULLY ADDED");
+   
+  };
   return (
     <>
       {/* <!-- product --> */}
@@ -72,9 +81,10 @@ export default function Product(props) {
           </div>
         </div>
         <div className="add-to-cart">
-          <button className="add-to-cart-btn">
+          <button className="add-to-cart-btn" onClick={addToCart}>
             <i className="fa fa-shopping-cart"></i> add to cart
           </button>
+          
         </div>
       </div>
       {/* <!-- /product --> */}

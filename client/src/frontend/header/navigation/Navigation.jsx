@@ -13,10 +13,10 @@ export default function Navigation(props) {
       <li key={index}>
         <NavLink
           exact="true"
-          to={"/all-category?category=" + navItems[index].catSlug}
+          to={"/all-category?category=" + navItems[index].slug}
           className={(navData) => (navData.isActive ? "active" : "")}
         >
-          {navItems[index].catName}
+          {navItems[index].name}
         </NavLink>
       </li>
     );

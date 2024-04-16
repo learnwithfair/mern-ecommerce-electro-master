@@ -14,6 +14,9 @@ import Register from "../auth/pages/register/Register";
 import Profile from "../auth/pages/profile/Profile";
 import ManageProducts from "../backend/pages/products/manage-products/ManageProducts";
 import PostProducts from "../backend/pages/products/post-products/PostProducts";
+import ForgotPassword from "../auth/pages/forgot-password/ForgotPassword";
+import ResetPassword from "../auth/pages/reset-password/ResetPassword";
+import UserVerify from "../auth/pages/user-verify/UserVerify";
 
 const router = createBrowserRouter([
   {
@@ -73,8 +76,15 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/api/auth/profile",
-        element: <Profile />,
+        path: "/api/auth/verify",
+        element: <UserVerify />,
+      },
+      {
+        path: "/api/auth/forgot-password",
+        element: <ForgotPassword />,
+      }, {
+        path: "/api/auth/reset-password",
+        element: <ResetPassword />,
       },
     ],
   },

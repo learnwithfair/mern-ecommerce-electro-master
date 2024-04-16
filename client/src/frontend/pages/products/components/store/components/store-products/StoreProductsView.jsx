@@ -1,9 +1,8 @@
 import React, { Fragment, useContext } from "react";
-import { UseContext } from "../../../../../../use-context/UseContext";
 import Product from "../../../../../../components/products/Product";
 
-export default function () {
-  const { products, category } = useContext(UseContext);
+export default function (props) {
+  const { products, category } = props;
 
   /*                                                              *\
    If any problem for alignment of items then comment out below code
@@ -37,12 +36,12 @@ export default function () {
       <div className="col-md-4 col-xs-6">
         <Product
           key={index}
-          productId={product._id.$oid}
+          productId={product._id}
           productSlug={product.productSlug}
           productName={product.productName}
           productPrice={product.productPrice}
           productCategory={
-            category.find((cat) => product.catId === cat._id.$oid).catName
+            category.find((cat) => product.catId === cat._id).name
           }
           productPublish={product.productPublish}
           productDiscount={product.productDiscount}

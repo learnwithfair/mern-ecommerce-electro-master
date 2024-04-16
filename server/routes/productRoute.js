@@ -13,6 +13,17 @@ const productRouter = express.Router();
 
 /*
 |--------------------------------------------------------------------------
+|                           Frontend Routes
+|--------------------------------------------------------------------------
+ */
+// For Route localhost:3000/api
+productRouter.route("/products/show-all").get(productController.displayAll); // Show all product, Category & Brands For user
+productRouter.route("/product-images").get(productController.showAllProductImages); // Show all product images
+productRouter.route("/single-product-images/:id([0-9A-Fa-f]{24})").get(productController.showProductImagesByPdctId); // Show all product images by product id
+productRouter.route("/product/show-all").get(productController.showAll); // Show all product
+
+/*
+|--------------------------------------------------------------------------
 |                           Backend Routes
 |--------------------------------------------------------------------------
  */
@@ -32,10 +43,6 @@ const productRouter = express.Router();
 //     product.route("/product/show-all").get(productController.showAll); // Show all product
 //   }
 // );
-productRouter
-  .route("/product/add-to-cart")
-  .post(
-    productController.addToCart
-  );
+productRouter.route("/product/add-to-cart").post(productController.addToCart);
 
 module.exports = { productRouter };

@@ -16,6 +16,10 @@ const categorySchema = new Schema(
       unique: true,
       lowercase: true,
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );

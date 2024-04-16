@@ -5,6 +5,7 @@ const serviceProvider = require("../../providers/responseServiceProvider");
 const {
   jwtLoginKey,
   clientURL,
+  BASE_URL,
   jwtResetPasswordKey,
 } = require("../../../resources/js/secret/secret");
 const { createJsonWebToken } = require("../../helpers/jwtHelper");
@@ -13,6 +14,7 @@ const { update } = require("./userController");
 const findByIdService = require("../../providers/findByIdServiceProvider");
 const emailWithNodeMailer = require("../../helpers/emailHelper");
 const { setLoginToken } = require("../../helpers/cookiesHelper");
+const { deleteImage } = require("../../helpers/imageHelper");
 
 //User Login
 const userLogin = async (req, res, next) => {
@@ -51,7 +53,7 @@ const userLogin = async (req, res, next) => {
     return serviceProvider.successResponse(res, {
       statusCode: 200,
       message: "User Login successfully.",
-      payload: { userWithoutPasssword },
+      payload: { userWithoutPasssword,loginTokenData },
     });
   } catch (error) {
     next(error);
@@ -63,6 +65,7 @@ const userLogout = async (req, res, next) => {
   try {
     // Remove cookies
     res.clearCookie("loginToken");
+
     return serviceProvider.successResponse(res, {
       statusCode: 200,
       message: "User Logged out successfully.",
@@ -75,15 +78,16 @@ const userLogout = async (req, res, next) => {
 // Change Password
 const updatePassword = async (req, res, next) => {
   try {
-    const { oldPassword, confirmPassword } = req.body;
-    const updateId = req.body.userId;
+    const { oldPassword, newPassword } = req.body;
+    const updateId = "65be65b8cc394c72ba931ea2";
+    // const updateId = req.body.userId;
 
     const user = await findByIdService(User, updateId, { password: 1, _id: 0 });
     const isPassordMatch = await bcrypt.compare(oldPassword, user.password);
     if (!isPassordMatch) {
       throw createError(401, "Old Password did not match");
     }
-    const updates = { password: confirmPassword };
+    const updates = { password: newPassword };
     const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
     const updatedUser = await User.findByIdAndUpdate(
       updateId,
@@ -126,12 +130,12 @@ const forgotPassword = async (req, res, next) => {
       subject: "Forgot Your account's Password Email",
       html: `
       <h2>Hello! ${user.name}</h2>
-      <p>Please click here to <a href="${clientURL}/api/auth/reset-password/${token}" target="_blank"> <button style="color:green;">Change Password</button></a></p>
+      <p>Please click here to <a href="${BASE_URL}/api/auth/reset-password?token=${token}" target="_blank"> <button style="color:green;">Change Password</button></a></p>
       `,
     };
     // send wmail with nodemailer
     try {
-      await emailWithNodeMailer(ForgotEmailData);
+      // await emailWithNodeMailer(ForgotEmailData);
     } catch (Emailerror) {
       next(createError(500, "Failed to send verification email"));
       return;
@@ -139,7 +143,7 @@ const forgotPassword = async (req, res, next) => {
 
     return serviceProvider.successResponse(res, {
       statusCode: 200,
-      message: `Please go to your ${email} for Change your Account Password`,
+      message: `Please check your Gmail ID: ${email} for Change your Account Password`,
       payload: { token },
     });
   } catch (error) {
@@ -194,10 +198,92 @@ const resetPassword = async (req, res, next) => {
   }
 };
 
+// Get user by ID
+const profile = async (req, res, next) => {
+  try {
+    const id = "65be65b8cc394c72ba931ea2";
+    // const id = req.body.userId;
+    // console.log(id);
+    const options = { password: 0 };
+    const user = await findByIdService(User, id, options);
+
+    return serviceProvider.successResponse(res, {
+      statusCode: 200,
+      message: "User List: ",
+      payload: { user },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Update Profile Info
+const updateProfileInfo = async (req, res, next) => {
+  try {
+    // const updateId = req.params.id;
+
+    const updateId = "65be65b8cc394c72ba931ea2";
+    // const id = req.body.userId;
+    const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
+    let updates = {};
+    for (let key in req.body) {
+      // if (["name", "city", "zip"].includes(key)) {
+      if (["name"].includes(key)) {
+        updates[key] = req.body[key];
+      } else if (["phone", "address"].includes(key)) {
+        updates[key] = req.body[key];
+      } else if (["password"].includes(key)) {
+        updates[key] = req.body[key];
+      }
+    }
+    const updatedUser = await User.findByIdAndUpdate(
+      updateId,
+      updates,
+      updateOptions
+    ).select("-password");
+    if (!updatedUser) {
+      throw new Error("User not Found");
+    }
+
+    return serviceProvider.successResponse(res, {
+      statusCode: 200,
+      message: "Updated User: ",
+      payload: { updatedUser },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+// Delete user Account
+const deleteUserAccount = async (req, res, next) => {
+  try {
+    const id = "65bf226d62a1868b1aa05410";
+    // const id = req.body.userId;
+    const user = await findByIdService(User, id);
+    const userImagePath = "public/images/users/" + user.image;
+    deleteImage(userImagePath);
+    await User.findByIdAndDelete({
+      _id: id,
+      // $and:[{_id:id},{isAdmin:false}]
+    });
+
+    return serviceProvider.successResponse(res, {
+      statusCode: 200,
+      message: "User Deleted successfully ",
+    });
+    // next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   userLogin,
   userLogout,
   updatePassword,
   forgotPassword,
   resetPassword,
+  profile,
+  updateProfileInfo,
+  deleteUserAccount,
 };

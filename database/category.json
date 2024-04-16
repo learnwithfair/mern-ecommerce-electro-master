@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "101"
+      "$oid": "6550e770f7a3fa71e2731a81"
     },
-    "catName": "Laptops",
-    "catSlug": "laptops",
+    "name": "Laptops",
+    "slug": "laptops",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -16,10 +16,10 @@
   },
   {
     "_id": {
-      "$oid": "102"
+      "$oid": "6550e9d80bdacfa1138e5f29"
     },
-    "catName": "Smart Phone",
-    "catSlug": "smart-phone",
+    "name": "Smart Phone",
+    "slug": "smart-phone",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -31,10 +31,10 @@
   },
   {
     "_id": {
-      "$oid": "103"
+      "$oid": "6550e770f7a3fa71e2731a81"
     },
-    "catName": "Cameras",
-    "catSlug": "cameras",
+    "name": "Cameras",
+    "slug": "cameras",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -46,10 +46,10 @@
   },
   {
     "_id": {
-      "$oid": "104"
+      "$oid": "6550e770f7a3fa71e2731a81"
     },
-    "catName": "Accessories",
-    "catSlug": "accessories",
+    "name": "Accessories",
+    "slug": "accessories",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -61,10 +61,10 @@
   },
   {
     "_id": {
-      "$oid": "105"
+      "$oid": "6550e770f7a3fa71e2731a81"
     },
-    "catName": "Desktop",
-    "catSlug": "desktop",
+    "name": "Desktop",
+    "slug": "desktop",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"
@@ -78,8 +78,8 @@
     "_id": {
       "$oid": "106"
     },
-    "catName": "Button Phone",
-    "catSlug": "button-phone",
+    "name": "Button Phone",
+    "slug": "button-phone",
     "isActive": true,
     "createdAt": {
       "$date": "2023-11-12T14:55:44.572Z"

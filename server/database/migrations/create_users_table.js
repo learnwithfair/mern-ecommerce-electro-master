@@ -40,6 +40,14 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Phone Number is required"],
     },
+    city: {
+      type: String,
+      default: "",
+    },
+    zipCode: {
+      type: Number,
+      default: null,
+    },
     isAdmin: {
       type: Boolean,
       default: false,

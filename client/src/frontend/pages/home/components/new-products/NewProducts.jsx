@@ -12,7 +12,7 @@ export default function NewProducts(props) {
       productName={product.productName}
       productPrice={product.productPrice}
       productCategory={
-        category.find((cat) => product.catId === cat._id.$oid).catName
+        category.find((cat) => product.catId === cat._id.$oid).name
       }
       productPublish={product.productPublish}
       productDiscount={product.productDiscount}

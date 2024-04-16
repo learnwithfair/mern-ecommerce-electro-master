@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function TopHeader() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
       <div id="top-header">
@@ -29,9 +31,15 @@ export default function TopHeader() {
               </a>
             </li>
             <li>
-              <a href="#">
-                <i className="fa fa-user-o"></i> My Account
-              </a>
+              {isLoggedIn ? (
+                <NavLink exact="true" to="/profile">
+                  <i className="fa fa-user-o"></i> Profile
+                </NavLink>
+              ) : (
+                <a href="/api/auth/login">
+                  <i className="fa fa-sign-in"></i> Login
+                </a>
+              )}
             </li>
           </ul>
         </div>

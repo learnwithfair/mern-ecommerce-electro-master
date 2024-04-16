@@ -14,7 +14,7 @@ const authRouter = express.Router();
 |--------------------------------------------------------------------------
  */
 
-// For Route /api/auth-> [Login, Logout, Change Password, Forgot Password, Reset Password]
+// For Route /api/auth-> [Login, Logout, Change Password, Forgot Password, Reset Password,Profile]
 authRouter.post(
   "/login",
   limiter,
@@ -22,10 +22,14 @@ authRouter.post(
   userValidate.loginValidation,
   authController.userLogin
 );
-authRouter.get("/logout", isLoggedIn, authController.userLogout);
+authRouter.get(
+  "/logout",
+  // isLoggedIn,
+  authController.userLogout
+);
 authRouter.put(
   "/change-password",
-  isLoggedIn,
+  // isLoggedIn,
   userValidate.updatePassowrdValidation,
   authController.updatePassword
 );
@@ -42,6 +46,28 @@ authRouter.put(
   userValidate.resetPassowrdValidation,
   authController.resetPassword,
   authController.userLogin
+);
+authRouter.get(
+  "/profile",
+  // isLoggedIn,
+  authController.profile
+);
+authRouter.put(
+  "/update-profile-contact-info",
+  // isLoggedIn,
+  userValidate.contactInfoProfileValidation,
+  authController.updateProfileInfo
+);
+authRouter.put(
+  "/update-profile-personal-info",
+  // isLoggedIn,
+  userValidate.personalInfoProfileValidation,
+  authController.updateProfileInfo
+);
+authRouter.delete(
+  "/delete-user-account",
+  // isLoggedIn,
+  authController.deleteUserAccount
 );
 
 module.exports = { authRouter };

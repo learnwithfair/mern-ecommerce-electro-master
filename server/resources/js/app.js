@@ -14,6 +14,9 @@ const { setRefreshToken } = require("../../app/helpers/cookiesHelper");
 const { categoryRouter } = require("../../routes/categoryRoute");
 const { productRouter } = require("../../routes/productRoute");
 const { paymentRouter } = require("../../routes/paymentRoute");
+const { brandRouter } = require("../../routes/brandRoute");
+const { logoRouter } = require("../../routes/logoRoute");
+const { reviewRouter } = require("../../routes/reviewRoute");
 
 const app = express();
 /*
@@ -28,8 +31,9 @@ app.use(bodyParser.json()); // For Set, Read data into body and display JSON For
 app.use(bodyParser.urlencoded({ extended: true })); // Get HTML Form Data
 app.use(setRefreshToken); // For set Refresh Token [Automatically call this middlewire for all route]
 
+app.use(cors()); // To get access Client side url
+app.use(express.static("public")); // To Display Server site image
 
-app.use(cors()) // To get access Client side url
 /*
 |--------------------------------------------------------------------------
 |                            Routes List (Backend)
@@ -38,8 +42,11 @@ app.use(cors()) // To get access Client side url
 app.use("/api", userRouter);
 app.use("/", seedRouter);
 app.use("/api/auth", authRouter);
-// app.use("/api", categoryRouter);
-// app.use("/api", productRouter);
+app.use("/api", categoryRouter);
+app.use("/api/brand", brandRouter);
+app.use("/api/logo", logoRouter);
+app.use("/api/review", reviewRouter);
+app.use("/api", productRouter);
 app.use("/payment", paymentRouter);
 
 

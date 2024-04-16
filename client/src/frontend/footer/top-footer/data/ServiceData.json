@@ -1,7 +1,7 @@
 [
   {
-    "name": "My Account",
-    "link": "#"
+    "name": "Profile",
+    "link": "/profile"
   },
   {
     "name": "View Cart",

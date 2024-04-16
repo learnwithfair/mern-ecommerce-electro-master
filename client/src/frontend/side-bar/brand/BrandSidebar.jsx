@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
 export default function BrandSidebar() {
   const { products, brands } = useContext(UseContext);
@@ -12,7 +12,7 @@ export default function BrandSidebar() {
         {item.brandName}
         <small>
           {"  (" +
-            products.filter((prdts) => item._id.$oid === prdts.brandId).length +
+            products.filter((prdts) => item._id === prdts.brandId).length +
             ")"}
         </small>
       </label>

@@ -7,12 +7,12 @@ export default function RelatedProduct(props) {
   const relatedProducts = products.map((product, index) => (
     <Product
       key={index}
-      productId={product._id.$oid}
+      productId={product._id}
       productSlug={product.productSlug}
       productName={product.productName}
       productPrice={product.productPrice}
       productCategory={
-        categories.find((cat) => product.catId === cat._id.$oid).catName
+        categories.find((cat) => product.catId === cat._id).name
       }
       productPublish={product.productPublish}
       productDiscount={product.productDiscount}

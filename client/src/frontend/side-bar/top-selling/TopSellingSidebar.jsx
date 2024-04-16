@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 import ProductWidget from "../../components/product-widget/ProductWidget";
 
 export default function TopSellingSidebar() {
@@ -8,11 +8,11 @@ export default function TopSellingSidebar() {
   const productWidgets = products.map((product, index) => (
     <ProductWidget
       key={index}
-      productId={product._id.$oid}
+      productId={product._id}
       productSlug={product.productSlug}
       productName={product.productName}
       productCategory={
-        category.find((cat) => product.catId === cat._id.$oid).catName
+        category.find((cat) => product.catId === cat._id).name
       }
       productPrice={product.productPrice}
       productDiscount={product.productDiscount}

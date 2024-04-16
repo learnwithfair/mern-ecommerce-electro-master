@@ -7,8 +7,9 @@ import Navigation from "./navigation/Navigation";
 
 import Logo from "../../../../database/logo.json";
 import Category from "../../../../database/category.json";
-import { UseContext } from "../use-context/UseContext";
+
 import { NavLink } from "react-router-dom";
+import { UseContext } from "../../helper/use-context/UseContext";
 
 export default function Header() {
   const [logo, setLogo] = useState(null);

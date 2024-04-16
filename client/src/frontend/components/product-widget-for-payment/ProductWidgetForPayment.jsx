@@ -10,11 +10,31 @@ export default function ProductWidgetForPayment(props) {
     productPrice,
     productImage,
   } = props;
+
+  // Remove To Cart Item
+  const removeItemToCart = (e) => {
+    e.preventDefault();
+    const cartList = JSON.parse(localStorage.getItem("cartList"));
+    const cartItems = cartList.filter((item, i) => item.productId != productId);    
+    localStorage.setItem("cartList", JSON.stringify(cartItems));
+    successMessage("SUCCESSFULLY REMOVED");
+  };
+
+  // Get Current Path
+  var current = location.pathname
+    .split("/")
+    .slice(-2)[0]
+    .replace(/^\/|\/$/g, "");
+
   return (
     <>
       <div className="product-widget">
         <div className="product-img">
-          <img src={productImage} alt=""></img>
+          {current != "single-product" ? (
+            <img src={productImage} alt=""></img>
+          ) : (
+            <img src={"../" + productImage} alt=""></img>
+          )}
         </div>
         <div className="product-body">
           <h3 className="product-name">
@@ -26,7 +46,8 @@ export default function ProductWidgetForPayment(props) {
             <span className="qty">{productQuantity}x </span>${productPrice}.00
           </h4>
         </div>
-        <button className="delete">
+
+        <button className="delete" onClick={removeItemToCart}>
           <i className="fa fa-close"></i>
         </button>
       </div>

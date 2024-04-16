@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
 export default function SearchBar() {
   const { category } = useContext(UseContext);
@@ -14,7 +14,7 @@ export default function SearchBar() {
               {category &&
                 category.map((item, i) => (
                   <option key={i} value={item._id.$oid}>
-                    {item.catName}
+                    {item.name}
                   </option>
                 ))}
             </select>

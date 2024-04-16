@@ -9,7 +9,7 @@ import TopSelling from "./components/top-selling/TopSelling";
 import TopSellingList from "./components/top-selling-list/TopSellingList";
 import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
-import { UseContext } from "../../use-context/UseContext";
+import { UseContext } from "../../../helper/use-context/UseContext";
 
 import Products from "../../../../../database/products.json";
 import Category from "../../../../../database/category.json";

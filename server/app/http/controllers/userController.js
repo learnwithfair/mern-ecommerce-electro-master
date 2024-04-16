@@ -8,6 +8,7 @@ const { deleteImage } = require("../../helpers/imageHelper");
 const {
   jwtActivationKey,
   clientURL,
+  BASE_URL,
 } = require("../../../resources/js/secret/secret");
 const { createJsonWebToken } = require("../../helpers/jwtHelper");
 const emailWithNodeMailer = require("../../helpers/emailHelper");
@@ -17,7 +18,6 @@ const processRegister = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password, phone, address } = req.body;
     const name = firstName + " " + lastName;
-    console.log(name);
     const userExists = await User.exists({ email: email });
     if (userExists) {
       throw createError(
@@ -34,7 +34,7 @@ const processRegister = async (req, res, next) => {
       subject: "Account Activation Email",
       html: `
       <h2>Hello ${name} !</h2>
-      <p>Please click here to <a href="${clientURL}/api/users/verify/${token}" target="_blank"> <button style="color:green;">Activate your accout</button></a></p>
+      <p>Please click here to <a href="${BASE_URL}/api/auth/verify?token=${token}" target="_blank"> <button style="color:green;">Activate your accout</button></a></p>
       `,
     };
     // send wmail with nodemailer
@@ -109,12 +109,13 @@ const showAll = async (req, res, next) => {
         { phone: { $regex: searchRegExp } },
       ],
     };
+    const count = await User.find(fillter).countDocuments();
+    const skip = ((page - 1) * limit) >= count ? 0 : (page - 1) * limit;
     const options = { password: 0 };
     const users = await User.find(fillter, options)
       .limit(limit)
-      .skip((page - 1) * limit);
+      .skip(skip);
 
-    const count = await User.find(fillter).countDocuments();
 
     if (!users || users.length == 0) {
       throw createError(404, "No users Found");
@@ -161,7 +162,11 @@ const update = async (req, res, next) => {
     const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
     let updates = {};
     for (let key in req.body) {
-      if (["name", "password", "phone", "address"].includes(key)) {
+      if (["name", "country", "city"].includes(key)) {
+        updates[key] = req.body[key];
+      } else if (["phone", "address"].includes(key)) {
+        updates[key] = req.body[key];
+      } else if (["password"].includes(key)) {
         updates[key] = req.body[key];
       }
     }

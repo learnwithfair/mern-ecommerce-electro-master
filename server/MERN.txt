@@ -167,3 +167,24 @@ userRouter.prefix("/admin/users", [isLoggedIn, isAdmin], async (user) => {
 
 For slug install package as ->[npm i slugify] Result as Smart Phone = Smart-phone
 
+
+
+================================== Working Package ==================================
+
+1. To set access for client side URL
+const cors = require("cors"); 
+app.use(cors()); // To get access Client side url
+
+2. To set access for client side Image/FIle
+app.use(express.static("public")); // To Display Server site image
+
+================================== Neccesary Code ==================================
+
+1. Get URL params  (url-> localhost:3000/product?page=3)
+ new URLSearchParams(window.location.search).get("page") || 1;
+ or
+ 2. Get URL params  (url-> localhost:3000/product/:page)
+	const params = useParams();
+	params.page;
+
+ 
