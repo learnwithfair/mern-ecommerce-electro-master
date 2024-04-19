@@ -5,17 +5,34 @@ import SideBar from "../../side-bar/SideBar";
 import Header from "../../header/Header";
 import Content from "./components/content";
 import Footer from "../../footer/Footer";
+import { UseContext } from "../../../helper/use-context/UseContext";
+import Preloader from "../../../preloader/Preloader";
+import useFetchState from "../../../helper/use-fetch/useFetchState";
 
 export default function Dashboard() {
-  return (
+  const { data, isLoading, error } = useFetchState(
+    "api/auth/admin/profile-logo"
+  );
+
+  const user = data != null ? data.payload.user : null;
+  const logos = data != null ? data.payload.logos : null;
+  return isLoading ? (
+    <Preloader />
+  ) : user == null || user.isAdmin == false ? (
+    error || "No Accesible"
+  ) : (
     <>
       <DynamicTitle title={"Dashboard"} />
       <div className="container-scroller">
         {/* <Banner /> */}
-        <SideBar />
+        <UseContext.Provider value={{ user, logos }}>
+          <SideBar />
+        </UseContext.Provider>
         {/* <!-- partial --> */}
         <div className="container-fluid page-body-wrapper">
-          <Header />
+          <UseContext.Provider value={{ user, logos }}>
+            <Header />
+          </UseContext.Provider>
           {/* |||||||||| */}
           {/* <!-- partial --> */}
           <div className="main-panel">

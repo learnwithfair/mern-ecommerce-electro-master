@@ -66,7 +66,7 @@ export default function Post() {
                   method="POST"
                   id="post-product"
                   className="form-sample"
-                  enctype="multipart/form-data"
+                  encType="multipart/form-data"
                 >
                   <p className="card-description"> Product info </p>
                   <div className="row">

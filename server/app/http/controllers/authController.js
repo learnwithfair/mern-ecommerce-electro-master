@@ -15,6 +15,7 @@ const findByIdService = require("../../providers/findByIdServiceProvider");
 const emailWithNodeMailer = require("../../helpers/emailHelper");
 const { setLoginToken } = require("../../helpers/cookiesHelper");
 const { deleteImage } = require("../../helpers/imageHelper");
+const Logo = require("../../models/logoModel");
 
 //User Login
 const userLogin = async (req, res, next) => {
@@ -53,7 +54,7 @@ const userLogin = async (req, res, next) => {
     return serviceProvider.successResponse(res, {
       statusCode: 200,
       message: "User Login successfully.",
-      payload: { userWithoutPasssword,loginTokenData },
+      payload: { userWithoutPasssword, loginTokenData },
     });
   } catch (error) {
     next(error);
@@ -216,6 +217,29 @@ const profile = async (req, res, next) => {
     next(error);
   }
 };
+// Get user by ID
+const profileAndLogoDisplay = async (req, res, next) => {
+  try {
+    const id = "65be65b8cc394c72ba931ea2";
+    // const id = req.body.userId;
+    // console.log(id);
+    const options = { name: 1, image: 1, isAdmin: 1, _id: 0 };
+    const user = await findByIdService(User, id, options);
+
+    const logos = await Logo.find({ isActive: true }, { logo: 1, location: 1 });
+    if (!logos || logos.length == 0) {
+      throw createError(404, "Logo Not Found");
+    }
+
+    return serviceProvider.successResponse(res, {
+      statusCode: 200,
+      message: "User and Logos: ",
+      payload: { user, logos },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // Update Profile Info
 const updateProfileInfo = async (req, res, next) => {
@@ -284,6 +308,7 @@ module.exports = {
   forgotPassword,
   resetPassword,
   profile,
+  profileAndLogoDisplay,
   updateProfileInfo,
   deleteUserAccount,
 };

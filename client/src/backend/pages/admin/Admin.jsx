@@ -9,24 +9,27 @@ import Preloader from "../../../preloader/Preloader";
 import { UseContext } from "../../../helper/use-context/UseContext";
 
 export default function Admin() {
-  const { data, isLoading, error } = useFetchState("api/auth/profile");
+  const { data, isLoading, error } = useFetchState(
+    "api/auth/admin/profile-logo"
+  );
 
   const user = data != null ? data.payload.user : null;
-  return user == null || user.isAdmin == false || user.isBanned == true ? (
-    error || "No Accesible"
-  ) : isLoading ? (
+  const logos = data != null ? data.payload.logos : null;
+  return isLoading ? (
     <Preloader />
+  ) : user == null || user.isAdmin == false ? (
+    error || "No Accesible"
   ) : (
     <>
       <DynamicTitle title={"Manage-Products"} />
       <div className="container-scroller">
-        <UseContext.Provider value={{ user }}>
+        <UseContext.Provider value={{ user, logos }}>
           <SideBar />
         </UseContext.Provider>
 
         {/* <!-- partial --> */}
         <div className="container-fluid page-body-wrapper">
-          <UseContext.Provider value={{ user }}>
+          <UseContext.Provider value={{ user, logos }}>
             <Header />
           </UseContext.Provider>
 

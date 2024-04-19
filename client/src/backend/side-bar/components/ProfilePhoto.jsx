@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { UseContext } from "../../../helper/use-context/UseContext";
 import CLIENT_URL from "../../../config/Config";
-import { NavLink } from "react-router-dom";
 
 export default function ProfilePhoto() {
   const { user } = useContext(UseContext);

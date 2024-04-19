@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Search from "./search/Search";
 import $ from "jquery";
-import useFetchState from "../../helper/use-fetch/useFetchState";
 import CLIENT_URL from "../../config/Config";
 import { NavLink } from "react-router-dom";
 import useFetch from "../../helper/use-fetch/useFetch";
+import { UseContext } from "../../helper/use-context/UseContext";
+import minilogo from "../assets/images/logo-mini.svg";
 
 export default function Header() {
   const [isMinimize, setIsMinize] = useState(false);
   const [isOfCanvas, setIsOfCanvas] = useState(false);
+  const { user, logos } = useContext(UseContext);
 
-  const { data, isLoading, error } = useFetchState("api/auth/profile");
-
-  const user = data != null ? data.payload.user : null;
+  const logo = logos.find((lg) => "F-Header" === lg.location);
 
   const minimize = () => {
     var body = $("body");
@@ -52,7 +52,7 @@ export default function Header() {
         <nav className="navbar p-0 fixed-top d-flex flex-row">
           <div className="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
             <a className="navbar-brand brand-logo-mini" href="index.html">
-              <img src="src/backend/assets/images/logo-mini.svg" alt="logo" />
+              <img src={minilogo} alt="logo" />
             </a>
           </div>
           <div className="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -227,8 +227,7 @@ export default function Header() {
                     <div className="preview-item-content">
                       <p className="preview-subject mb-1">Event today</p>
                       <p className="text-muted ellipsis mb-0">
-                        {" "}
-                        Just a reminder that you have an event today{" "}
+                        Just a reminder that you have an event today
                       </p>
                     </div>
                   </a>

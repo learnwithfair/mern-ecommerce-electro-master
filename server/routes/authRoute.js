@@ -52,6 +52,13 @@ authRouter.get(
   // isLoggedIn,
   authController.profile
 );
+
+// For Admin Panel
+authRouter.get(
+  "/admin/profile-logo",
+  // isLoggedIn,
+  authController.profileAndLogoDisplay
+);
 authRouter.put(
   "/update-profile-contact-info",
   // isLoggedIn,
