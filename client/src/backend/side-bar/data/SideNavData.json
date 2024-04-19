@@ -7,13 +7,13 @@
   },
   {
     "name": "Admin",
-    "icon": "mdi mdi-user",
+    "icon": "mdi mdi-account-circle",
     "link": "/api/admin/admin-list",
     "sublink": []
   },
   {
     "name": "Logo",
-    "icon": "mdi mdi-icon",
+    "icon": "mdi mdi-brightness-7",
     "link": "/api/admin/logo",
     "sublink": []
   },

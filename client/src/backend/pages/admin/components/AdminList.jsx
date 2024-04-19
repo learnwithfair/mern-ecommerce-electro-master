@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useFetchState from "../../../../helper/use-fetch/useFetchState";
-import Preloader from "../../../../preloader/Preloader";
 import CLIENT_URL from "../../../../config/Config";
+import useFetch from "../../../../helper/use-fetch/useFetch";
+import $ from "jquery";
 
 export default function AdminList() {
   const { data, isLoading, error } = useFetchState("api/admin/users/show-all");
+  let userList = data != null ? data.payload.users : null;
 
-  const info = data != null ? data.payload.users : null;
+  // handle isAdmin and isBanned
+  const handleUpdate = async (event, id, data) => {
+    const name = event.target.name;
+    const value = !data;
+    const info = JSON.parse(
+      await useFetch("api/admin/users/update/" + id, { [name]: value }, "put")
+    );
+    if (info.data != null) {
+      info.data.success
+        ? successMessage("Successfully Updated")
+        : errorMessage();
+    }
+    // Set State value after click submit button
+    // userList = info.data != null ? info.data.payload.users : null;
+  };
 
-  return info == null ? (
+  // initialize datatable // Another files initialize in the main.jsx file
+  $(document).ready(function () {
+    $("#dataTable").DataTable();
+  });
+
+  return userList == null ? (
     error
-  ) : isLoading ? (
-    <Preloader />
   ) : (
     <>
       <div className="content-wrapper">
@@ -37,23 +56,28 @@ export default function AdminList() {
               <div className="card-body">
                 <h4 className="card-title">Admins & Users List</h4>
                 <div className="table-responsive">
-                  <table className="table table-hover">
+                  <table
+                    className="table table-hover"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
                     <thead>
                       <tr>
-                        <th>S/L</th>
-                        <th> Image </th>
-                        <th> Name </th>
-                        <th> Email / Phone </th>
+                        <th scope="col">S/L</th>
+                        <th scope="col"> Image </th>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Email / Phone </th>
 
-                        <th> Adress </th>
-                        <th> Joining </th>
-                        <th> Admin </th>
+                        <th scope="col"> Adress </th>
+                        <th scope="col"> Joining </th>
+                        <th scope="col"> Admin </th>
 
-                        <th> Band </th>
+                        <th scope="col"> Banned </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {info.map((user, i) => (
+                      {userList.map((user, i) => (
                         <tr key={i}>
                           <td>{i + 1}</td>
                           <td>
@@ -91,7 +115,11 @@ export default function AdminList() {
                             <label className="switch">
                               <input
                                 type="checkbox"
+                                name="isAdmin"
                                 defaultChecked={user.isAdmin && true}
+                                onClick={(event) =>
+                                  handleUpdate(event, user._id, user.isAdmin)
+                                }
                               />
                               <span className="slider round"></span>
                             </label>
@@ -101,7 +129,11 @@ export default function AdminList() {
                             <label className="switch">
                               <input
                                 type="checkbox"
+                                name="isBanned"
                                 defaultChecked={user.isBanned && true}
+                                onClick={(event) =>
+                                  handleUpdate(event, user._id, user.isBanned)
+                                }
                               />
                               <span className="slider round"></span>
                             </label>

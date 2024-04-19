@@ -137,11 +137,7 @@ const update = async (req, res, next) => {
     const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
     let updates = {};
     for (let key in req.body) {
-      if (["name", "country", "city"].includes(key)) {
-        updates[key] = req.body[key];
-      } else if (["phone", "address"].includes(key)) {
-        updates[key] = req.body[key];
-      } else if (["password"].includes(key)) {
+      if (["isAdmin"].includes(key) || ["isBanned"].includes(key)) {
         updates[key] = req.body[key];
       }
     }
@@ -149,7 +145,7 @@ const update = async (req, res, next) => {
       updateId,
       updates,
       updateOptions
-    ).select("-password");
+    ).select("-password").sort({ isAdmin: -1 });
     if (!updatedUser) {
       throw new Error("User not Found");
     }

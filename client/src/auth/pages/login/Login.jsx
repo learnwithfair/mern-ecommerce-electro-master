@@ -22,7 +22,7 @@ export default function Login() {
 
       // Set State value after click submit button
       if (info.data != null) {
-        console.log(info.data);
+        
         setLoginInfo({});
         setUserData(info.data.payload.userWithoutPasssword);
       } else {

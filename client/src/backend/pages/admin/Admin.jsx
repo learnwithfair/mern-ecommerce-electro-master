@@ -8,6 +8,7 @@ import useFetchState from "../../../helper/use-fetch/useFetchState";
 import Preloader from "../../../preloader/Preloader";
 import { UseContext } from "../../../helper/use-context/UseContext";
 
+
 export default function Admin() {
   const { data, isLoading, error } = useFetchState(
     "api/auth/admin/profile-logo"
@@ -21,7 +22,7 @@ export default function Admin() {
     error || "No Accesible"
   ) : (
     <>
-      <DynamicTitle title={"Manage-Products"} />
+      <DynamicTitle title={"Manage-Users"} />
       <div className="container-scroller">
         <UseContext.Provider value={{ user, logos }}>
           <SideBar />
@@ -37,6 +38,7 @@ export default function Admin() {
           {/* <!-- partial --> */}
           <div className="main-panel">
             <AdminList />
+            {/* <MyDataTable /> */}
 
             {/* <!-- content-wrapper ends --> */}
             {/* <!-- partial:partials/_footer.html --> */}

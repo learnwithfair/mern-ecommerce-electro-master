@@ -68,5 +68,9 @@ express.application.prefix = express.Router.prefix = function (
 //     .put(userValidate.formValidation, userController.update); // User Update by ID
 // });
 userRouter.route("/admin/users/show-all").get(userController.showAll); // Show all users
-
+userRouter.put(
+  "/admin/users/update/:id",
+  // isLoggedIn,  
+  userController.update
+);
 module.exports = { userRouter };

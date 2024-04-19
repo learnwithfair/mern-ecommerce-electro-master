@@ -122,9 +122,8 @@ textarea:focus {
   font-size: 24px;
 }
 
-
 /* Preview Product Images  */
-.image-container{
+.image-container {
   width: 100%;
   height: auto;
   display: flex;
@@ -133,13 +132,12 @@ textarea:focus {
   max-height: 195px;
   overflow-y: auto;
   margin-top: 3px;
- outline: 1px solid #396a40;
- padding: 10px;
- border-radius: 20px;
+  outline: 1px solid #396a40;
+  padding: 10px;
+  border-radius: 20px;
 }
 
-
-.image-container .image{
+.image-container .image {
   width: 100px;
   margin: 0px 5px;
   height: 90px;
@@ -147,13 +145,12 @@ textarea:focus {
   margin-bottom: 8px;
 }
 
-.image-container .image img{
+.image-container .image img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  
 }
-.image-container .image span{
+.image-container .image span {
   position: absolute;
   top: -3px;
   right: 9px;
@@ -163,3 +160,14 @@ textarea:focus {
   font-weight: bolder;
 }
 /* Preview Product Images  */
+
+/* For JQuery Data Table Show item background */
+div.dt-container .dt-input {
+  background-color: #191c24 !important;
+  color: inherit;
+}
+div.dt-container .dt-paging .dt-paging-button.disabled,
+div.dt-container .dt-paging .dt-paging-button.disabled:hover,
+div.dt-container .dt-paging .dt-paging-button.disabled:active {
+  color: white !important;
+}
