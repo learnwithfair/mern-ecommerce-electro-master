@@ -93,30 +93,10 @@ const activateUserAccount = async (req, res, next) => {
   }
 };
 
-//show
+//show all Admin & Users
 const showAll = async (req, res, next) => {
   try {
-    const search = req.query.search || "";
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 2;
-
-    const searchRegExp = new RegExp(".*" + search + ".*", "i");
-    const fillter = {
-      isAdmin: { $ne: true },
-      $or: [
-        { name: { $regex: searchRegExp } },
-        { email: { $regex: searchRegExp } },
-        { phone: { $regex: searchRegExp } },
-      ],
-    };
-    const count = await User.find(fillter).countDocuments();
-    const skip = ((page - 1) * limit) >= count ? 0 : (page - 1) * limit;
-    const options = { password: 0 };
-    const users = await User.find(fillter, options)
-      .limit(limit)
-      .skip(skip);
-
-
+    const users = await User.find({}, { password: 0 }).sort({ isAdmin: -1 });
     if (!users || users.length == 0) {
       throw createError(404, "No users Found");
     }
@@ -125,12 +105,7 @@ const showAll = async (req, res, next) => {
       message: "User List: ",
       payload: {
         users,
-        pagination: {
-          totalPages: Math.ceil(count / limit),
-          currentPage: page,
-          previousPage: page - 1 > 0 ? page - 1 : null,
-          nextPage: page + 1 <= Math.ceil(count / limit) ? page + 1 : null,
-        },
+
       },
     });
   } catch (error) {

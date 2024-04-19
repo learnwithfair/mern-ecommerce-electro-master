@@ -4,26 +4,36 @@ import TopHeader from "./top-header/TopHeader";
 import SearchBar from "./search-bar/SearchBar";
 import Account from "./account/Account";
 import Navigation from "./navigation/Navigation";
-
-import Logo from "../../../../database/logo.json";
-import Category from "../../../../database/category.json";
-
 import { NavLink } from "react-router-dom";
+import useFetchState from "../../helper/use-fetch/useFetchState";
+import Preloader from "../../preloader/Preloader";
+import useFetch from "../../helper/use-fetch/useFetch";
 import { UseContext } from "../../helper/use-context/UseContext";
+import CLIENT_URL from "../../config/Config";
 
 export default function Header() {
   const [logo, setLogo] = useState(null);
-  const [category, setCategory] = useState(null);
-  useEffect(() => {
-    setLogo(
-      Logo.find((lg) => lg.location === "F-Header" && lg.isActive === true).logo
-    );
-  }, []);
+  const { data, isLoading, error } = useFetchState("api/category/show-all");
+  const category = data != null ? data.payload.categories : null;
+
+  // const { data, isLoading, error } = useFetchState("api/logo/show-header-logo");
+  // const logo = data != null ? data.payload.logo : null;
 
   useEffect(() => {
-    setCategory(Category);
+    setTimeout(async () => {
+      const info = JSON.parse(
+        await useFetch("api/logo/show-header-logo", {}, "get")
+      );
+
+      setLogo(() => (info.data != null ? info.data.payload.logo : null));
+    }, 1);
   }, []);
-  return (
+
+  return logo == null ? (
+    error
+  ) : isLoading ? (
+    <Preloader />
+  ) : (
     <>
       {/* <!-- HEADER --> */}
       <header>
@@ -41,14 +51,13 @@ export default function Header() {
               <div className="col-md-3">
                 <div className="header-logo">
                   <NavLink exact="true" to="/" className="logo">
-                    <img src={logo} alt=""></img>
+                    <img src={CLIENT_URL+"images/logos/"+logo.logo} alt="Header-Logo"></img>
                   </NavLink>
                 </div>
               </div>
               {/* <!-- /LOGO --> */}
 
               {/* <!-- SEARCH BAR --> */}
-
               <UseContext.Provider value={{ category }}>
                 <SearchBar />
               </UseContext.Provider>

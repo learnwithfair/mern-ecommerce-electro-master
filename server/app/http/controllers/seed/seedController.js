@@ -2,6 +2,7 @@
 const User = require("../../../models/userModel");
 const data = require("../../../../database/seeders/data");
 
+// User Reset
 const seedUser = async (req, res, next) => {
   try {
     // Delete all existing users

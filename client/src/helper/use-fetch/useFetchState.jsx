@@ -8,22 +8,27 @@ const useFetchState = (url, info = {}, method = "get") => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-  axios({
-    url: CLIENT_URL + url,
-    method: method,
-    data: info,
-  })
-    .then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-      setError(null);
+    axios({
+      url: CLIENT_URL + url,
+      method: method,
+      data: info,
     })
-    .catch((err) => {
-      setError(err.response.data);
-      setData(null);
-      setIsLoading(false);
-    });
-  }, [url+info]);
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+        setError(null);
+      })
+      .catch((err) => {
+        const errmgs = err.hasOwnProperty("response")
+          ? err.response.data
+          : err.hasOwnProperty("message")
+          ? err.message
+          : "Some Wrong. Please try again!";
+        setError(errmgs);
+        setData(null);
+        setIsLoading(false);
+      });
+  }, [url + info]);
   return { data, isLoading, error };
 };
 

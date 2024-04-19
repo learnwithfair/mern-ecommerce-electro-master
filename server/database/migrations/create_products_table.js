@@ -80,10 +80,9 @@ const productSchema = new Schema(
       required: [true, "Product Color is required"],
       trim: true,
     },
-    quantity: {
+    inStock: {
       type: Number,
-      required: [true, "Product Quantity is required"],
-      trim: true,
+      required: [true, "Product Quantity is required"],  
       validate: {
         validator: (v) => {
           v > 0;

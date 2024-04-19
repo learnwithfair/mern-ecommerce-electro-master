@@ -2,8 +2,12 @@
   "_id": {
     "$oid": "65526970fea05a62d9e42b36"
   },
-  "catId": "6550e770f7a3fa71e2731a81",
-  "brandId": "6550e770f7a3fa71e2731a81",
+  "catId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "brandId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
   "productName": "EliteBook HP-840",
   "productSlug": "elitebook-hp-840",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -13,6 +17,7 @@
   "productRating": 4,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product01.png",
   "sellCount": 0,
   "isActive": true,
@@ -29,8 +34,12 @@
   "_id": {
     "$oid": "6550e770f7a3fa71e2731a81"
   },
-  "catId": "6550e770f7a3fa71e2731a81",
-  "brandId": "6550e770f7a3fa71e2731a81",
+  "catId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "brandId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
   "productName": "EliteBook HP-841",
   "productSlug": "elitebook-hp-841",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -40,6 +49,7 @@
   "productRating": 4,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product02.png",
   "sellCount": 0,
   "isActive": true,
@@ -56,8 +66,12 @@
   "_id": {
     "$oid": "655306ff805e560cc8103e79"
   },
-  "catId": "6550e9d80bdacfa1138e5f29",
-  "brandId": "6550e9d80bdacfa1138e5f29",
+  "catId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
+  "brandId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
   "productName": "EliteBook HP-842",
   "productSlug": "elitebook-hp-842",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -67,6 +81,7 @@
   "productRating": 5,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product03.png",
   "sellCount": 0,
   "isActive": true,
@@ -83,8 +98,12 @@
   "_id": {
     "$oid": "65530738ff3d1fb01a17e34d"
   },
-  "catId": "6550e9d80bdacfa1138e5f29",
-  "brandId": "6550e9d80bdacfa1138e5f29",
+  "catId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
+  "brandId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
   "productName": "EliteBook HP-844",
   "productSlug": "elitebook-hp-844",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -94,6 +113,7 @@
   "productRating": 5,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product04.png",
   "sellCount": 0,
   "isActive": true,
@@ -110,8 +130,12 @@
   "_id": {
     "$oid": "655307feb4da063b35967ef3"
   },
-  "catId": "6550e9d80bdacfa1138e5f29",
-  "brandId": "6550e9d80bdacfa1138e5f29",
+  "catId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
+  "brandId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
   "productName": "EliteBook HP-845",
   "productSlug": "elitebook-hp-845",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -121,6 +145,7 @@
   "productRating": 5,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product01.png",
   "sellCount": 0,
   "isActive": true,
@@ -137,8 +162,12 @@
   "_id": {
     "$oid": "655308749ff0ebecb793153b"
   },
-  "catId": "6550e770f7a3fa71e2731a81",
-  "brandId": "6550e770f7a3fa71e2731a81",
+  "catId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "brandId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
   "productName": "EliteBook HP-846",
   "productSlug": "elitebook-hp-846",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -148,6 +177,7 @@
   "productRating": 4,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product01.png",
   "sellCount": 0,
   "isActive": true,
@@ -164,8 +194,12 @@
   "_id": {
     "$oid": "655308ce7e46d8dcee8941e4"
   },
-  "catId": "6550e770f7a3fa71e2731a81",
-  "brandId": "6550e9d80bdacfa1138e5f29",
+  "catId": {
+    "$oid": "6550e770f7a3fa71e2731a81"
+  },
+  "brandId": {
+    "$oid": "6550e9d80bdacfa1138e5f29"
+  },
   "productName": "EliteBook HP-847",
   "productSlug": "elitebook-hp-847",
   "productDescpt": "EliteBook HP-840 is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -175,6 +209,7 @@
   "productRating": 5,
   "productSize": "X,XL,XXL",
   "productColor": "Red,Black",
+  "inStock": 20,
   "productImage": "src/frontend/assets/img/product07.png",
   "sellCount": 0,
   "isActive": true,

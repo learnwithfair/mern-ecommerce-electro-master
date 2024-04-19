@@ -44,7 +44,7 @@ app.use("/", seedRouter);
 app.use("/api/auth", authRouter);
 app.use("/api", categoryRouter);
 app.use("/api/brand", brandRouter);
-app.use("/api/logo", logoRouter);
+app.use("/api", logoRouter);
 app.use("/api/review", reviewRouter);
 app.use("/api", productRouter);
 app.use("/payment", paymentRouter);

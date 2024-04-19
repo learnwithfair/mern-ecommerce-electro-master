@@ -5,32 +5,50 @@ import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
 import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 
-import productDatas from "../../../../../database/products.json";
+import CLIENT_URL from "../../../config/Config";
+import useFetchState from "../../../helper/use-fetch/useFetchState";
+import Preloader from "../../../preloader/Preloader";
 
 export default function Checkout() {
+  // Display All Product, Categories and Brands
+  const { data, isLoading, error } = useFetchState("api/products/show-all");
+
+  const productDatas = data != null ? data.payload.products : null;
+  // const category = data != null ? data.payload.categories : null;
   // Filtering Item which are included into cartlist
   const cartList = JSON.parse(localStorage.getItem("cartList"));
-  const productData = productDatas.filter((product, i) => {
-    for (let i = 0; i < cartList.length; i++) {
-      if (product._id.$oid == parseInt(cartList[i].productId)) {
-        product["productQuantity"] = parseInt(cartList[i].productQuantity);
-        return true;
-      }
-    }
-  });
+  const productData =
+    productDatas != null
+      ? productDatas.filter((product, i) => {
+          for (let i = 0; i < cartList.length; i++) {
+            if (product._id == cartList[i].productId) {
+              product["productQuantity"] = parseInt(
+                cartList[i].productQuantity
+              );
+              return true;
+            }
+          }
+        })
+      : null;
 
   // Calculatting Total Amount for CartList Item
   let totalAmount = 0;
-  productData.map((product, i) => {
-    totalAmount +=
-      product.productQuantity *
-      (product.productDiscount > 0
-        ? product.productPrice -
-          product.productPrice * (product.productDiscount / 100)
-        : product.productPrice);
-  });
+  productData != null
+    ? productData.map((product, i) => {
+        totalAmount +=
+          product.productQuantity *
+          (product.productDiscount > 0
+            ? product.productPrice -
+              product.productPrice * (product.productDiscount / 100)
+            : product.productPrice);
+      })
+    : null;
 
-  return (
+  return productData == null ? (
+    error
+  ) : isLoading ? (
+    <Preloader />
+  ) : (
     <>
       <DynamicTitle title="Hot-Deals" />
       {/* Header Section */}
@@ -50,10 +68,7 @@ export default function Checkout() {
         <div className="container">
           {/* <!-- row --> */}
           <div className="row">
-            <form
-              action="http://localhost:3000/payment/ssl-request"
-              method="post"
-            >
+            <form action={CLIENT_URL + "payment/ssl-request"} method="post">
               <div className="col-md-7">
                 {/* <!-- Billing Details --> */}
                 <div className="billing-details">

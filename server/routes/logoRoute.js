@@ -14,23 +14,14 @@ const logoRouter = express.Router();
 |                           Frontend Routes
 |--------------------------------------------------------------------------
  */
- logoRouter.route("/category/show-all").get(logoController.showAll); // Show all Category
+// localhost:3000/api->[showHeaderLogo]
+logoRouter.route("/logo/show-header-logo").get(logoController.showHeaderLogo); // Show Header Active Logo
 /*
 |--------------------------------------------------------------------------
 |                           Backend Routes
 |--------------------------------------------------------------------------
  */
 
-// For Route localhost:3000/api/admin/categories/ -> [ Create, Show all ]
-// logoRouter.prefix(
-//   "/admin/categories",
-//   [isLoggedIn, isAdmin],
-//   async (category) => {
-//     category
-//       .route("/category/create")
-//       .post(categogyValidate.formValidation, categoryController.create); // Create Category
-//     category.route("/category/show-all").get(categoryController.showAll); // Show all Category
-//   }
-// );
+
 
 module.exports = { logoRouter };

@@ -17,6 +17,7 @@ import PostProducts from "../backend/pages/products/post-products/PostProducts";
 import ForgotPassword from "../auth/pages/forgot-password/ForgotPassword";
 import ResetPassword from "../auth/pages/reset-password/ResetPassword";
 import UserVerify from "../auth/pages/user-verify/UserVerify";
+import Admin from "../backend/pages/admin/Admin";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,9 @@ const router = createBrowserRouter([
       {
         path: "/api/admin/dashboard",
         element: <Dashboard />,
+      },{
+        path: "/api/admin/admin-list",
+        element: <Admin />,
       },
       {
         path: "/api/admin/manage-products",

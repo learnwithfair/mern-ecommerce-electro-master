@@ -31,7 +31,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: "default-image.png",
+      default: "default-image",
     },
     address: {
       type: String,

@@ -129,7 +129,11 @@ export default function Store() {
                   onChange={handleChange}
                 >
                   {showData.map((item, i) => (
-                    <option key={i} value={item}>
+                    <option
+                      key={i}
+                      value={item}
+                      selected={item == show ? true : false}
+                    >
                       {item}
                     </option>
                   ))}

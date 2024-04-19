@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DynamicTitle from "../../../frontend/components/DynamicTitle";
 import Header from "../../../frontend/header/Header";
 import BreadCrumb from "../../../frontend/header/bread-crumb/BreadCrumb";
-import NewsLetter from "../../../frontend/footer/sub-footer/news-letter/NewsLetter";
+// import NewsLetter from "../../../frontend/footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../../frontend/footer/Footer";
 import PresentAddress from "./present-address/PresentAddress";
 import PersonalInfo from "./personal-info/PersonalInfo";
@@ -12,9 +12,9 @@ import useFetchState from "../../../helper/use-fetch/useFetchState";
 import ChangePassword from "./change-password/ChangePassword";
 
 export default function Profile() {
-  const [profileInfo, setProfileInfo] = useState(null);
+  // const [profileInfo, setProfileInfo] = useState(null);
   const { data, isLoading, error } = useFetchState("api/auth/profile");
-  console.log(data);
+
   // setProfileInfo(()=> data);
   return (
     data != null && (

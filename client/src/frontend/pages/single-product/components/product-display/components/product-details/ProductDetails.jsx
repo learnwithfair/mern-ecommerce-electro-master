@@ -69,7 +69,7 @@ export default function ProductDetails() {
                   </del>
                 )}
               </h3>
-              <span className="product-available">In Stock 23</span>
+              <span className="product-available">In Stock {product.inStock}</span>
             </div>
             <p style={{ textAlign: "justify" }}>{product.productDescpt}</p>
 

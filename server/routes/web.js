@@ -4,4 +4,5 @@ const seedRouter = express.Router();
 
 seedRouter.get("/reset-users", seedController.seedUser); // Reset User
 
+
 module.exports = { seedRouter };

@@ -14,7 +14,8 @@ const categoryRouter = express.Router();
 |                           Frontend Routes
 |--------------------------------------------------------------------------
  */
- categoryRouter.route("/category/show-all").get(categoryController.showAll); // Show all Category
+// localhost:3000/api->[showAll]
+categoryRouter.route("/category/show-all").get(categoryController.showAll); // Show all Category
 /*
 |--------------------------------------------------------------------------
 |                           Backend Routes

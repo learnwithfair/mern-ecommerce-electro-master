@@ -3,6 +3,7 @@ import DynamicTitle from "../../../components/DynamicTitle";
 import SideBar from "../../../side-bar/SideBar";
 import Header from "../../../header/Header";
 import Footer from "../../../footer/Footer";
+import ProductList from "./components/ProductList";
 
 export default function ManageProducts() {
   return (
@@ -16,8 +17,10 @@ export default function ManageProducts() {
           {/* |||||||||| */}
           {/* <!-- partial --> */}
           <div className="main-panel">
-            Hello Manage Product
-           
+            <div className="content-wrapper">
+              <ProductList />
+            </div>
+
             {/* <!-- content-wrapper ends --> */}
             {/* <!-- partial:partials/_footer.html --> */}
             <Footer />

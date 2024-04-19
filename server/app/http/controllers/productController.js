@@ -84,7 +84,7 @@ const displayAll = async (req, res, next) => {
 
     const search = req.query.search || "";
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 3;
+    const limit = Number(req.query.limit) || 6;
 
     const searchRegExp = new RegExp(".*" + search + ".*", "i");
     const fillter = {

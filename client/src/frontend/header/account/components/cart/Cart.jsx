@@ -2,12 +2,10 @@ import React, { useEffect, useReducer, useState } from "react";
 import ProductWidgetForPayment from "../../../../components/product-widget-for-payment/ProductWidgetForPayment";
 import { NavLink } from "react-router-dom";
 
-// import productData from "./productData.json";
-import productDatas from "../../../../../../../database/products.json";
 import useFetchState from "../../../../../helper/use-fetch/useFetchState";
 
 export default function Cart() {
-  const [cartCount, setCartCount] = useState(0);
+  // const [cartCount, setCartCount] = useState(0);
   // Display All Product, Categories and Brands
   const { data, isLoading, error } = useFetchState("api/product/show-all");
 
@@ -100,8 +98,8 @@ export default function Cart() {
             )}
           </a>
           {/* stopPropagation for card close handling */}
-          <div className="cart-dropdown" onClick={(e) => e.stopPropagation()}>
-            <div className="cart-list">{productWidgetforPayment}</div>
+          <div className="cart-dropdown" id="cartDropdown" onClick={(e) => e.stopPropagation()}>
+            <div className="cart-list" id="cartList">{productWidgetforPayment}</div>
             <div className="cart-summary">
               <small>{productData.length} Item(s) selected</small>
               <h5>SUBTOTAL: ${totalAmount}.00</h5>

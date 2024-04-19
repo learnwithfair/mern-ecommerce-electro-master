@@ -27385,7 +27385,6 @@ select.typeahead:focus,
 select.tt-query:focus,
 select.tt-hint:focus {
   outline: 1px solid #2c2e33;
-  
 }
 
 select.form-control.border-primary,
@@ -28912,8 +28911,8 @@ div.tagsinput {
 .jsgrid .jsgrid-table th img,
 .table td img,
 .jsgrid .jsgrid-table td img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 42px;
   border-radius: 100%;
 }
 

@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
+import useFetchState from "../../../helper/use-fetch/useFetchState";
+import Preloader from "../../../preloader/Preloader";
 import { UseContext } from "../../../helper/use-context/UseContext";
 
 export default function SearchBar() {
   const { category } = useContext(UseContext);
+  // const { data, isLoading, error } = useFetchState("api/category/show-all");
+  // const category = data != null ? data.payload.categories : null;
 
   return (
     <>
@@ -13,7 +17,7 @@ export default function SearchBar() {
               <option value="0">All Categories</option>
               {category &&
                 category.map((item, i) => (
-                  <option key={i} value={item._id.$oid}>
+                  <option key={i} value={item._id}>
                     {item.name}
                   </option>
                 ))}

@@ -1,9 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import RatingStars from "../rating-stars/RatingStars";
-
-
-
+// import $ from "jquery";
 
 export default function Product(props) {
   const {
@@ -29,7 +27,13 @@ export default function Product(props) {
     cartList.push(addCartListItem);
     localStorage.setItem("cartList", JSON.stringify(cartList));
     successMessage("SUCCESSFULLY ADDED");
-   
+
+    // Test
+    // var r = document.getElementById("cartCount");
+    // $(".cartDropdown").load(location.href + " .cartDropdown");
+    // $(".cartList").load(location.href + " .cartList");
+    // $(".cartCount").load(location.href + " .cartCount");
+    // console.log(r);
   };
   return (
     <>
@@ -84,7 +88,6 @@ export default function Product(props) {
           <button className="add-to-cart-btn" onClick={addToCart}>
             <i className="fa fa-shopping-cart"></i> add to cart
           </button>
-          
         </div>
       </div>
       {/* <!-- /product --> */}

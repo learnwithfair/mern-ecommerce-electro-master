@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "65526970fea05a62d9e42b36"
+  },
+  "logo": "/logo/logo.png",
+  "location": "F-Header",
+  "isActive": true,
+  "createdAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-12T14:55:44.572Z"
+  },
+  "__v": 0
+}]

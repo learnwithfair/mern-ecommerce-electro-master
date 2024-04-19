@@ -7,33 +7,43 @@ import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 import BreadCrumb from "../../header/bread-crumb/BreadCrumb";
 
-import Products from "../../../../../database/products.json";
-import Category from "../../../../../database/category.json";
-
-// import "../../../assets/css/style.css";
 import Preloader from "../../../preloader/Preloader";
-
+import useFetch from "../../../helper/use-fetch/useFetch";
 
 export default class HotDeals extends Component {
+  // Hooks can't call inside class component
   constructor() {
     super();
     this.state = {
       products: null,
       category: null,
       isLoading: true,
+      error: null,
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
+    // Get All Products, category and Brands
+    const info = JSON.parse(await useFetch("api/products/show-all", {}, "get"));
+    const productsData = info.data != null ? info.data.payload.products : null;
+    const categoryData =
+      info.data != null ? info.data.payload.categories : null;
+
+    // Set State
     this.setState({
-      products: Products,
-      category: Category,
+      products: productsData,
+      category: categoryData,
+      error: info.error,
       isLoading: false,
     });
   }
   render() {
+    // Destructuring state data
     const { products, category } = this.state;
-    return this.state.isLoading ? (
-      <Preloader/>
+
+    return (products || category) === null ? (
+      this.state.error
+    ) : this.state.isLoading ? (
+      <Preloader />
     ) : (
       <>
         <DynamicTitle title="Hot-Deals" />

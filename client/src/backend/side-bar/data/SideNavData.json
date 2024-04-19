@@ -6,6 +6,18 @@
     "sublink": []
   },
   {
+    "name": "Admin",
+    "icon": "mdi mdi-user",
+    "link": "/api/admin/admin-list",
+    "sublink": []
+  },
+  {
+    "name": "Logo",
+    "icon": "mdi mdi-icon",
+    "link": "/api/admin/logo",
+    "sublink": []
+  },
+  {
     "name": "Products",
     "icon": "mdi mdi-laptop",
     "link": "product",

@@ -11,30 +11,24 @@ import NewsLetter from "../../footer/sub-footer/news-letter/NewsLetter";
 import Footer from "../../footer/Footer";
 import { UseContext } from "../../../helper/use-context/UseContext";
 
-import Products from "../../../../../database/products.json";
-import Category from "../../../../../database/category.json";
-
-// import "../../../assets/css/style.css";
 import Preloader from "../../../preloader/Preloader";
-
+import useFetchState from "../../../helper/use-fetch/useFetchState";
 
 export default function Home() {
-  const [products, setProducts] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // Display All Product, Categories and Brands
+  const { data, isLoading, error } = useFetchState("api/products/show-all");
 
-  useEffect(() => {
-    setProducts(Products);
-  }, []);
-  useEffect(() => {
-    setCategory(Category);
-    setIsLoading(false);
-  }, []);
+  const products = data != null ? data.payload.products : null;
+  const category = data != null ? data.payload.categories : null;
 
+  // const [products, setProducts] = useState(null);
+  // const [category, setCategory] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
 
-
-  return isLoading ? (
-    <Preloader/>
+  return (products || category) == null ? (
+    error
+  ) : isLoading ? (
+    <Preloader />
   ) : (
     <>
       <DynamicTitle title="Home" />

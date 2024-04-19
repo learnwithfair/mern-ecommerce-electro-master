@@ -8,11 +8,11 @@ export default function Slick(props) {
   const productWidgets = products.map((product, index) => (
     <ProductWidget
       key={index}
-      productId={product._id.$oid}
+      productId={product._id}
       productSlug={product.productSlug}
       productName={product.productName}
       productCategory={
-        category.find((cat) => product.catId === cat._id.$oid).name
+        category.find((cat) => product.catId === cat._id).name
       }
       productPrice={product.productPrice}
       productDiscount={product.productDiscount}
