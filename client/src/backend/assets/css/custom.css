@@ -166,6 +166,7 @@ div.dt-container .dt-input {
   background-color: #191c24 !important;
   color: inherit;
 }
+/* // For JQuery dataTable Next and Previous Button  */
 div.dt-container .dt-paging .dt-paging-button.disabled,
 div.dt-container .dt-paging .dt-paging-button.disabled:hover,
 div.dt-container .dt-paging .dt-paging-button.disabled:active {

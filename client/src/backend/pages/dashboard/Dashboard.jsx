@@ -8,6 +8,7 @@ import Footer from "../../footer/Footer";
 import { UseContext } from "../../../helper/use-context/UseContext";
 import Preloader from "../../../preloader/Preloader";
 import useFetchState from "../../../helper/use-fetch/useFetchState";
+import ErrorPage500 from "../../../error-pages/500";
 
 export default function Dashboard() {
   const { data, isLoading, error } = useFetchState(
@@ -19,7 +20,7 @@ export default function Dashboard() {
   return isLoading ? (
     <Preloader />
   ) : user == null || user.isAdmin == false ? (
-    error || "No Accesible"
+    error || <ErrorPage500/>
   ) : (
     <>
       <DynamicTitle title={"Dashboard"} />

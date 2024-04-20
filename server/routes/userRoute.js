@@ -27,7 +27,7 @@ userRouter.post(
 );
 userRouter.get(
   "/users/verify/:token",
-  // limiter,
+  limiter,
   isLoggedOut,
   userController.activateUserAccount,
   authController.userLogin
@@ -67,10 +67,11 @@ express.application.prefix = express.Router.prefix = function (
 //     .route("/update/:id")
 //     .put(userValidate.formValidation, userController.update); // User Update by ID
 // });
-userRouter.route("/admin/users/show-all").get(userController.showAll); // Show all users
+// userRouter.route("/admin/users/show-all").get(userController.showAll); // Show all users
+userRouter.get("/admin/users/show-all", isLoggedIn, isAdmin, userController.showAll); // Show all users
 userRouter.put(
   "/admin/users/update/:id",
-  // isLoggedIn,  
+  isLoggedIn, isAdmin,
   userController.update
 );
 module.exports = { userRouter };

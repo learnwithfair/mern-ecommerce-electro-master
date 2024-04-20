@@ -24,12 +24,12 @@ authRouter.post(
 );
 authRouter.get(
   "/logout",
-  // isLoggedIn,
+  isLoggedIn,
   authController.userLogout
 );
 authRouter.put(
   "/change-password",
-  // isLoggedIn,
+  isLoggedIn,
   userValidate.updatePassowrdValidation,
   authController.updatePassword
 );
@@ -49,31 +49,31 @@ authRouter.put(
 );
 authRouter.get(
   "/profile",
-  // isLoggedIn,
+  isLoggedIn,
   authController.profile
 );
 
 // For Admin Panel
 authRouter.get(
   "/admin/profile-logo",
-  // isLoggedIn,
+  isLoggedIn,
   authController.profileAndLogoDisplay
 );
 authRouter.put(
   "/update-profile-contact-info",
-  // isLoggedIn,
+  isLoggedIn,
   userValidate.contactInfoProfileValidation,
   authController.updateProfileInfo
 );
 authRouter.put(
   "/update-profile-personal-info",
-  // isLoggedIn,
+  isLoggedIn,
   userValidate.personalInfoProfileValidation,
   authController.updateProfileInfo
 );
 authRouter.delete(
   "/delete-user-account",
-  // isLoggedIn,
+  isLoggedIn,
   authController.deleteUserAccount
 );
 

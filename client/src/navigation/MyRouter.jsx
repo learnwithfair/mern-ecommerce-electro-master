@@ -18,12 +18,13 @@ import ForgotPassword from "../auth/pages/forgot-password/ForgotPassword";
 import ResetPassword from "../auth/pages/reset-password/ResetPassword";
 import UserVerify from "../auth/pages/user-verify/UserVerify";
 import Admin from "../backend/pages/admin/Admin";
+import ErrorPage404 from "../error-pages/404";
 
 const router = createBrowserRouter([
   {
     // Frontend Routes
     path: "/",
-    errorElement: <div>Opss! 404</div>,
+    errorElement: <ErrorPage404 />,
     children: [
       {
         path: "/",
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
   {
     // Auth Routes
     path: "/api/auth",
-    errorElement: <div>Opss! 404</div>,
+    errorElement: <ErrorPage404 />,
     children: [
       {
         path: "/api/auth/login",
@@ -83,7 +84,8 @@ const router = createBrowserRouter([
       {
         path: "/api/auth/forgot-password",
         element: <ForgotPassword />,
-      }, {
+      },
+      {
         path: "/api/auth/reset-password",
         element: <ResetPassword />,
       },
@@ -92,12 +94,13 @@ const router = createBrowserRouter([
   {
     // Backend Routes
     path: "/api/admin",
-    errorElement: <div>Opss! 404</div>,
+    errorElement: <ErrorPage404 />,
     children: [
       {
         path: "/api/admin/dashboard",
         element: <Dashboard />,
-      },{
+      },
+      {
         path: "/api/admin/admin-list",
         element: <Admin />,
       },

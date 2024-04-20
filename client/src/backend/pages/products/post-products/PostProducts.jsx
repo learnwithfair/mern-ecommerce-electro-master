@@ -7,6 +7,7 @@ import Post from "./components/post/Post";
 import useFetchState from "../../../../helper/use-fetch/useFetchState";
 import { UseContext } from "../../../../helper/use-context/UseContext";
 import Preloader from "../../../../preloader/Preloader";
+import ErrorPage500 from "../../../../error-pages/500";
 
 export default function PostProducts() {
    const { data, isLoading, error } = useFetchState(
@@ -18,7 +19,7 @@ export default function PostProducts() {
    return isLoading ? (
      <Preloader />
    ) : user == null || user.isAdmin == false ? (
-     error || "No Accesible"
+     error || <ErrorPage500/> 
    ) : (
      <>
        <DynamicTitle title={"Manage-Products"} />

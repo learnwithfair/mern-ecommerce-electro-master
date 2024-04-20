@@ -142,6 +142,24 @@ Ex-Account : [
 4. Remove cookie ->  res.clearCookie("login-token");
 5. set value in the request body as -> req.body.userId = User._id;
 
+// For Server to Client Side URL
+6. use in the app.js file -> 
+		const cors = require("cors");
+		// To get access Client side url
+		app.use(cors(
+		{
+			origin: BASE_URL, // Frontend Base URL
+			credentials: true
+		}
+		)); 
+7. Call api uith axios->
+		axios({
+			url: CLIENT_URL + url,
+			method: method,
+			data: info,
+			withCredentials: true, // Mendatory command
+		})
+
 
 ================================== For Grouping Middlewire ==================================
 (It works into all route that was declared as-> /admin/users URL )
@@ -183,8 +201,10 @@ app.use(express.static("public")); // To Display Server site image
 1. Get URL params  (url-> localhost:3000/product?page=3)
  new URLSearchParams(window.location.search).get("page") || 1;
  or
- 2. Get URL params  (url-> localhost:3000/product/:page)
+2. Get URL params  (url-> localhost:3000/product/:page)
 	const params = useParams();
 	params.page;
 
- 
+ 3. For Redirect Route->
+   const navigate = useNavigate(); // Redirect Route
+   navigate("/profile", { replace: true }); // Replace true means Previous page close.

@@ -1,19 +1,21 @@
 import React from "react";
 import useFetch from "../../../../helper/use-fetch/useFetch";
+import { useNavigate } from "react-router-dom";
 
 export default function AccountControl() {
+  const navigate = useNavigate(); // Redirect Route
   const userLogout = async (e) => {
     e.preventDefault();
     const info = JSON.parse(await useFetch("api/auth/logout", {}, "get"));
     if (info.data) {
-      alert("Succefully Logout");
-      console.log(info.data);
+      // alert("Succefully Logout");
+      // console.log(info.data);
       // Move to Home Page
       // successMessage("Succefully Logout");
+      navigate("/", { replace: true });
     } else {
-      console.error(info.error);
+      warningMessage(info.error);
     }
-    // warningMessage(info.error);
   };
   const deleteAccount = async (e) => {
     e.preventDefault();

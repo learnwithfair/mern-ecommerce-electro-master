@@ -80,8 +80,8 @@ const userLogout = async (req, res, next) => {
 const updatePassword = async (req, res, next) => {
   try {
     const { oldPassword, newPassword } = req.body;
-    const updateId = "65be65b8cc394c72ba931ea2";
-    // const updateId = req.body.userId;
+    // const updateId = "65be65b8cc394c72ba931ea2";
+    const updateId = req.body.userId;
 
     const user = await findByIdService(User, updateId, { password: 1, _id: 0 });
     const isPassordMatch = await bcrypt.compare(oldPassword, user.password);
@@ -202,8 +202,8 @@ const resetPassword = async (req, res, next) => {
 // Get user by ID
 const profile = async (req, res, next) => {
   try {
-    const id = "65be65b8cc394c72ba931ea2";
-    // const id = req.body.userId;
+    // const id = "65be65b8cc394c72ba931ea2";
+    const id = req.body.userId;
     // console.log(id);
     const options = { password: 0 };
     const user = await findByIdService(User, id, options);
@@ -220,8 +220,8 @@ const profile = async (req, res, next) => {
 // Get user by ID
 const profileAndLogoDisplay = async (req, res, next) => {
   try {
-    const id = "65be65b8cc394c72ba931ea2";
-    // const id = req.body.userId;
+    // const id = "65be65b8cc394c72ba931ea2";
+    const id = req.body.userId;
     // console.log(id);
     const options = { name: 1, image: 1, isAdmin: 1, _id: 0 };
     const user = await findByIdService(User, id, options);
@@ -246,8 +246,8 @@ const updateProfileInfo = async (req, res, next) => {
   try {
     // const updateId = req.params.id;
 
-    const updateId = "65be65b8cc394c72ba931ea2";
-    // const id = req.body.userId;
+    // const updateId = "65be65b8cc394c72ba931ea2";
+    const updateId = req.body.userId;
     const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
     let updates = {};
     for (let key in req.body) {
@@ -281,8 +281,8 @@ const updateProfileInfo = async (req, res, next) => {
 // Delete user Account
 const deleteUserAccount = async (req, res, next) => {
   try {
-    const id = "65bf226d62a1868b1aa05410";
-    // const id = req.body.userId;
+    // const id = "65bf226d62a1868b1aa05410";
+    const id = req.body.userId;
     const user = await findByIdService(User, id);
     const userImagePath = "public/images/users/" + user.image;
     deleteImage(userImagePath);

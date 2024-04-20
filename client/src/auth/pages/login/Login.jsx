@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import DynamicTitle from "../../../backend/components/DynamicTitle";
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useFetch from "../../../helper/use-fetch/useFetch";
 
 export default function Login() {
+  const navigate = useNavigate(); // Redirect Route
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loginInfo, setLoginInfo] = useState({});
+
+  // Handle input field Data
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -22,17 +25,18 @@ export default function Login() {
 
       // Set State value after click submit button
       if (info.data != null) {
-        
         setLoginInfo({});
-        setUserData(info.data.payload.userWithoutPasssword);
+        // setUserData(info.data.payload.userWithoutPasssword);
+        // Redirect to Profile Page
+        navigate("/profile", { replace: true });
       } else {
-        console.error(info.error);
         setUserData(null);
+        warningMessage(info.error);
       }
-      // warningMessage(info.error);
+
       setIsLoading(false);
     } else {
-      // errorMessage();
+      errorMessage();
     }
   };
   return (
@@ -46,7 +50,7 @@ export default function Login() {
                 <div className="card">
                   <div className="card-body">
                     <h1 className="card-title text-center">Login Here</h1>
-                    {userData != null && userData._id }
+                    {userData != null && userData._id}
                     <hr />
                     <form
                       className="forms-sample"

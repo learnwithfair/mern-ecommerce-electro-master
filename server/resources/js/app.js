@@ -17,6 +17,7 @@ const { paymentRouter } = require("../../routes/paymentRoute");
 const { brandRouter } = require("../../routes/brandRoute");
 const { logoRouter } = require("../../routes/logoRoute");
 const { reviewRouter } = require("../../routes/reviewRoute");
+const { BASE_URL } = require("./secret/secret");
 
 const app = express();
 /*
@@ -30,8 +31,13 @@ app.use(xssClean()); // For  Secure api
 app.use(bodyParser.json()); // For Set, Read data into body and display JSON Format Text
 app.use(bodyParser.urlencoded({ extended: true })); // Get HTML Form Data
 app.use(setRefreshToken); // For set Refresh Token [Automatically call this middlewire for all route]
-
-app.use(cors()); // To get access Client side url
+// To get access Client side url
+app.use(cors(
+  {
+    origin: BASE_URL, // Frontend Base URL
+    credentials: true
+  }
+)); 
 app.use(express.static("public")); // To Display Server site image
 
 /*

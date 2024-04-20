@@ -12,6 +12,7 @@ const useFetchState = (url, info = {}, method = "get") => {
       url: CLIENT_URL + url,
       method: method,
       data: info,
+      withCredentials: true,
     })
       .then((res) => {
         setData(res.data);
