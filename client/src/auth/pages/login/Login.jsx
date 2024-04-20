@@ -27,8 +27,15 @@ export default function Login() {
       if (info.data != null) {
         setLoginInfo({});
         // setUserData(info.data.payload.userWithoutPasssword);
-        // Redirect to Profile Page
-        navigate("/profile", { replace: true });
+        const lastPathname = localStorage.getItem("lastPathname");
+        // If Trying Path is found
+        if (lastPathname != null && lastPathname != "/api/auth/login") {
+          // Redirect to Last tried url
+          navigate(lastPathname, { replace: true });
+        } else {
+          // Redirect to Profile Page
+          navigate("/", { replace: true });
+        }
       } else {
         setUserData(null);
         warningMessage(info.error);

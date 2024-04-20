@@ -5,6 +5,7 @@ const {
   limiter,
   isLoggedIn,
   isLoggedOut,
+  isAdmin,
 } = require("../app/http/middleware/authMiddleware");
 const authRouter = express.Router();
 
@@ -14,7 +15,12 @@ const authRouter = express.Router();
 |--------------------------------------------------------------------------
  */
 
-// For Route /api/auth-> [Login, Logout, Change Password, Forgot Password, Reset Password,Profile]
+// For Route /api/auth-> [loginverification, Login, Logout, Change Password, Forgot Password, Reset Password,Profile]
+authRouter.get(
+  "/admin-login-verify",
+  isLoggedIn, isAdmin,
+  authController.adminLoggedinVerification
+);
 authRouter.post(
   "/login",
   limiter,

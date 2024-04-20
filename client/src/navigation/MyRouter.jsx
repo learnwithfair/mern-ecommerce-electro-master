@@ -19,7 +19,8 @@ import ResetPassword from "../auth/pages/reset-password/ResetPassword";
 import UserVerify from "../auth/pages/user-verify/UserVerify";
 import Admin from "../backend/pages/admin/Admin";
 import ErrorPage404 from "../error-pages/404";
-
+import IsLoggedIn from "./IsLoggedIn";
+const isLoggedin = true;
 const router = createBrowserRouter([
   {
     // Frontend Routes
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <IsLoggedIn component={<Profile />} />,
       },
     ],
   },

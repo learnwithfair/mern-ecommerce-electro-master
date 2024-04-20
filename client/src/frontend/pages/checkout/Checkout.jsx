@@ -50,7 +50,7 @@ export default function Checkout() {
     <Preloader />
   ) : (
     <>
-      <DynamicTitle title="Hot-Deals" />
+      <DynamicTitle title="Checkout" />
       {/* Header Section */}
       <Header />
       {/* <!-- BREADCRUMB --> */}
