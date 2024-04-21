@@ -19,7 +19,17 @@ const authRouter = express.Router();
 authRouter.get(
   "/admin-login-verify",
   isLoggedIn, isAdmin,
-  authController.adminLoggedinVerification
+  authController.successResponse
+);
+authRouter.get(
+  "/user-login-verify",
+  isLoggedIn,
+  authController.successResponse
+);
+authRouter.get(
+  "/logout-verify",
+  isLoggedOut,
+  authController.successResponse
 );
 authRouter.post(
   "/login",

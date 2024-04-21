@@ -5,13 +5,12 @@ import { useNavigate } from "react-router-dom";
 export default function AccountControl() {
   const navigate = useNavigate(); // Redirect Route
   const userLogout = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const info = JSON.parse(await useFetch("api/auth/logout", {}, "get"));
     if (info.data) {
-      // alert("Succefully Logout");
-      // console.log(info.data);
+      localStorage.setItem("authentication", false);
+      localStorage.setItem("lastPathname", null);
       // Move to Home Page
-      // successMessage("Succefully Logout");
       navigate("/", { replace: true });
     } else {
       warningMessage(info.error);

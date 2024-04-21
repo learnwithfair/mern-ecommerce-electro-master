@@ -8,6 +8,8 @@ export default function Login() {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loginInfo, setLoginInfo] = useState({});
+  // setUserData(info.data.payload.userWithoutPasssword);
+  const lastPathname = localStorage.getItem("lastPathname");
 
   // Handle input field Data
   const handleOnChange = (event) => {
@@ -19,6 +21,7 @@ export default function Login() {
   // User Login After submit button click
   const userLogin = async (e) => {
     e.preventDefault();
+
     setIsLoading(true);
     if (loginInfo.email && loginInfo.password) {
       const info = JSON.parse(await useFetch("api/auth/login", loginInfo));
@@ -26,15 +29,19 @@ export default function Login() {
       // Set State value after click submit button
       if (info.data != null) {
         setLoginInfo({});
-        // setUserData(info.data.payload.userWithoutPasssword);
-        const lastPathname = localStorage.getItem("lastPathname");
+        localStorage.setItem("authentication", true); // authentication is true
+        localStorage.setItem("lastPathname", null); // Pathname replace to null
         // If Trying Path is found
-        if (lastPathname != null && lastPathname != "/api/auth/login") {
+        if (
+          !lastPathname ||
+          lastPathname == "null" ||
+          lastPathname == "/api/auth/login"
+        ) {
+          // Redirect to Profile Page
+          navigate("/profile", { replace: true });
+        } else {
           // Redirect to Last tried url
           navigate(lastPathname, { replace: true });
-        } else {
-          // Redirect to Profile Page
-          navigate("/", { replace: true });
         }
       } else {
         setUserData(null);

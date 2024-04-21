@@ -19,8 +19,10 @@ import ResetPassword from "../auth/pages/reset-password/ResetPassword";
 import UserVerify from "../auth/pages/user-verify/UserVerify";
 import Admin from "../backend/pages/admin/Admin";
 import ErrorPage404 from "../error-pages/404";
-import IsLoggedIn from "./IsLoggedIn";
-const isLoggedin = true;
+import IsAdminLoggedIn from "./IsAdminLoggedIn";
+import IsLoggedOut from "./IsLoggedOut";
+import IsUserLoggedIn from "./IsUserLoggedIn";
+
 const router = createBrowserRouter([
   {
     // Frontend Routes
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: <IsUserLoggedIn component={<Checkout />} />,
       },
       {
         path: "/about-us",
@@ -61,7 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <IsLoggedIn component={<Profile />} />,
+        element: <IsUserLoggedIn component={<Profile />} />,
       },
     ],
   },
@@ -72,23 +74,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/api/auth/login",
-        element: <Login />,
+        element: <IsLoggedOut component={<Login />} />,
       },
       {
         path: "/api/auth/register",
-        element: <Register />,
+        element: <IsLoggedOut component={<Register />} />,
       },
       {
         path: "/api/auth/verify",
-        element: <UserVerify />,
+        element: <IsLoggedOut component={<UserVerify />} />,
       },
       {
         path: "/api/auth/forgot-password",
-        element: <ForgotPassword />,
+        element: <IsLoggedOut component={<ForgotPassword />} />,
       },
       {
         path: "/api/auth/reset-password",
-        element: <ResetPassword />,
+        element: <IsLoggedOut component={<ResetPassword />} />,
       },
     ],
   },
@@ -99,19 +101,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/api/admin/dashboard",
-        element: <Dashboard />,
+        element: <IsAdminLoggedIn component={<Dashboard />} />,
       },
       {
         path: "/api/admin/admin-list",
-        element: <Admin />,
+        element: <IsAdminLoggedIn component={<Admin />} />,
       },
       {
         path: "/api/admin/manage-products",
-        element: <ManageProducts />,
+        element: <IsAdminLoggedIn component={<ManageProducts />} />,
       },
       {
         path: "/api/admin/post-products",
-        element: <PostProducts />,
+        element: <IsAdminLoggedIn component={<PostProducts />} />,
       },
     ],
   },

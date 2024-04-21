@@ -17,17 +17,18 @@ const { setLoginToken } = require("../../helpers/cookiesHelper");
 const { deleteImage } = require("../../helpers/imageHelper");
 const Logo = require("../../models/logoModel");
 
-//User isAdmin and isLoggedin varification
-const adminLoggedinVerification = async (req, res, next) => {
+// Return Success Response
+const successResponse = async (req, res, next) => {
   try {
     return serviceProvider.successResponse(res, {
       statusCode: 200,
-      message: "isLoggedin and isAdmin are verified!",
+      message: "Successfully verified!",
     });
   } catch (error) {
     next(error);
   }
 };
+
 
 //User Login
 const userLogin = async (req, res, next) => {
@@ -314,7 +315,7 @@ const deleteUserAccount = async (req, res, next) => {
 };
 
 module.exports = {
-  adminLoggedinVerification,
+  successResponse,
   userLogin,
   userLogout,
   updatePassword,
