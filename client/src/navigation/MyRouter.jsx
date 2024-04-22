@@ -22,6 +22,7 @@ import ErrorPage404 from "../error-pages/404";
 import IsAdminLoggedIn from "./IsAdminLoggedIn";
 import IsLoggedOut from "./IsLoggedOut";
 import IsUserLoggedIn from "./IsUserLoggedIn";
+import Logo from "../backend/pages/logo/Logo";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "/api/admin/admin-list",
         element: <IsAdminLoggedIn component={<Admin />} />,
+      },
+      {
+        path: "/api/admin/logo",
+        element: <IsAdminLoggedIn component={<Logo />} />,
       },
       {
         path: "/api/admin/manage-products",
