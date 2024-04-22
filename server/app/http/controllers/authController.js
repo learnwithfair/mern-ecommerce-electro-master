@@ -240,9 +240,9 @@ const profileAndLogoDisplay = async (req, res, next) => {
     const user = await findByIdService(User, id, options);
 
     const logos = await Logo.find({ isActive: true }, { logo: 1, location: 1 });
-    if (!logos || logos.length == 0) {
-      throw createError(404, "Logo Not Found");
-    }
+    // if (!logos || logos.length == 0) {
+    //   throw createError(404, "Logo Not Found");
+    // }
 
     return serviceProvider.successResponse(res, {
       statusCode: 200,

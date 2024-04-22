@@ -159,7 +159,7 @@ const update = async (req, res, next) => {
     next(error);
   }
 };
-// DeleteF
+// Delete
 const deleteUser = async (req, res, next) => {
   try {
     const id = req.params.id;

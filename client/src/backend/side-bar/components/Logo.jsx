@@ -6,7 +6,7 @@ import { UseContext } from "../../../helper/use-context/UseContext";
 export default function Logo() {
   const { logos } = useContext(UseContext);
 
-  const logo = logos.find((lg) => "F-Header" === lg.location);
+  const logo = logos && logos.find((lg) => "F-Header" === lg.location);
   return (
     logo != null && (
       <>

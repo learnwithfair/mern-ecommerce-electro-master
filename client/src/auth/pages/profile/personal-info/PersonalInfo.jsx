@@ -35,7 +35,7 @@ export default function PersonalInfo(props) {
       // warningMessage(info.error);
       setIsLoading(false);
     } else {
-      // errorMessage();
+      errorMessage();
     }
   };
   return (

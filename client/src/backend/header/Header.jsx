@@ -12,7 +12,7 @@ export default function Header() {
   const [isOfCanvas, setIsOfCanvas] = useState(false);
   const { user, logos } = useContext(UseContext);
 
-  const logo = logos.find((lg) => "F-Header" === lg.location);
+  const logo = logos && logos.find((lg) => "F-Header" === lg.location);
 
   const minimize = () => {
     var body = $("body");
