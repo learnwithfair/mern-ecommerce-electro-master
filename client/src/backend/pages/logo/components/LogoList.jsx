@@ -18,10 +18,9 @@ export default function LogoList(props) {
     );
 
     if (info.data != null) {
-      setLogos(info.data.payload.logos);
-      info.data.success
-        ? successMessage("Successfully Updated")
-        : errorMessage();
+      setLogos(null);
+      setTimeout(() => setLogos(info.data.payload.logos), 1);
+      successMessage("Successfully Updated");
     } else {
       errorMessage();
     }
@@ -71,41 +70,42 @@ export default function LogoList(props) {
               </tr>
             </thead>
             <tbody>
-              {logos.map((logo, i) => (
-                <tr key={i}>
-                  <td>{i + 1}</td>
-                  <td>
-                    <img
-                      src={CLIENT_URL + "images/logos/" + logo.logo}
-                      className="rounded-circle border border-info justify-content-center p-1"
-                      alt={logo.logo}
-                      style={{ height: "100px", width: "100px" }}
-                    />
-                  </td>
-                  <td> {logo.location} </td>
-
-                  <td>
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        name="isActive"
-                        defaultChecked={logo.isActive && true}
-                        onClick={(event) =>
-                          handleIsActive(event, logo._id, logo.isActive)
-                        }
+              {logos &&
+                logos.map((logo, i) => (
+                  <tr key={i}>
+                    <td>{i + 1}</td>
+                    <td>
+                      <img
+                        src={CLIENT_URL + "images/logos/" + logo.logo}
+                        className="rounded-circle border border-info justify-content-center p-1"
+                        alt={logo.logo}
+                        style={{ height: "100px", width: "100px" }}
                       />
-                      <span className="slider round"></span>
-                    </label>
-                  </td>
-                  <td>
-                    <i
-                      className="fa fa-trash text-danger"
-                      style={{ fontSize: "30px", cursor: "pointer" }}
-                      onClick={(event) => deleteLogoById(event, logo._id)}
-                    ></i>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td> {logo.location} </td>
+
+                    <td>
+                      <label className="switch">
+                        <input
+                          type="checkbox"
+                          name="isActive"
+                          defaultChecked={logo.isActive && true}
+                          onClick={(event) =>
+                            handleIsActive(event, logo._id, logo.isActive)
+                          }
+                        />
+                        <span className="slider round"></span>
+                      </label>
+                    </td>
+                    <td>
+                      <i
+                        className="fa fa-trash text-danger"
+                        style={{ fontSize: "30px", cursor: "pointer" }}
+                        onClick={(event) => deleteLogoById(event, logo._id)}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

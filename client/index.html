@@ -58,7 +58,7 @@
           icon: "success",
           title: mgs,
           background: "#D4EDDA",
-        });      
+        });
       }
 
       // Waring Message
@@ -71,10 +71,10 @@
       }
 
       // Error Message
-      function errorMessage() {
+      function errorMessage(mgs = "UNSUCCESFULL!") {
         Toast.fire({
           icon: "error",
-          title: "UNSUCCESFULL!",
+          title: mgs,
           background: "#FFF3CD",
           color: "red",
         });

@@ -205,6 +205,11 @@ app.use(express.static("public")); // To Display Server site image
 	const params = useParams();
 	params.page;
 
- 3. For Redirect Route->
+3. For Redirect Route->
    const navigate = useNavigate(); // Redirect Route
    navigate("/profile", { replace: true }); // Replace true means Previous page close.
+
+4. If automatically first load data in the state using useEffect
+	For need to chage state value after click button then set the state value as
+	-> setLogos(null);
+      setTimeout(() => setLogos(data), 1);

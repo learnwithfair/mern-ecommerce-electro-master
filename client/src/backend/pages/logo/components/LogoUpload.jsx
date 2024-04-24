@@ -1,17 +1,30 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import DropFileInput from "../../../components/drop-file-input/DropFileInput";
 import { NavLink } from "react-router-dom";
 import LogoList from "./LogoList";
-import useFetchState from "../../../../helper/use-fetch/useFetchState";
 import useFetch from "../../../../helper/use-fetch/useFetch";
+import NoResultFound from "../../../../error-pages/NoResultFound";
+import Preloader from "../../../../preloader/Preloader";
 
 function LogoUpload() {
-  const { data, error } = useFetchState("api/admin/logos/show-all");
-  const [isLoading, setIsLoading] = useState(false);
-  const defaultLocation = { location: "F-Header" };
+  const isLoading = false;
+  const [isLoadingUpload, setIsLoadingUpload] = useState(false);
+  // Default location set "F-Header"
+  const defaultLocation = { location: "F-Header", logo: "" };
   const [uploadInfo, setUploadInfo] = useState(defaultLocation);
   const [image, setImage] = useState(null);
-  const [logos, setLogo] = useState(null);
+  const [logos, setLogos] = useState(null);
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const info = JSON.parse(
+        await useFetch("api/admin/logos/show-all", {}, "get")
+      );
+      if (info.data != null) {
+        setLogos(info.data.payload.logos);
+      }
+    }, 1);
+  }, []);
 
   // Image handle
   const onFileChange = (files) => {
@@ -19,42 +32,12 @@ function LogoUpload() {
       warningMessage("Uploded Image is Not a Image");
     } else {
       const file = files[0];
-      const imgname = files[0].name;
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        const img = new Image();
-        img.src = reader.result;
-        img.onload = () => {
-          const canvas = document.createElement("canvas");
-          const maxSize = Math.max(img.width, img.height);
-          canvas.width = maxSize;
-          canvas.height = maxSize;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(
-            img,
-            (maxSize - img.width) / 2,
-            (maxSize - img.height) / 2
-          );
-          canvas.toBlob(
-            (blob) => {
-              const file = new File([blob], imgname, {
-                type: "image/png",
-                lastModified: Date.now(),
-              });
 
-              // console.log(file);
-              setImage(file);
-              setUploadInfo((uploadInfo) => ({
-                ...uploadInfo,
-                logo: file,
-              }));
-            },
-            "image/jpeg",
-            0.8
-          );
-        };
-      };
+      setImage(file);
+      setUploadInfo((uploadInfo) => ({
+        ...uploadInfo,
+        logo: file,
+      }));
     }
   };
 
@@ -64,48 +47,35 @@ function LogoUpload() {
     const value = event.target.value;
     setUploadInfo((uploadInfo) => ({ ...uploadInfo, [name]: value }));
   };
+
+  // Handle Upload Logo
   const handleUploadButtonClick = async (e) => {
-    setIsLoading(true);
+    setIsLoadingUpload(true);
     if (uploadInfo.location && uploadInfo.logo) {
+      // Add info into Form Data class
+      const formData = new FormData();
+      formData.append("logo", uploadInfo.logo);
+      formData.append("location", uploadInfo.location);
+
       const info = JSON.parse(
-        await useFetch("api/admin/upload-logo", uploadInfo, "post")
+        await useFetch("api/admin/upload-logo", formData, "post")
       );
-      console.log(info);
+
       // Set State value after click submit button
       if (info.data != null) {
-        setUploadInfo(info.data.payload.logos);
-        // successMessage("Succefully Updated");
+        setLogos(null);
+        setTimeout(() => setLogos(info.data.payload.logos), 1);
+        // Refresh Data
+        setUploadInfo(defaultLocation); // Empty Table field
+        setImage(null);
+        successMessage("Succefully Uploaded");
       } else {
-        setUploadInfo(defaultLocation);
+        errorMessage(info.error);
       }
     } else {
       warningMessage("Logo is Required");
     }
-    console.log(uploadInfo);
-
-    setIsLoading(false);
-    // var myHeaders = new Headers();
-    // const token = "adhgsdaksdhk938742937423";
-    // myHeaders.append("Authorization", `Bearer ${token}`);
-
-    // var formdata = new FormData();
-    // formdata.append("file", file);
-
-    // var requestOptions = {
-    //   method: "POST",
-    //   headers: myHeaders,
-    //   body: formdata,
-    //   redirect: "follow",
-    // };
-
-    // fetch("https://trickuweb.com/upload/profile_pic", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => {
-    //     console.log(JSON.parse(result));
-    //     const profileurl = JSON.parse(result);
-    //     setImage(profileurl.img_url);
-    //   })
-    //   .catch((error) => console.log("error", error));
+    setIsLoadingUpload(false);
   };
 
   // Delete Preview Image
@@ -116,129 +86,195 @@ function LogoUpload() {
       logo: null,
     }));
   };
-  // console.log(uploadInfo);
-  return (
-    data != null && (
-      <>
-        <div className="content-wrapper">
-          <div className="page-header">
-            <h3 className="page-title"> Logos</h3>
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <NavLink exact="true" to="/api/admin/logo">
-                    Logos
-                  </NavLink>
-                </li>
-                <li className="breadcrumb-item active" aria-current="page">
-                  Logo
-                </li>
-              </ol>
-            </nav>
-          </div>
 
-          <div className="row">
-            <div className="col-md-4 grid-margin stretch-card">
-              <div className="card">
-                <div className="card-body">
-                  <h4 className="card-title">Upload Logo</h4>
-                  <hr />
+  return isLoading ? (
+    <Preloader />
+  ) : (
+    <>
+      <div className="content-wrapper">
+        <div className="page-header">
+          <h3 className="page-title"> Logos</h3>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <NavLink exact="true" to="/api/admin/logo">
+                  Logos
+                </NavLink>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Logo
+              </li>
+            </ol>
+          </nav>
+        </div>
 
-                  <div className="row form-group">
-                    {image ? (
-                      <>
-                        <label className="col-sm-3 mt-sm-5">Logo</label>
-                        <div className="col-sm-9">
-                          <div className="row">
-                            <div align="middle">
-                              <img
-                                height="100%"
-                                width="100%"
-                                style={{
-                                  maxWidth: "180px",
-                                  maxHeight: "180px",
-                                }}
-                                src={URL.createObjectURL(image)}
-                                alt="upload image"
-                                className="rounded-circle border border-info justify-content-center"
-                              />
-                            </div>
-                            <span
-                              onClick={deletePrevImage}
-                              className="position-absolute"
+        <div className="row">
+          <div className="col-md-4 grid-margin stretch-card">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">Upload Logo</h4>
+                <hr />
+
+                <div className="row form-group">
+                  {image ? (
+                    <>
+                      <label className="col-sm-3 mt-sm-5">Logo</label>
+                      <div className="col-sm-9">
+                        <div className="row">
+                          <div align="middle">
+                            <img
+                              height="100%"
+                              width="100%"
                               style={{
-                                cursor: "pointer",
-                                top: "20%",
-                                left: "80%",
+                                maxWidth: "180px",
+                                maxHeight: "180px",
                               }}
-                            >
-                              <i
-                                className="mdi mdi-close text-danger font-weight-bold"
-                                style={{ fontSize: "24px" }}
-                              ></i>
-                            </span>
+                              src={URL.createObjectURL(image)}
+                              alt="upload image"
+                              className="rounded-circle border border-info justify-content-center"
+                            />
                           </div>
+                          <span
+                            onClick={deletePrevImage}
+                            className="position-absolute"
+                            style={{
+                              cursor: "pointer",
+                              top: "20%",
+                              left: "80%",
+                            }}
+                          >
+                            <i
+                              className="mdi mdi-close text-danger font-weight-bold"
+                              style={{ fontSize: "24px" }}
+                            ></i>
+                          </span>
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <label className="col-sm-3 col-xl-3 mt-5 col-form-label d-none d-sm-inline d-md-none d-xl-inline">
-                          Logo
-                        </label>
-                        <div className="col-sm-9 col-md-12 col-xl-9">
-                          <DropFileInput
-                            onFileChange={(files) => onFileChange(files)}
-                          />
-                        </div>
-                      </>
-                    )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <label className="col-sm-3 col-xl-3 mt-5 col-form-label d-none d-sm-inline d-md-none d-xl-inline">
+                        Logo
+                      </label>
+                      <div className="col-sm-9 col-md-12 col-xl-9">
+                        <DropFileInput
+                          onFileChange={(files) => onFileChange(files)}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-3 col-form-label">Position</label>
+                  <div className="col-sm-9">
+                    <select
+                      id="location"
+                      name="location"
+                      className="form-control"
+                      onChange={handleOnChange}
+                      required
+                    >
+                      <option disabled>Select</option>
+                      <option value="F-Header" defaultChecked>
+                        F-Header
+                      </option>
+                      <option value="B-Header">B-Header</option>
+                      <option value="F-Footer">F-Footer</option>
+                      <option value="B-Footer">B-Footer</option>
+                      <option value="Mini-Header">Mini-Header</option>
+                    </select>
                   </div>
-                  <div className="form-group row">
-                    <label className="col-sm-3 col-form-label">Position</label>
-                    <div className="col-sm-9">
-                      <select
-                        id="location"
-                        name="location"
-                        className="form-control"
-                        onChange={handleOnChange}
-                        required
-                      >
-                        <option disabled>Select</option>
-                        <option value="F-Header" defaultChecked>
-                          F-Header
-                        </option>
-                        <option value="B-Header">B-Header</option>
-                        <option value="F-Footer">F-Footer</option>
-                        <option value="B-Footer">B-Footer</option>
-                        <option value="Mini-Header">Mini-Header</option>
-                      </select>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row m-0 mt-2">
-                    <div className="d-flex justify-content-end">
-                      <button
-                        type="submit"
-                        className="btn btn-success"
-                        name="upload"
-                        onClick={handleUploadButtonClick}
-                      >
-                        {isLoading ? "Uploading" : "Upload"}
-                      </button>
-                    </div>
+                </div>
+                <hr />
+                <div className="row m-0 mt-2">
+                  <div className="d-flex justify-content-end">
+                    <button
+                      type="submit"
+                      className="btn btn-success"
+                      name="upload"
+                      onClick={handleUploadButtonClick}
+                    >
+                      {isLoadingUpload ? "Uploading" : "Upload"}
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-8 grid-margin stretch-card">
-              <div className="card">
-                <LogoList logos={data.payload.logos} />
-              </div>
+          </div>
+          <div className="col-md-8 grid-margin stretch-card">
+            <div className="card">
+              {logos ? (
+                <LogoList logos={logos} />
+              ) : (
+                // <div className="card-body">
+                //   <h4 className="card-title">Logo List</h4>
+                //   <div className="table-responsive">
+                //     <table
+                //       className="table table-hover"
+                //       id="dataTable"
+                //       width="100%"
+                //       cellSpacing="0"
+                //     >
+                //       <thead>
+                //         <tr>
+                //           <th scope="col">S/L</th>
+                //           <th scope="col"> Logo </th>
+                //           <th scope="col"> Position </th>
+                //           <th scope="col"> Active </th>
+                //           <th scope="col"> Action </th>
+                //         </tr>
+                //       </thead>
+                //       <tbody>
+                //         {logos.map((logo, i) => (
+                //           <tr key={i}>
+                //             <td align="right">{i + 1}</td>
+                //             <td align="right">
+                //               <img
+                //                 src={CLIENT_URL + "images/logos/" + logo.logo}
+                //                 className="rounded-circle border border-info justify-content-center p-1"
+                //                 alt={logo.logo}
+                //                 style={{ height: "100px", width: "100px" }}
+                //               />
+                //             </td>
+                //             <td> {logo.location} </td>
+
+                //             <td>
+                //               <label
+                //                 className="switch"
+                //                 onClick={(event) =>
+                //                   handleIsActive(event, logo._id, logo.isActive)
+                //                 }
+                //               >
+                //                 <input
+                //                   type="checkbox"
+                //                   name="isActive"
+                //                   defaultChecked={logo.isActive && true}
+                //                 />
+                //                 <span className="slider round"></span>
+                //               </label>
+                //             </td>
+                //             <td align="right">
+                //               <i
+                //                 className="fa fa-trash text-danger"
+                //                 style={{ fontSize: "30px", cursor: "pointer" }}
+                //                 onClick={(event) =>
+                //                   deleteLogoById(event, logo._id)
+                //                 }
+                //               ></i>
+                //             </td>
+                //           </tr>
+                //         ))}
+                //       </tbody>
+                //     </table>
+                //   </div>
+                // </div>
+                <NoResultFound />
+              )}
             </div>
           </div>
         </div>
-      </>
-    )
+      </div>
+    </>
   );
 }
 

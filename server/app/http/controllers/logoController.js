@@ -8,9 +8,8 @@ const { deleteImage } = require("../../helpers/imageHelper");
 const create = async (req, res, next) => {
   // Change korte hobe
   try {
-    const location = req.body;
+    const location = req.body.location;
     const logo = req.file.filename;
-
 
     const logoData = {
       location,
@@ -25,11 +24,12 @@ const create = async (req, res, next) => {
       createError(404, "Logo Create Unsuccesfull");
     }
 
-    return serviceProvider.successResponse(res, {
-      statusCode: 201,
-      message: "Logo was created successfully",
-      payload: { logoCreateData },
-    });
+    // return serviceProvider.successResponse(res, {
+    //   statusCode: 201,
+    //   message: "Logo was created successfully",
+    //   payload: { logoCreateData },
+    // });
+    next();
   } catch (error) {
     if (req.file) {
       deleteImage(req.file.path);
@@ -42,7 +42,7 @@ const create = async (req, res, next) => {
 const showAll = async (req, res, next) => {
   try {
     const logos = await Logo.find({}).sort({ isActive: -1 });
-    if (!logos || logos.length == 0) {
+    if (!logos) {
       throw createError(404, "Logo Not Found");
     }
     return serviceProvider.successResponse(res, {

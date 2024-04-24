@@ -59,7 +59,7 @@ const logoImage = multer({
   storage: logoStorage,
   limits: { fileSize: maxSize },
   fileFilter: fileFilter,
-}).single("image");
+}).single("logo");
 // =======================================================================
 
 // Delete Image
