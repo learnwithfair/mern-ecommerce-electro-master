@@ -291,6 +291,44 @@ const updateProfileInfo = async (req, res, next) => {
     next(error);
   }
 };
+
+//Update Profile Image
+const updateProfileImage = async (req, res, next) => {
+  try {
+
+    const updateId = req.body.userId;
+    const image = req.file.filename;
+    console.log(updateId);
+
+    const user = await findByIdService(User, updateId);
+    const updateOptions = { new: true, validators: true, context: "query" }; // User validators: true for automatic Schema validation
+
+    const updatedProfileImage = await User.findByIdAndUpdate(
+      updateId,
+      { image },
+      updateOptions
+    ).select("-password");
+    if (!updatedProfileImage) {
+      throw new Error("Unsuccessful");
+    } else {
+      const userImagePath = "public/images/users/" + user.image;
+      deleteImage(userImagePath);
+    }
+
+    return serviceProvider.successResponse(res, {
+      statusCode: 201,
+      message: "Profile image upload successfully",
+      payload: { updatedProfileImage },
+    });
+  }
+  catch (error) {
+    if (req.file) {
+      deleteImage(req.file.path);
+    }
+    next(error);
+  }
+};
+
 // Delete user Account
 const deleteUserAccount = async (req, res, next) => {
   try {
@@ -303,7 +341,8 @@ const deleteUserAccount = async (req, res, next) => {
       _id: id,
       // $and:[{_id:id},{isAdmin:false}]
     });
-
+    // Remove cookies
+    res.clearCookie("loginToken");
     return serviceProvider.successResponse(res, {
       statusCode: 200,
       message: "User Deleted successfully ",
@@ -324,5 +363,6 @@ module.exports = {
   profile,
   profileAndLogoDisplay,
   updateProfileInfo,
+  updateProfileImage,
   deleteUserAccount,
 };

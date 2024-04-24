@@ -7,6 +7,7 @@ const {
   isLoggedOut,
   isAdmin,
 } = require("../app/http/middleware/authMiddleware");
+const upload = require("../app/helpers/imageHelper");
 const authRouter = express.Router();
 
 /*
@@ -86,6 +87,12 @@ authRouter.put(
   isLoggedIn,
   userValidate.personalInfoProfileValidation,
   authController.updateProfileInfo
+);
+authRouter.put(
+  "/update-profile-image",  
+  upload.profileImage,
+  isLoggedIn,
+  authController.updateProfileImage
 );
 authRouter.delete(
   "/delete-user-account",

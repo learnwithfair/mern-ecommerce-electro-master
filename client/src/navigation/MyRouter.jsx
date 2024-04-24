@@ -105,7 +105,7 @@ const router = createBrowserRouter([
         element: <IsAdminLoggedIn component={<Dashboard />} />,
       },
       {
-        path: "/api/admin/admin-list",
+        path: "/api/admin/users-list",
         element: <IsAdminLoggedIn component={<Admin />} />,
       },
       {

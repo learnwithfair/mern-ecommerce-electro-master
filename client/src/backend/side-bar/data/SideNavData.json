@@ -8,7 +8,7 @@
   {
     "name": "Admin",
     "icon": "mdi mdi-account-circle",
-    "link": "/api/admin/admin-list",
+    "link": "/api/admin/users-list",
     "sublink": []
   },
   {

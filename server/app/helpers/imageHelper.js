@@ -61,6 +61,33 @@ const logoImage = multer({
   fileFilter: fileFilter,
 }).single("logo");
 // =======================================================================
+// =======================================================================
+// Profile Image Upload
+const profileImagePath = "public/images/users";
+const profileImageStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, profileImagePath);
+  },
+  filename: (req, file, cb) => {
+    const extname = path.extname(file.originalname);
+    const uniqueFileName =
+      Date.now() + "-" + Math.round(Math.random() * 1e9) + extname;
+    cb(null, uniqueFileName);
+  },
+});
+// const logoFileFilter = (req, file, cb) => {
+//   const extname = path.extname(file.originalname);
+//   if (!allowedFileTypes.includes(extname.substring(1))) {
+//     return cb(new Error("File type not allowed"), false);
+//   }
+//   cb(null, true);
+// };
+const profileImage = multer({
+  storage: profileImageStorage,
+  limits: { fileSize: maxSize },
+  fileFilter: fileFilter,
+}).single("image");
+// =======================================================================
 
 // Delete Image
 const deleteImage = async (imagePath) => {
@@ -73,4 +100,4 @@ const deleteImage = async (imagePath) => {
   }
 };
 
-module.exports = { productImage, logoImage, deleteImage };
+module.exports = { productImage, logoImage, profileImage, deleteImage };

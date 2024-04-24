@@ -38,10 +38,7 @@ export default function Admin() {
           {/* <!-- partial --> */}
           <div className="main-panel">
             <AdminList />
-            {/* <MyDataTable /> */}
 
-            {/* <!-- content-wrapper ends --> */}
-            {/* <!-- partial:partials/_footer.html --> */}
             <Footer />
             {/* <!-- partial --> */}
           </div>

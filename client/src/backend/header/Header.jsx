@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Search from "./search/Search";
 import $ from "jquery";
 import CLIENT_URL from "../../config/Config";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useFetch from "../../helper/use-fetch/useFetch";
 import { UseContext } from "../../helper/use-context/UseContext";
 import minilogo from "../assets/images/logo-mini.svg";
@@ -10,6 +10,7 @@ import minilogo from "../assets/images/logo-mini.svg";
 export default function Header() {
   const [isMinimize, setIsMinize] = useState(false);
   const [isOfCanvas, setIsOfCanvas] = useState(false);
+  const navigate = useNavigate(); // Redirect Route
   const { user, logos } = useContext(UseContext);
 
   const logo = logos && logos.find((lg) => "F-Header" === lg.location);
@@ -35,15 +36,13 @@ export default function Header() {
   const userLogout = async (e) => {
     e.preventDefault();
     const info = JSON.parse(await useFetch("api/auth/logout", {}, "get"));
-    if (info.data) {
-      alert("Succefully Logout");
-      console.log(info.data);
+    if (info.data != null) {
+      successMessage("Succefully Logout");
       // Move to Home Page
-      // successMessage("Succefully Logout");
+      navigate("/", { replace: true });
     } else {
-      console.error(info.error);
+      errorMessage(info.error);
     }
-    // warningMessage(info.error);
   };
   return (
     user != null && (

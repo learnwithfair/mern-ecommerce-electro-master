@@ -28,6 +28,8 @@
   height: 200px;
   width: 200px;
   border: 2px solid gray;
+  border-radius: 50%;
+  padding: 2px;
 }
 
 .choose-file {
@@ -44,12 +46,13 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin-left: -40px;
-  margin-top: 0px;
+  margin-left: -60px;
+  margin-top: -15px;
   top: 160px;
-    opacity: 0.7;
+  opacity: 0.7;
   position: absolute;
   background-color: red;
+  cursor: pointer;
 }
 
 /* Update Profile Picture End  */

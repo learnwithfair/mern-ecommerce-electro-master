@@ -22,14 +22,15 @@ export default function AccountControl() {
     const info = JSON.parse(
       await useFetch("api/auth/delete-user-account", {}, "delete")
     );
-    if (info.data) {
-      // Move to Home Page
-      alert("Succefully Deleted");
+    if (info.data != null) {
+      successMessage("Succefully Deleted");
       // Redirect to Home page
-
-      // successMessage("Succefully Logout");
+      localStorage.setItem("authentication", false);
+      localStorage.setItem("lastPathname", null);
+      // Move to Home Page
+      navigate("/", { replace: true });
     } else {
-      console.error(info);
+      errorMessage(info.error);
     }
     // console.log("first");
     // warningMessage(info.error);

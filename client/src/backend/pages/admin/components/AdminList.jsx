@@ -9,6 +9,12 @@ export default function AdminList() {
   const { data, isLoading, error } = useFetchState("api/admin/users/show-all");
   let userList = data != null ? data.payload.users : null;
 
+  // For Date formating
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "2-digit",
+    month: "short",
+    day: "2-digit",
+  });
   // handle isAdmin and isBanned
   const handleUpdate = async (event, id, data) => {
     const name = event.target.name;
@@ -109,8 +115,11 @@ export default function AdminList() {
                             </li>
                           </td>
                           <td> {user.address} </td>
-                          <td></td>
-                          {/* <td> {user.createdAt} </td> */}
+                          {/* <td></td> */}
+                          <td>
+                            {" "}
+                            {formatter.format(new Date(user.createdAt))}{" "}
+                          </td>
                           <td>
                             <label className="switch">
                               <input
