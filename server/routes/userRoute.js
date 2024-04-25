@@ -72,6 +72,7 @@ userRouter.get("/admin/users/show-all", isLoggedIn, isAdmin, userController.show
 userRouter.put(
   "/admin/users/update/:id",
   isLoggedIn, isAdmin,
-  userController.update
+  userController.update,
+  userController.showAll
 );
 module.exports = { userRouter };

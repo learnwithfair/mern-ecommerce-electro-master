@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import $, { error } from "jquery";
+import $ from "jquery";
 import useFetch from "../../../../helper/use-fetch/useFetch";
 import CLIENT_URL from "../../../../config/Config";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import Modal from "react-bootstrap/Modal";
 
-export default function LogoList(props) {
-  // const [isLoading, setIsLoading] = useState(false);
+export default function LogoList(props) { 
+  const [show, setShow] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const [logos, setLogos] = useState(props.logos);
 
-  // handle is Adtive
+  // handle is Active
   const handleIsActive = async (e, id, isActive) => {
     const info = JSON.parse(
       await useFetch(
@@ -27,23 +30,30 @@ export default function LogoList(props) {
   };
 
   // Delete logo by ID
-  const deleteLogoById = async (e, id) => {
+  const handleDelete = (e, id) => {
     e.preventDefault();
+    setShow(true);
+    setDeleteId(id);
+   
+  };
+
+  // Delete Logo After Confirmation
+  const deleteItemById = async () => {
+    setShow(false);
+
     const info = JSON.parse(
-      await useFetch("api/admin/delete-logo/" + id, {}, "delete")
+      await useFetch("api/admin/delete-logo/" + deleteId, {}, "delete")
     );
 
     // Set State value after click submit button
     if (info.data != null) {
       setLogos(info.data.payload.logos);
-
-      info.data.success
-        ? successMessage("Successfully Deleted")
-        : errorMessage();
+      successMessage("Successfully Deleted");
     } else {
-      errorMessage();
+      errorMessage(info.error);
     }
   };
+
   // initialize datatable // Another files initialize in the main.jsx file
   $(document).ready(function () {
     $("#dataTable").DataTable();
@@ -51,6 +61,43 @@ export default function LogoList(props) {
 
   return (
     <>
+      {/* Delete Modal  */}
+      <Modal
+        size="sm"
+        show={show}
+        centered
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Body>
+          <div className="justify-content-center" align="middle">
+            <div>
+              <img
+                src="/icon/delete-icon.png"
+                alt=""
+                className="rounded-circle border border-danger p-1"
+                width="100px"
+                height="100px"
+              />
+            </div>
+            <br />
+            <h4>Do you want to Delete?</h4>
+            <div className="fs-6">You won't be able to recover it!!</div>
+          </div>
+          <hr />
+          <div align="middle">
+            <button
+              className="btn btn-secondary m-2"
+              onClick={() => setShow(false)}
+            >
+              Cancel
+            </button>
+            <button className="btn btn-danger m-2" onClick={deleteItemById}>
+              Delete
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      {/* /Delete Modal  */}
       <div className="card-body">
         <h4 className="card-title">Logo List</h4>
         <div className="table-responsive">
@@ -101,7 +148,7 @@ export default function LogoList(props) {
                       <i
                         className="fa fa-trash text-danger"
                         style={{ fontSize: "30px", cursor: "pointer" }}
-                        onClick={(event) => deleteLogoById(event, logo._id)}
+                        onClick={(event) => handleDelete(event, logo._id)}
                       ></i>
                     </td>
                   </tr>

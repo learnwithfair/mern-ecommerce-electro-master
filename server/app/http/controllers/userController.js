@@ -145,16 +145,17 @@ const update = async (req, res, next) => {
       updateId,
       updates,
       updateOptions
-    ).select("-password").sort({ isAdmin: -1 });
+    ).select("-password");
     if (!updatedUser) {
       throw new Error("User not Found");
     }
 
-    return serviceProvider.successResponse(res, {
-      statusCode: 200,
-      message: "Updated User: ",
-      payload: { updatedUser },
-    });
+    // return serviceProvider.successResponse(res, {
+    //   statusCode: 200,
+    //   message: "Updated User: ",
+    //   payload: { updatedUser },
+    // });
+    next();
   } catch (error) {
     next(error);
   }

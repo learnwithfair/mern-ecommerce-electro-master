@@ -4,10 +4,9 @@ import { NavLink } from "react-router-dom";
 import LogoList from "./LogoList";
 import useFetch from "../../../../helper/use-fetch/useFetch";
 import NoResultFound from "../../../../error-pages/NoResultFound";
-import Preloader from "../../../../preloader/Preloader";
+
 
 function LogoUpload() {
-  const isLoading = false;
   const [isLoadingUpload, setIsLoadingUpload] = useState(false);
   // Default location set "F-Header"
   const defaultLocation = { location: "F-Header", logo: "" };
@@ -87,9 +86,7 @@ function LogoUpload() {
     }));
   };
 
-  return isLoading ? (
-    <Preloader />
-  ) : (
+  return (
     <>
       <div className="content-wrapper">
         <div className="page-header">
@@ -205,69 +202,7 @@ function LogoUpload() {
             <div className="card">
               {logos ? (
                 <LogoList logos={logos} />
-              ) : (
-                // <div className="card-body">
-                //   <h4 className="card-title">Logo List</h4>
-                //   <div className="table-responsive">
-                //     <table
-                //       className="table table-hover"
-                //       id="dataTable"
-                //       width="100%"
-                //       cellSpacing="0"
-                //     >
-                //       <thead>
-                //         <tr>
-                //           <th scope="col">S/L</th>
-                //           <th scope="col"> Logo </th>
-                //           <th scope="col"> Position </th>
-                //           <th scope="col"> Active </th>
-                //           <th scope="col"> Action </th>
-                //         </tr>
-                //       </thead>
-                //       <tbody>
-                //         {logos.map((logo, i) => (
-                //           <tr key={i}>
-                //             <td align="right">{i + 1}</td>
-                //             <td align="right">
-                //               <img
-                //                 src={CLIENT_URL + "images/logos/" + logo.logo}
-                //                 className="rounded-circle border border-info justify-content-center p-1"
-                //                 alt={logo.logo}
-                //                 style={{ height: "100px", width: "100px" }}
-                //               />
-                //             </td>
-                //             <td> {logo.location} </td>
-
-                //             <td>
-                //               <label
-                //                 className="switch"
-                //                 onClick={(event) =>
-                //                   handleIsActive(event, logo._id, logo.isActive)
-                //                 }
-                //               >
-                //                 <input
-                //                   type="checkbox"
-                //                   name="isActive"
-                //                   defaultChecked={logo.isActive && true}
-                //                 />
-                //                 <span className="slider round"></span>
-                //               </label>
-                //             </td>
-                //             <td align="right">
-                //               <i
-                //                 className="fa fa-trash text-danger"
-                //                 style={{ fontSize: "30px", cursor: "pointer" }}
-                //                 onClick={(event) =>
-                //                   deleteLogoById(event, logo._id)
-                //                 }
-                //               ></i>
-                //             </td>
-                //           </tr>
-                //         ))}
-                //       </tbody>
-                //     </table>
-                //   </div>
-                // </div>
+              ) : (           
                 <NoResultFound />
               )}
             </div>

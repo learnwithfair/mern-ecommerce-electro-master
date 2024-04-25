@@ -23,7 +23,7 @@ import IsAdminLoggedIn from "./IsAdminLoggedIn";
 import IsLoggedOut from "./IsLoggedOut";
 import IsUserLoggedIn from "./IsUserLoggedIn";
 import Logo from "../backend/pages/logo/Logo";
-
+import SokectText from "../frontend/pages/SokectText";
 const router = createBrowserRouter([
   {
     // Frontend Routes
@@ -61,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/socket-text",
+        element: <SokectText />,
       },
       {
         path: "/profile",

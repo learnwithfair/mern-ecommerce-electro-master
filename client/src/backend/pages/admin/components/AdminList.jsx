@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import useFetchState from "../../../../helper/use-fetch/useFetchState";
 import CLIENT_URL from "../../../../config/Config";
 import useFetch from "../../../../helper/use-fetch/useFetch";
 import $ from "jquery";
+import NoResultFound from "../../../../error-pages/NoResultFound";
 
 export default function AdminList() {
-  const { data, isLoading, error } = useFetchState("api/admin/users/show-all");
-  let userList = data != null ? data.payload.users : null;
-
+  const [userList, setUserList] = useState(null);
   // For Date formating
   const formatter = new Intl.DateTimeFormat("en-GB", {
     year: "2-digit",
     month: "short",
     day: "2-digit",
   });
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const info = JSON.parse(
+        await useFetch("api/admin/users/show-all", {}, "get")
+      );
+      if (info.data != null) {
+        setUserList(info.data.payload.users);
+      }
+    }, 1);
+  }, []);
+
   // handle isAdmin and isBanned
   const handleUpdate = async (event, id, data) => {
     const name = event.target.name;
@@ -23,12 +33,10 @@ export default function AdminList() {
       await useFetch("api/admin/users/update/" + id, { [name]: value }, "put")
     );
     if (info.data != null) {
-      info.data.success
-        ? successMessage("Successfully Updated")
-        : errorMessage();
+      setUserList(null);
+      setTimeout(() => setUserList(info.data.payload.users), 1);
+      successMessage("Successfully Updated");
     }
-    // Set State value after click submit button
-    // userList = info.data != null ? info.data.payload.users : null;
   };
 
   // initialize datatable // Another files initialize in the main.jsx file
@@ -36,9 +44,7 @@ export default function AdminList() {
     $("#dataTable").DataTable();
   });
 
-  return userList == null ? (
-    error
-  ) : (
+  return (
     <>
       <div className="content-wrapper">
         <div className="page-header">
@@ -61,97 +67,103 @@ export default function AdminList() {
             <div className="card">
               <div className="card-body">
                 <h4 className="card-title">Admins & Users List</h4>
-                <div className="table-responsive">
-                  <table
-                    className="table table-hover"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th scope="col">S/L</th>
-                        <th scope="col"> Image </th>
-                        <th scope="col"> Name </th>
-                        <th scope="col"> Email / Phone </th>
+                {userList ? (
+                  <div className="table-responsive">
+                    <table
+                      className="table table-hover"
+                      id="dataTable"
+                      width="100%"
+                      cellSpacing="0"
+                    >
+                      <thead>
+                        <tr>
+                          <th scope="col">S/L</th>
+                          <th scope="col"> Image </th>
+                          <th scope="col"> Name </th>
+                          <th scope="col"> Email / Phone </th>
 
-                        <th scope="col"> Adress </th>
-                        <th scope="col"> Joining </th>
-                        <th scope="col"> Admin </th>
+                          <th scope="col"> Adress </th>
+                          <th scope="col"> Joining </th>
+                          <th scope="col"> Admin </th>
 
-                        <th scope="col"> Banned </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {userList.map((user, i) => (
-                        <tr key={i}>
-                          <td>{i + 1}</td>
-                          <td>
-                            <img
-                              src={
-                                CLIENT_URL +
-                                "images/users/" +
-                                (user.image == "default-image"
-                                  ? "default-user-image.png"
-                                  : user.image)
-                              }
-                              alt={user.image}
-                            />
-                          </td>
-                          <td> {user.name} </td>
-                          <td>
-                            <li>
-                              <b>Email: </b>
-                              <NavLink exact="true" to={"mailto:" + user.email}>
-                                {user.email}
-                              </NavLink>
-                            </li>
-                            <br />
-                            <li>
-                              <b>Phone: </b>
-                              <NavLink exact="true" to={"tel+:" + user.phone}>
-                                {user.phone}
-                              </NavLink>
-                            </li>
-                          </td>
-                          <td> {user.address} </td>
-                          {/* <td></td> */}
-                          <td>
-                            {" "}
-                            {formatter.format(new Date(user.createdAt))}{" "}
-                          </td>
-                          <td>
-                            <label className="switch">
-                              <input
-                                type="checkbox"
-                                name="isAdmin"
-                                defaultChecked={user.isAdmin && true}
-                                onClick={(event) =>
-                                  handleUpdate(event, user._id, user.isAdmin)
-                                }
-                              />
-                              <span className="slider round"></span>
-                            </label>
-                            {/* <input type="checkbox" name="" id="" /> */}
-                          </td>
-                          <td>
-                            <label className="switch">
-                              <input
-                                type="checkbox"
-                                name="isBanned"
-                                defaultChecked={user.isBanned && true}
-                                onClick={(event) =>
-                                  handleUpdate(event, user._id, user.isBanned)
-                                }
-                              />
-                              <span className="slider round"></span>
-                            </label>
-                          </td>
+                          <th scope="col"> Banned </th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+
+                      <tbody>
+                        {userList.map((user, i) => (
+                          <tr key={i}>
+                            <td>{i + 1}</td>
+                            <td>
+                              <img
+                                src={
+                                  CLIENT_URL +
+                                  "images/users/" +
+                                  (user.image == "default-image"
+                                    ? "default-user-image.png"
+                                    : user.image)
+                                }
+                                alt={user.image}
+                              />
+                            </td>
+                            <td> {user.name} </td>
+                            <td>
+                              <li>
+                                <b>Email: </b>
+                                <NavLink
+                                  exact="true"
+                                  to={"mailto:" + user.email}
+                                >
+                                  {user.email}
+                                </NavLink>
+                              </li>
+                              <br />
+                              <li>
+                                <b>Phone: </b>
+                                <NavLink exact="true" to={"tel+:" + user.phone}>
+                                  {user.phone}
+                                </NavLink>
+                              </li>
+                            </td>
+                            <td> {user.address} </td>
+
+                            <td>
+                              {formatter.format(new Date(user.createdAt))}
+                            </td>
+                            <td>
+                              <label className="switch">
+                                <input
+                                  type="checkbox"
+                                  name="isAdmin"
+                                  defaultChecked={user.isAdmin && true}
+                                  onClick={(event) =>
+                                    handleUpdate(event, user._id, user.isAdmin)
+                                  }
+                                />
+                                <span className="slider round"></span>
+                              </label>
+                            </td>
+                            <td>
+                              <label className="switch">
+                                <input
+                                  type="checkbox"
+                                  name="isBanned"
+                                  defaultChecked={user.isBanned && true}
+                                  onClick={(event) =>
+                                    handleUpdate(event, user._id, user.isBanned)
+                                  }
+                                />
+                                <span className="slider round"></span>
+                              </label>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <NoResultFound />
+                )}
               </div>
             </div>
           </div>

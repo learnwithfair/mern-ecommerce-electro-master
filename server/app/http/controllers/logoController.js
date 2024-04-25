@@ -59,7 +59,7 @@ const showAll = async (req, res, next) => {
 const showHeaderLogo = async (req, res, next) => {
   try {
     const logo = await Logo.findOne({ $and: [{ location: "F-Header" }, { isActive: true }] }, { logo: 1 });
-    if (!logo || logo.length == 0) {
+    if (!logo) {
       throw createError(404, "Logo Not Found");
     }
     return serviceProvider.successResponse(res, {
@@ -108,6 +108,9 @@ const deleteLogo = async (req, res, next) => {
   try {
     const id = req.params.id;
     const logo = await findByIdService(Logo, id);
+    if (logo.isActive) {
+      throw createError(404, "Logo is Activated");
+    }
 
     const logoImagePath = "public/images/logos/" + logo.logo;
     deleteImage(logoImagePath);
