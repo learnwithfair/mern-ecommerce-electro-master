@@ -4,7 +4,7 @@ Thanks for visiting my GitHub account!
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTZT5qJiTrdjCqCliDz_UQGGFTvr_hmqFt9DOjGKC80Q&s)
 
-Web development refers to the creating, building, and maintaining of websites. It includes aspects such as web design, web publishing, web programming, and database management. One of the most famous stack that is used for Web Development is MERN stack. This stack provides an end-to-end framework for the developers to work in and each of these technologies play a big part in the development of web applications. [more](https://www.geeksforgeeks.org/mern-stack/)
+Web development refers to the creating, building, and maintaining of websites. It includes aspects such as web design, web publishing, web programming, and database management. One of the most famous stacks that is used for Web Development is the MERN stack. This stack provides an end-to-end framework for the developers to work in and each of these technologies play a big part in the development of web applications. [more](https://www.geeksforgeeks.org/mern-stack/)
 
 ## Source Code (Download)
 
@@ -13,21 +13,21 @@ Web development refers to the creating, building, and maintaining of websites. I
 ## Required Software (Download)
 
 - VS Code, Download ->https://code.visualstudio.com/download
-- Node , Download-> https://nodejs.org/en/download
-- Mongodb Shell(msi) , Download-> https://www.mongodb.com/try/download/shell
-- Postman , Download-> https://www.postman.com/downloads/
+- Node, Download-> https://nodejs.org/en/download
+- MongoDB Shell(msi) , Download-> https://www.mongodb.com/try/download/shell
+- Postman, Download-> https://www.postman.com/downloads/
 
 **Or Online Database (MongoDB Atlas)**
 
 - Register -> https://www.mongodb.com/cloud/atlas/register
 
-## ================================== Environment Setup ==================================
+## ==================== Environment Setup ====================
 
 1. Instal Node.js
 2. To verify installation into command form by node -v
-3. For initialization npm write the query in the commad window as- npm init -y
-4. Setup the opening file into the package.json and chenge the file with main:'server.js'
-5. To create server using express package then write query into the command window as npm install express.
+3. For initialization npm write the query in the command window as npm init -y
+4. Setup the opening file into the package.json and change the file with main:'server.js'
+5. To create a server using the express package then write a query into the command window as npm install express.
    Write code in the server file for initialization
    const express = require("express");
    const app = express();
@@ -36,29 +36,29 @@ Web development refers to the creating, building, and maintaining of websites. I
    });
 
 6. Install the nodemon package for automatically running the server as- npm i --save-dev nodemon (For Developing purpose)
-7. setup the package.json file in the scripts key write
+7. setup the package.json file in the scripts key, write
    "scripts": {
    "start": "node ./resources/backend/server.js",
    "dev": "nodemon ./resources/backend/server.js",
    "test": "echo \"Error: no test specified\" && exit 1"
    },
-8. use the morgan package for automatically restart. Hence install the morgan package as npm install --save-dev morgan (Development purpose)
+8. use the Morgan package for automatic restart. Hence install the morgan package as npm install --save-dev morgan (Development purpose)
    Write code in the server file for initialization
    const morgan = require("morgan");
    app.use(morgan("dev")); --> Middlewire.
-9. Install Postman software for API testing by the url end point.
+9. Install Postman software for API testing by the URL endpoint.
 10. Install Mongobd + MongobdCompass and Mongoshell (For Database)
 
-## ================================== Connect MongoDB Database ==================================
+## ==================== Connect MongoDB Database ====================
 
 1. Install Mondodb + Mongodb Compass and Mongodb Shell download from the google.
 2. Set up Environment Variable in drive:c/program file
-3. Create a directory in the base path of c drive named data. Inside the data directory create another folder db.
-4. Write the command in the CMD window as mongod. And write the another command in the another CMD window as mongosh.
+3. Create a directory in the base path of the c drive named data. Inside the data directory create another folder db.
+4. Write the command in the CMD window as Mongod. And write the other command in the other CMD window as mongosh.
 5. Then Check the version as mongod --version and mongosh --version.
 6. Install mongoose package as npm i mongoose
-7. Create a atlas account. In the atlas account create a cluster that have a user(as atlas admin) and network access with any access IP address.
-8. Connect the database using url from the atlas cluster or local mongodb compass using the mongoose package as mongoose.connect('mongodb://localhost:27017/databaseName');
+7. Create an atlas account. In the atlas account create a cluster that have a user(as atlas admin) and network access with any access IP address.
+8. Connect the database using URL from the atlas cluster or local Mongodb compass using the mongoose package as mongoose. connect('mongodb://localhost:27017/database-name);
 
 ## Step-1: Client Side Configuration
 
@@ -120,7 +120,7 @@ npm run dev
 
 |                                                                                                                       |
 | :-------------------------------------------------------------------------------------------------------------------: |
-|                                                   Dashbord Preview                                                    |
+|                                                   Dashboard Preview                                                    |
 | ![backent](https://github.com/learnwithfair/mern-ecommerce-electro-master/blob/main/screenshot/dashboard/preview.jpg) |
 
 ### Frontend
@@ -141,9 +141,9 @@ const express = require("express"); // Create Express server
 const morgan = require("morgan"); // For automatically run server
 const cookieParser = require("cookie-parser"); // For set Cookie
 const createError = require("http-errors"); // For create HTTP Error
-const xssClean = require("xss-clean"); // For  Secure api
+const xssClean = require("xss-clean"); // For  Secure API
 const bodyParser = require("body-parser"); // For Get/ Set data into body
-const cors = require("cors"); // To set access for client side URL
+const cors = require("cors"); // To set access for client-side URL
 ```
 
 /_
@@ -156,10 +156,10 @@ _/
 app.use(cookieParser()); // For set Cookie
 app.use(morgan("dev")); // For automatically run server
 app.use(xssClean()); // For  Secure api
-app.use(bodyParser.json()); // For Set, Read data into body and display JSON Format Text
+app.use(bodyParser.json()); // For Set, Read data into the body and display JSON Format Text
 app.use(bodyParser.urlencoded({ extended: true })); // Get HTML Form Data
-app.use(setRefreshToken); // For set Refresh Token [Automatically call this middlewire for all route]
-// To get access Client side url
+app.use(setRefreshToken); // For set Refresh Token [Automatically call this middleware for all route]
+// To get access to Client side URL
 app.use(cors(
  {
    origin: BASE_URL, // Frontend Base URL
