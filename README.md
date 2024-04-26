@@ -21,7 +21,7 @@ Web development refers to the creating, building, and maintaining of websites. I
 
 - Register -> https://www.mongodb.com/cloud/atlas/register
 
-## ==================== Environment Setup ====================
+## ========== Environment Setup ==========
 
 1. Instal Node.js
 2. To verify installation into command form by node -v
@@ -49,7 +49,7 @@ Web development refers to the creating, building, and maintaining of websites. I
 9. Install Postman software for API testing by the URL endpoint.
 10. Install Mongobd + MongobdCompass and Mongoshell (For Database)
 
-## ==================== Connect MongoDB Database ====================
+## ========== Connect MongoDB Database ==========
 
 1. Install Mondodb + Mongodb Compass and Mongodb Shell download from the google.
 2. Set up Environment Variable in drive:c/program file
