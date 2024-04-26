@@ -1,15 +1,30 @@
 [{
   "_id": {
-    "$oid": "65526970fea05a62d9e42b36"
+    "$oid": "66293a7198853841797c6a1c"
   },
-  "logo": "/logo/logo.png",
+  "logo": "1713977969513-730210287.png",
   "location": "F-Header",
   "isActive": true,
   "createdAt": {
-    "$date": "2023-11-12T14:55:44.572Z"
+    "$date": "2024-04-24T16:59:29.535Z"
   },
   "updatedAt": {
-    "$date": "2023-11-12T14:55:44.572Z"
+    "$date": "2024-04-24T16:59:33.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6629d74e675dda3a4a5a1081"
+  },
+  "logo": "1714018126348-782206878.png",
+  "location": "B-Header",
+  "isActive": false,
+  "createdAt": {
+    "$date": "2024-04-25T04:08:46.356Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-25T04:16:42.053Z"
   },
   "__v": 0
 }]

@@ -5,7 +5,7 @@
   "name": "MD RAHATUL RABBI",
   "email": "learnwithfair@gmail.com",
   "password": "$2a$10$vr/Zn6rdmQe9CU2USVmVyeNOw/x4NPPips.ydGD3qu9gCGLehq4uK",
-  "image": "default-image",
+  "image": "1713977780488-113756832.jpg",
   "address": "Lalmonirhat, Bangladesh",
   "phone": "+8801790224950",
   "isAdmin": true,
@@ -15,7 +15,7 @@
     "$date": "2024-02-03T16:11:37.465Z"
   },
   "updatedAt": {
-    "$date": "2024-04-13T12:43:39.929Z"
+    "$date": "2024-04-24T16:56:20.566Z"
   }
 },
 {
@@ -35,86 +35,6 @@
     "$date": "2024-02-03T16:11:37.467Z"
   },
   "updatedAt": {
-    "$date": "2024-02-03T16:11:37.467Z"
+    "$date": "2024-04-25T05:08:30.641Z"
   }
-},
-{
-  "_id": {
-    "$oid": "65be65b9cc394c72ba931ea4"
-  },
-  "name": "Anisul Islam",
-  "email": "anisul@gmail.com",
-  "password": "$2a$10$TwUq1yxHkKx/ZQgTGlKONu3CFnzBHvQ.TD0U0IKQHcJglrc2Bak4K",
-  "image": "default-image",
-  "address": "sylhet, Bangladesh",
-  "phone": "01790224950",
-  "isAdmin": false,
-  "isBanned": false,
-  "__v": 0,
-  "createdAt": {
-    "$date": "2024-02-03T16:11:37.467Z"
-  },
-  "updatedAt": {
-    "$date": "2024-02-03T16:11:37.467Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "661c0d31c8c4352056b4d59d"
-  },
-  "name": "MAHMUDUL  HASAN",
-  "email": "hasan@gmail.com",
-  "password": "$2a$10$vj.ibJHFeP5bGvWb/tqnI.RBahDNk4V4wgRofCO9zkk5JtD/fQM52",
-  "image": "default-image.png",
-  "address": "Kakina",
-  "phone": "+8801824032108",
-  "isAdmin": false,
-  "isBanned": false,
-  "createdAt": {
-    "$date": "2024-04-14T17:06:57.831Z"
-  },
-  "updatedAt": {
-    "$date": "2024-04-14T17:06:57.831Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "661c832db6fe62361b9f6dd1"
-  },
-  "name": "MD RAHATUL RABBI",
-  "email": "rahatul.demo@gmail.com",
-  "password": "$2a$10$znHol/DpKG6WZ03wyI6tcuuqX6sEzQ2KiJGQAlTYR2gvyoNr48FgS",
-  "image": "default-image.png",
-  "address": "Lalmoni",
-  "phone": "+8801824032108",
-  "isAdmin": false,
-  "isBanned": false,
-  "createdAt": {
-    "$date": "2024-04-15T01:30:22.781Z"
-  },
-  "updatedAt": {
-    "$date": "2024-04-15T01:30:22.781Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "661c83eab6fe62361b9f6dd7"
-  },
-  "name": "MD RAHATUL RABBI",
-  "email": "rahatul@gmail.com",
-  "password": "$2a$10$uvBZ/uQcgKXUpo6jY1rc1u92Ejd0BiB21ALO9lz6SbzlwFcsSx/oK",
-  "image": "default-image.png",
-  "address": "Lalmoni",
-  "phone": "+8801824032108",
-  "isAdmin": false,
-  "isBanned": false,
-  "createdAt": {
-    "$date": "2024-04-15T01:33:31.539Z"
-  },
-  "updatedAt": {
-    "$date": "2024-04-15T01:33:31.539Z"
-  },
-  "__v": 0
 }]
