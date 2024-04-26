@@ -37,8 +37,36 @@ app.use(cors(
     origin: BASE_URL, // Frontend Base URL
     credentials: true
   }
-)); 
+));
+
+
+
 app.use(express.static("public")); // To Display Server site image
+
+
+/*
+|--------------------------------------------------------------------------
+|                           Socket IO
+|--------------------------------------------------------------------------
+ */
+const io = require("socket.io")(8080, {
+  cors: {
+    origin: BASE_URL
+  },
+});
+io.on("connection", (socket) => {
+  console.log("User connected", socket.id);
+
+  setInterval(() => {
+    io.emit("refresh", {});
+  }, 500)
+
+  // socket.on("disconnect", function () {
+  //   console.log("Disconnect");
+
+  // })
+
+});
 
 /*
 |--------------------------------------------------------------------------

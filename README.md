@@ -35,12 +35,18 @@ STORE_PASSWORD=sslPayment-Password
 ```
 
 ### API-> server/resources/js/secret.js
+
 ```bash
 const mongodbURL = "mongodb://localhost:27017/ecommerceMernDB";(For Local Database)
 ```
+
 ## Step-4 Run Command in another Terminal (server)
 
 ```bash
 cd server
 npm run dev
 ```
+
+## Socket IO
+
+**If any error occur for socket.io/Network error then change the port (8080) for socket.io in both app.js and Cart.jsx file with your recomendd port.**

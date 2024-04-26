@@ -115,7 +115,7 @@ export default function Store() {
                   className="input-select"
                 >
                   {sortData.map((item, i) => (
-                    <option key={i} value={item.value}>
+                    <option key={i} defaultValue={item.value}>
                       {item.name}
                     </option>
                   ))}
@@ -131,8 +131,8 @@ export default function Store() {
                   {showData.map((item, i) => (
                     <option
                       key={i}
-                      value={item}
-                      selected={item == show ? true : false}
+                      defaultValue={item}
+                      selected={item == show && true}
                     >
                       {item}
                     </option>

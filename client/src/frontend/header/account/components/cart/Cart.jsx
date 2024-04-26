@@ -1,11 +1,15 @@
 import React, { useEffect, useReducer, useState } from "react";
 import ProductWidgetForPayment from "../../../../components/product-widget-for-payment/ProductWidgetForPayment";
 import { NavLink } from "react-router-dom";
+import { io } from "socket.io-client";
 
 import useFetchState from "../../../../../helper/use-fetch/useFetchState";
 
 export default function Cart() {
-  // const [cartCount, setCartCount] = useState(0);
+  const [cartList, setCartList] = useState(
+    JSON.parse(localStorage.getItem("cartList")) || []
+  );
+  const [socket, setSocket] = useState(null);
   // Display All Product, Categories and Brands
   const { data, isLoading, error } = useFetchState("api/product/show-all");
 
@@ -16,15 +20,27 @@ export default function Cart() {
       return x + 1;
     } else return x + 1;
   }, 0);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:8080"));
+    if (!localStorage.getItem("cartList")) {
+      localStorage.setItem("cartList", JSON.stringify([]));
+    }
+  }, []);
+
+  useEffect(() => {
+    socket?.on("refresh", (data) => {
+      setCartList(JSON.parse(localStorage.getItem("cartList")) || []);
+      // setCartList(() => [...chat, data]);
+    });
+  }, [socket]);
   // Set default local Storage by first on load
 
-  if (!localStorage.getItem("cartList")) {
-    localStorage.setItem("cartList", JSON.stringify([]));
-  }
+  // if (!localStorage.getItem("cartList")) {
+  //   localStorage.setItem("cartList", JSON.stringify([]));
+  // }
 
   // Filtering Item which are included into cartlist
-  const cartList = JSON.parse(localStorage.getItem("cartList"));
-
   const productData =
     products != null &&
     products.filter((product, i) => {
@@ -98,8 +114,14 @@ export default function Cart() {
             )}
           </a>
           {/* stopPropagation for card close handling */}
-          <div className="cart-dropdown" id="cartDropdown" onClick={(e) => e.stopPropagation()}>
-            <div className="cart-list" id="cartList">{productWidgetforPayment}</div>
+          <div
+            className="cart-dropdown"
+            id="cartDropdown"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="cart-list" id="cartList">
+              {productWidgetforPayment}
+            </div>
             <div className="cart-summary">
               <small>{productData.length} Item(s) selected</small>
               <h5>SUBTOTAL: ${totalAmount}.00</h5>
