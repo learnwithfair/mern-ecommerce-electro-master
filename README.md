@@ -73,6 +73,7 @@ const CLIENT_URL = "http://localhost:3000";
 
 ```bash
 cd client
+npm install --force
 npm run dev
 ```
 
@@ -107,6 +108,7 @@ const mongodbURL = "mongodb://localhost:27017/ecommerceMernDB";(For Local Databa
 
 ```bash
 cd server
+npm install --force
 npm run dev
 ```
 
