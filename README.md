@@ -15,6 +15,7 @@ Web development refers to the creating, building, and maintaining of websites. I
 - VS Code, Download ->https://code.visualstudio.com/download
 - Node, Download-> https://nodejs.org/en/download
 - MongoDB Shell(msi) , Download-> https://www.mongodb.com/try/download/shell
+- MongoDB Compass (msi), Download-> https://www.mongodb.com/try/download/community
 - Postman, Download-> https://www.postman.com/downloads/
 
 **Or Online Database (MongoDB Atlas)**
