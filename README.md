@@ -113,6 +113,8 @@ npm install --force
 npm run dev
 ```
 
+## Step-5 
+visit -> http://localhost:5173/
 ## Socket IO
 
 **If any error occur for socket.io/Network error then change the port (8080) for socket.io in both app.js and Cart.jsx file with your recomendd port.**
