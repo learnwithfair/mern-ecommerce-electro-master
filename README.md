@@ -9,7 +9,27 @@ Web development refers to the creating, building, and maintaining of websites. I
 ## Source Code (Download)
 
 [Click Here](https://mega.nz/file/AX1QXBzT#tkKTBeiS2r32mF88reoBp7iAiiUrS0FedWZdsCTc9PA)
-
+## Features
+The following features are included here,
+- Authentication System (Login, Logout, Forgot Password, etc)
+- Admin Banned and Unbanned Systems
+- Admin, Logo, Order Management
+- Product Management
+- Notification, Summary of Business
+- AddToCart, Checkout, and Payment System
+- SMTP Mailing System
+- JWT Token System
+- Real-Time Add Item
+- Grid and List View
+- Product Filtering with Category, Price, etc
+- Recent and Related Products
+- Product Reviews and Comment Systems
+- Single Product's Page 
+- Profile with Personal, Permanent address, and Photo
+- Account Delete
+- Toast
+- Sweet Alert and many more. 
+  
 ## Required Software (Download)
 
 - VS Code, Download ->https://code.visualstudio.com/download
